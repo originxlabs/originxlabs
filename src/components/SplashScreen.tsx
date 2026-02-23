@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import originxLogo from "@/assets/originx-logo.svg";
+import BrandLogo from "@/components/BrandLogo";
+import { BRAND } from "@/config/brand";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -107,10 +108,9 @@ const SplashScreen = ({ onComplete, minDisplayTime = 2500 }: SplashScreenProps) 
             />
             
             {/* Main logo */}
-            <img 
-              src={originxLogo} 
-              alt="OriginX Labs logo" 
-              className="relative w-44 h-44 md:w-56 md:h-56 dark:invert dark:brightness-200 dark:contrast-100"
+            <BrandLogo
+              alt={`${BRAND.name} logo`}
+              className="relative w-40 h-40 md:w-52 md:h-52"
               style={{ 
                 animation: 'logoReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               }}
@@ -161,7 +161,7 @@ const SplashScreen = ({ onComplete, minDisplayTime = 2500 }: SplashScreenProps) 
                   transform: 'translateY(100%)',
                 }}
               >
-                Labs
+                {BRAND.name.split(" ")[1]}
               </span>
             </span>
           </h1>
@@ -190,7 +190,7 @@ const SplashScreen = ({ onComplete, minDisplayTime = 2500 }: SplashScreenProps) 
               opacity: 0,
             }}
           >
-            OriginX Labs Private Limited
+            {BRAND.legalName}
           </p>
         </div>
 

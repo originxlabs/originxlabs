@@ -11,8 +11,8 @@ import {
   CheckCircle,
   AlertCircle,
   BarChart3,
-  Cpu,
   Layers,
+  Cpu,
   Zap,
   GitBranch,
   Settings,
@@ -21,22 +21,14 @@ import {
   RefreshCw
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-// Product icons map for the carousel
-const productIcons: Record<string, React.ElementType> = {
-  cognix: Cpu,
-  qualyx: Shield,
-  traceflow: GitBranch,
-  opzenix: Settings,
-  proxinex: Shield,
-};
+import ProductLogo from "./ProductLogo";
 
 interface ProductData {
   id: string;
   name: string;
   tagline: string;
-  icon: React.ElementType;
   href: string;
+  external?: boolean;
   color: string;
   stats: Array<{ label: string; value: string; change?: string; changeType?: "positive" | "negative" }>;
   features: Array<{ icon: React.ElementType; label: string; status: "active" | "processing" | "idle" }>;
@@ -46,62 +38,34 @@ interface ProductData {
 
 const products: ProductData[] = [
   {
-    id: "cognix",
-    name: "Cognix",
-    tagline: "AI Backend as a Service",
-    icon: Cpu,
-    href: "/products/cognix",
-    color: "hsl(210 100% 60%)",
+    id: "proxinex",
+    name: "Proxinex",
+    tagline: "AI Control Plane + AEON",
+    href: "/products/proxinex",
+    color: "hsl(214 90% 56%)",
     stats: [
-      { label: "API CALLS", value: "2.4M", change: "+12%", changeType: "positive" },
-      { label: "LATENCY", value: "23ms", change: "-8%", changeType: "positive" },
-      { label: "UPTIME", value: "99.99%", changeType: "positive" },
-      { label: "DEPLOYMENTS", value: "847" }
+      { label: "ROUTED QUERIES", value: "1.1M", change: "+31%", changeType: "positive" },
+      { label: "COST SAVINGS", value: "63%", change: "+9%", changeType: "positive" },
+      { label: "VERIFIED ANSWERS", value: "94%" },
+      { label: "MODEL OPTIONS", value: "12+" }
     ],
     features: [
-      { icon: Database, label: "Vector DB", status: "active" },
-      { icon: Zap, label: "Auto Scaling", status: "active" },
-      { icon: Lock, label: "Auth Service", status: "active" },
-      { icon: RefreshCw, label: "Sync Engine", status: "processing" }
+      { icon: Cpu, label: "Intent Detect", status: "active" },
+      { icon: GitBranch, label: "Smart Routing", status: "active" },
+      { icon: CheckCircle, label: "AEON Orchestration", status: "active" },
+      { icon: Shield, label: "Confidence", status: "processing" }
     ],
-    chartData: [65, 72, 80, 75, 85, 90, 88, 95, 92, 98, 94, 100],
+    chartData: [45, 55, 62, 70, 76, 84, 90, 96, 92, 98, 95, 100],
     healthMetrics: [
-      { label: "API Health", value: 99 },
-      { label: "Database", value: 97 },
-      { label: "Cache Hit", value: 94 }
-    ]
-  },
-  {
-    id: "qualyx",
-    name: "Qualyx",
-    tagline: "Quality & Compliance",
-    icon: Shield,
-    href: "/products/qualyx",
-    color: "hsl(270 100% 65%)",
-    stats: [
-      { label: "AUDITS PASSED", value: "847", change: "+32", changeType: "positive" },
-      { label: "COMPLIANCE SCORE", value: "98.4%", change: "+0.8%", changeType: "positive" },
-      { label: "OPEN ISSUES", value: "12", change: "-8", changeType: "positive" },
-      { label: "RISK LEVEL", value: "Low" }
-    ],
-    features: [
-      { icon: Shield, label: "Compliance Mon...", status: "active" },
-      { icon: AlertCircle, label: "Risk Assessment", status: "active" },
-      { icon: CheckCircle, label: "Audit Trails", status: "active" },
-      { icon: Lock, label: "Security Gates", status: "processing" }
-    ],
-    chartData: [60, 65, 70, 68, 75, 78, 82, 85, 88, 90, 92, 95],
-    healthMetrics: [
-      { label: "Compliance Rate", value: 98 },
-      { label: "Security Score", value: 96 },
-      { label: "Audit Coverage", value: 91 }
+      { label: "Routing Accuracy", value: 96 },
+      { label: "Verification", value: 94 },
+      { label: "Cost Control", value: 63 }
     ]
   },
   {
     id: "traceflow",
     name: "Traceflow",
     tagline: "Digital Cognition",
-    icon: GitBranch,
     href: "/products/traceflow",
     color: "hsl(330 70% 55%)",
     stats: [
@@ -124,10 +88,59 @@ const products: ProductData[] = [
     ]
   },
   {
+    id: "chronyx",
+    name: "Chronyx",
+    tagline: "Autonomous Time Intelligence",
+    href: "/products/chronyx",
+    color: "hsl(285 74% 60%)",
+    stats: [
+      { label: "SIGNALS/DAY", value: "5.0M", change: "+22%", changeType: "positive" },
+      { label: "ALERT PRECISION", value: "96%", change: "+7%", changeType: "positive" },
+      { label: "RESPONSE TIME", value: "<2s" },
+      { label: "TIMELINE COVERAGE", value: "24/7" }
+    ],
+    features: [
+      { icon: Activity, label: "Signal Engine", status: "active" },
+      { icon: TrendingUp, label: "Trend Memory", status: "active" },
+      { icon: BarChart3, label: "Temporal Insights", status: "active" },
+      { icon: AlertCircle, label: "Predictive Alerts", status: "processing" }
+    ],
+    chartData: [35, 42, 48, 58, 66, 74, 82, 88, 91, 95, 98, 100],
+    healthMetrics: [
+      { label: "Signal Quality", value: 96 },
+      { label: "Prediction", value: 92 },
+      { label: "Coverage", value: 99 }
+    ]
+  },
+  {
+    id: "qualyx",
+    name: "Qualyx",
+    tagline: "Quality & Compliance",
+    href: "/products/qualyx",
+    color: "hsl(270 100% 65%)",
+    stats: [
+      { label: "AUDITS PASSED", value: "847", change: "+32", changeType: "positive" },
+      { label: "COMPLIANCE SCORE", value: "98.4%", change: "+0.8%", changeType: "positive" },
+      { label: "OPEN ISSUES", value: "12", change: "-8", changeType: "positive" },
+      { label: "RISK LEVEL", value: "Low" }
+    ],
+    features: [
+      { icon: Shield, label: "Compliance Mon...", status: "active" },
+      { icon: AlertCircle, label: "Risk Assessment", status: "active" },
+      { icon: CheckCircle, label: "Audit Trails", status: "active" },
+      { icon: Lock, label: "Security Gates", status: "processing" }
+    ],
+    chartData: [60, 65, 70, 68, 75, 78, 82, 85, 88, 90, 92, 95],
+    healthMetrics: [
+      { label: "Compliance Rate", value: 98 },
+      { label: "Security Score", value: 96 },
+      { label: "Audit Coverage", value: 91 }
+    ]
+  },
+  {
     id: "opzenix",
     name: "Opzenix",
     tagline: "MLOps Platform",
-    icon: Settings,
     href: "/products/opzenix",
     color: "hsl(160 70% 45%)",
     stats: [
@@ -150,31 +163,30 @@ const products: ProductData[] = [
     ]
   },
   {
-    id: "proxinex",
-    name: "Proxinex",
-    tagline: "AI Intelligence Control Plane",
-    icon: Shield,
-    href: "/products/proxinex",
-    color: "hsl(214 90% 56%)",
+    id: "cognix",
+    name: "Cognix",
+    tagline: "AI Backend as a Service",
+    href: "/products/cognix",
+    color: "hsl(210 100% 60%)",
     stats: [
-      { label: "ROUTED QUERIES", value: "1.1M", change: "+31%", changeType: "positive" },
-      { label: "COST SAVINGS", value: "63%", change: "+9%", changeType: "positive" },
-      { label: "VERIFIED ANSWERS", value: "94%" },
-      { label: "MODEL OPTIONS", value: "12+" }
+      { label: "API CALLS", value: "2.4M", change: "+12%", changeType: "positive" },
+      { label: "LATENCY", value: "23ms", change: "-8%", changeType: "positive" },
+      { label: "UPTIME", value: "99.99%", changeType: "positive" },
+      { label: "DEPLOYMENTS", value: "847" }
     ],
     features: [
-      { icon: Cpu, label: "Intent Detect", status: "active" },
-      { icon: GitBranch, label: "Smart Routing", status: "active" },
-      { icon: CheckCircle, label: "Citations", status: "active" },
-      { icon: Shield, label: "Confidence", status: "processing" }
+      { icon: Database, label: "Vector DB", status: "active" },
+      { icon: Zap, label: "Auto Scaling", status: "active" },
+      { icon: Lock, label: "Auth Service", status: "active" },
+      { icon: RefreshCw, label: "Sync Engine", status: "processing" }
     ],
-    chartData: [45, 55, 62, 70, 76, 84, 90, 96, 92, 98, 95, 100],
+    chartData: [65, 72, 80, 75, 85, 90, 88, 95, 92, 98, 94, 100],
     healthMetrics: [
-      { label: "Routing Accuracy", value: 96 },
-      { label: "Verification", value: 94 },
-      { label: "Cost Control", value: 63 }
+      { label: "API Health", value: 99 },
+      { label: "Database", value: 97 },
+      { label: "Cache Hit", value: 94 }
     ]
-  }
+  },
 ];
 
 const ProductLivePreview = ({ product, isActive }: { product: ProductData; isActive: boolean }) => {
@@ -220,18 +232,18 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
       {/* Main Dashboard Card */}
       <div className="bg-card dark:bg-card/80 backdrop-blur-xl rounded-2xl border border-border shadow-2xl overflow-hidden transition-all duration-500">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border/50">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-6 border-b border-border/50">
           <div className="flex items-center gap-4">
             {/* Product Icon */}
             <div 
               className="w-11 h-11 rounded-xl flex items-center justify-center"
               style={{ background: `linear-gradient(135deg, ${product.color}, ${product.color}80)` }}
             >
-              <product.icon className="w-6 h-6 text-white" strokeWidth={1.5} />
+              <ProductLogo productId={product.id} className="w-6 h-6" alt={`${product.name} logo`} />
             </div>
             <div>
-              <h3 className="font-display text-xl font-semibold text-foreground">{product.name}</h3>
-              <p className="text-sm text-muted-foreground">{product.tagline}</p>
+              <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground">{product.name}</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">{product.tagline}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -243,7 +255,7 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-4 gap-4 p-6 border-b border-border/30">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6 border-b border-border/30">
           {product.stats.map((stat, index) => (
             <div 
               key={stat.label}
@@ -253,7 +265,7 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <p className="text-xs text-muted-foreground tracking-wider mb-1">{stat.label}</p>
-              <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+              <p className="text-lg sm:text-2xl font-bold text-foreground">{stat.value}</p>
               {stat.change && (
                 <p className={`text-xs flex items-center gap-1 ${
                   stat.changeType === "positive" ? "text-emerald-500" : "text-rose-500"
@@ -267,9 +279,9 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
         </div>
 
         {/* Main Content Area */}
-        <div className="grid grid-cols-3 gap-6 p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6">
           {/* Chart Section */}
-          <div className="col-span-2 bg-muted/30 rounded-xl p-4">
+          <div className="lg:col-span-2 bg-muted/30 rounded-xl p-3 sm:p-4">
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-sm font-medium text-foreground">Performance Trend</h4>
               <span className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -277,7 +289,7 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
                 Last 12 periods
               </span>
             </div>
-            <div className="flex items-end gap-2 h-32">
+            <div className="flex items-end gap-1.5 sm:gap-2 h-28 sm:h-32">
               {animatedChart.map((value, i) => (
                 <div
                   key={i}
@@ -293,7 +305,7 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
           </div>
 
           {/* Health Metrics */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <h4 className="text-sm font-medium text-foreground">System Health</h4>
             {product.healthMetrics.map((metric, i) => (
               <div key={metric.label} className="space-y-2">
@@ -316,7 +328,7 @@ const ProductLivePreview = ({ product, isActive }: { product: ProductData; isAct
         </div>
 
         {/* Features Row */}
-        <div className="grid grid-cols-4 gap-3 px-6 pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 px-4 sm:px-6 pb-4 sm:pb-6">
           {product.features.map((feature, i) => (
             <div 
               key={feature.label}
@@ -420,7 +432,7 @@ const AnimatedProductShowcase = () => {
         </div>
 
         {/* Product Navigation with Icons */}
-        <div className={`flex items-center justify-center gap-2 mb-10 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`flex items-center justify-center gap-2 mb-8 sm:mb-10 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <button 
             onClick={() => goToProduct((activeIndex - 1 + products.length) % products.length)}
             className="p-2.5 rounded-full bg-muted/50 hover:bg-muted transition-colors"
@@ -428,9 +440,8 @@ const AnimatedProductShowcase = () => {
             <ChevronLeft className="w-5 h-5 text-foreground" />
           </button>
           
-          <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-card dark:bg-card/80 backdrop-blur-xl border border-border">
+          <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 rounded-full bg-card dark:bg-card/80 backdrop-blur-xl border border-border overflow-x-auto max-w-[80vw]">
             {products.map((product, index) => {
-              const IconComponent = product.icon;
               return (
                 <button
                   key={product.id}
@@ -447,11 +458,7 @@ const AnimatedProductShowcase = () => {
                   }}
                   title={product.name}
                 >
-                  <IconComponent 
-                    className="w-5 h-5 transition-colors" 
-                    style={{ color: activeIndex === index ? product.color : 'currentColor' }}
-                    strokeWidth={1.5}
-                  />
+                  <ProductLogo productId={product.id} className="w-5 h-5" alt={`${product.name} logo`} />
                 </button>
               );
             })}
@@ -489,16 +496,31 @@ const AnimatedProductShowcase = () => {
 
         {/* CTA */}
         <div className="flex justify-center mt-12">
-          <Link
-            to={products[activeIndex].href}
-            className="px-8 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
-            style={{ 
-              backgroundColor: products[activeIndex].color,
-              color: "white"
-            }}
-          >
-            Explore {products[activeIndex].name}
-          </Link>
+          {products[activeIndex].external ? (
+            <a
+              href={products[activeIndex].href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
+              style={{
+                backgroundColor: products[activeIndex].color,
+                color: "white"
+              }}
+            >
+              Explore {products[activeIndex].name}
+            </a>
+          ) : (
+            <Link
+              to={products[activeIndex].href}
+              className="px-8 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
+              style={{
+                backgroundColor: products[activeIndex].color,
+                color: "white"
+              }}
+            >
+              Explore {products[activeIndex].name}
+            </Link>
+          )}
         </div>
       </div>
     </section>

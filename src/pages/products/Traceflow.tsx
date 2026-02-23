@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Activity, Brain, Map, Fingerprint, Network, Sparkles } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
@@ -85,8 +84,8 @@ const Traceflow = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
-      prevProduct={{ name: "QUALYX", href: "/products/qualyx" }}
-      nextProduct={{ name: "OPZENIX", href: "/products/opzenix" }}
+      prevProduct={{ name: "PROXINEX", href: "/products/proxinex" }}
+      nextProduct={{ name: "CHRONYX", href: "/products/chronyx" }}
       externalUrl={product.externalUrl}
       productId="traceflow"
     />

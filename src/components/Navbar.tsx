@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useTheme } from "next-themes";
 import { 
   ChevronDown, 
-  Cpu, 
-  Shield, 
-  GitBranch, 
-  Settings, 
   Brain, 
   Users, 
-  FileText, 
   Scale, 
   Newspaper, 
   Blocks, 
@@ -35,17 +29,13 @@ import {
   Briefcase,
   GraduationCap,
   ExternalLink,
-  Compass,
-  Target
+  Target,
+  Leaf
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import cognixLogo from "@/assets/cognix-logo-transparent.png";
-import qualyxLogo from "@/assets/qualyx-logo-transparent.png";
-import traceflowLogoDark from "@/assets/traceflow-logo-dark.png";
-import traceflowLogoLight from "@/assets/traceflow-logo-light.png";
-import opzenixLogo from "@/assets/opzenix-logo-transparent.png";
-import proxinexLogo from "@/assets/proxinex-logo.png";
-import originxLogo from "@/assets/originx-logo.svg";
+import BrandLogo from "@/components/BrandLogo";
+import { BRAND } from "@/config/brand";
+import ProductLogo from "@/components/ProductLogo";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -54,12 +44,6 @@ const Navbar = () => {
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,44 +69,36 @@ const Navbar = () => {
     navigate(to);
   };
 
-  // Get theme-aware logos
-  const traceflowLogo = mounted && resolvedTheme === "dark" ? traceflowLogoLight : traceflowLogoDark;
-
   const products = [
     { 
-      name: "COGNIX", 
-      tagline: "AI Backend as a Service", 
-      href: "/products/cognix",
-      logo: cognixLogo,
-      icon: Cpu,
+      name: "PROXINEX", 
+      tagline: "AI Intelligence Control Plane", 
+      href: "/products/proxinex",
+    },
+    {
+      name: "TRACEFLOW", 
+      tagline: "Digital Cognition & Experience Infrastructure", 
+      href: "/products/traceflow",
+    },
+    { 
+      name: "CHRONYX",
+      tagline: "Autonomous Time Intelligence",
+      href: "/products/chronyx",
     },
     { 
       name: "QUALYX", 
       tagline: "AI Quality & Validation Platform", 
       href: "/products/qualyx",
-      logo: qualyxLogo,
-      icon: Shield,
     },
     { 
       name: "OPZENIX", 
       tagline: "Autonomous MLOps, LLMOps & DevSecOps", 
       href: "/products/opzenix",
-      logo: opzenixLogo,
-      icon: Settings,
     },
     { 
-      name: "TRACEFLOW", 
-      tagline: "Digital Cognition & Experience Infrastructure", 
-      href: "/products/traceflow",
-      logo: traceflowLogo,
-      icon: GitBranch,
-    },
-    { 
-      name: "PROXINEX", 
-      tagline: "AI Intelligence Control Plane", 
-      href: "/products/proxinex",
-      logo: proxinexLogo,
-      icon: Compass,
+      name: "COGNIX", 
+      tagline: "AI Backend as a Service", 
+      href: "/products/cognix",
     },
   ];
 
@@ -183,11 +159,11 @@ const Navbar = () => {
         }`}
         style={{ height: "76px" }}
       >
-        <div className="container mx-auto px-6 h-full flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 h-full flex items-center justify-between gap-3">
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 sm:gap-3 group min-w-0 shrink-0 flex-nowrap"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'instant' });
@@ -196,18 +172,14 @@ const Navbar = () => {
               }
             }}
           >
-            <img 
-              src={originxLogo} 
-              alt="OriginX Labs logo" 
-              className="h-12 w-12 transition-transform duration-300 group-hover:scale-105 dark:invert dark:brightness-200 dark:contrast-100" 
-            />
-            <span className="font-display font-semibold text-lg text-foreground tracking-tight hidden sm:block">
-              OriginX Labs
+            <BrandLogo className="h-10 w-10 sm:h-11 sm:w-11 transition-transform duration-300 group-hover:scale-105 shrink-0" alt={`${BRAND.name} logo`} />
+            <span className="font-display font-semibold text-base sm:text-lg text-foreground tracking-tight whitespace-nowrap leading-none hidden sm:block">
+              {BRAND.name}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden xl:flex items-center gap-0.5">
             {/* Products */}
             <div 
               className="relative"
@@ -230,13 +202,13 @@ const Navbar = () => {
                     {products.map((product) => (
                       <button
                         key={product.name}
-                        onClick={() => handleNavClick(product.href)}
+                        onClick={() => handleNavClick(product.href, product.isExternal)}
                         className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-all duration-200 group text-left"
                       >
-                        <img 
-                          src={product.logo} 
-                          alt={product.name} 
-                          className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110" 
+                        <ProductLogo
+                          productId={product.name}
+                          alt={`${product.name} logo`}
+                          className="w-12 h-12 transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="flex-1">
                           <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{product.name}</p>
@@ -327,13 +299,12 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* AEON - Standalone */}
             <button
-              onClick={() => handleNavClick('/products/aeon')}
+              onClick={() => handleNavClick('/cropxon')}
               className="flex items-center gap-1.5 px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Brain className="w-4 h-4" />
-              AEON
+              <Leaf className="w-4 h-4" />
+              Agriculture
             </button>
 
             {/* Trust */}
@@ -463,7 +434,15 @@ const Navbar = () => {
             
             <button
               onClick={() => handleNavClick('/contact')}
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20"
+              className="hidden md:inline-flex xl:hidden items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20 whitespace-nowrap"
+            >
+              <Sparkles className="h-4 w-4" />
+              Talk to OriginX
+            </button>
+
+            <button
+              onClick={() => handleNavClick('/contact')}
+              className="hidden xl:inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20 whitespace-nowrap"
             >
               <Sparkles className="h-4 w-4" />
               Talk to OriginX
@@ -472,7 +451,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              className="xl:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors shrink-0"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -481,7 +460,7 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
+      <div className={`fixed inset-0 z-40 xl:hidden transition-all duration-500 ${
         mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}>
         <div className="absolute inset-0 bg-background/80 backdrop-blur-xl" onClick={() => setMobileMenuOpen(false)} />
@@ -506,10 +485,10 @@ const Navbar = () => {
                   {products.map((product) => (
                     <button
                       key={product.name}
-                      onClick={() => handleNavClick(product.href)}
+                      onClick={() => handleNavClick(product.href, product.isExternal)}
                       className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors text-left"
                     >
-                      <img src={product.logo} alt={product.name} className="w-7 h-7 object-contain" />
+                      <ProductLogo productId={product.name} alt={`${product.name} logo`} className="w-10 h-10" />
                       <div>
                         <p className="font-medium text-foreground">{product.name}</p>
                         <p className="text-xs text-muted-foreground">{product.tagline}</p>
@@ -576,13 +555,12 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* AEON */}
             <button
-              onClick={() => handleNavClick('/products/aeon')}
+              onClick={() => handleNavClick('/cropxon')}
               className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors text-left"
             >
-              <Brain className="w-5 h-5 text-muted-foreground" />
-              <span className="font-medium text-foreground">AEON</span>
+              <Leaf className="w-5 h-5 text-muted-foreground" />
+              <span className="font-medium text-foreground">Agriculture</span>
             </button>
 
             {/* Trust */}

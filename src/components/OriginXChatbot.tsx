@@ -24,8 +24,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import originXLogoDark from "@/assets/originx-icon-dark.png";
-import originXLogoLight from "@/assets/originx-icon-light.png";
+import { BRAND } from "@/config/brand";
 
 // Female agent names pool
 const agentNames = [
@@ -61,15 +60,15 @@ const knowledgeBase = {
       features: ["Auto-remediation", "Model drift detection", "Security scanning", "Continuous deployment"],
       useCases: ["ML pipelines", "Model serving", "Security compliance", "Infrastructure automation"]
     },
-    aeon: {
-      name: "AEON",
-      description: "The pinnacle of autonomous intelligence - A supreme AI system with embedded ethics.",
-      features: ["Autonomous decision-making", "Ethical AI framework", "Multi-domain expertise", "Continuous learning"],
-      useCases: ["Strategic planning", "Complex problem solving", "Autonomous operations", "Research acceleration"]
+    chronyx: {
+      name: "CHRONYX",
+      description: "Autonomous Time Intelligence for continuous observability and temporal signal prediction.",
+      features: ["Temporal signal graph", "Predictive alerts", "Trend memory", "24/7 timeline monitoring"],
+      useCases: ["Operational forecasting", "Anomaly windows", "SLA anticipation", "Real-time timeline decisions"]
     }
   },
   company: {
-    name: "OriginX Labs Pvt. Ltd.",
+    name: BRAND.legalNameShort,
     description: "An AI and Agentic Systems company building the future of autonomous intelligence.",
     headquarters: "Dubai (Corporate HQ)",
     offices: ["Bangalore, India", "USA", "Odisha, India (Founding office)"],
@@ -102,9 +101,13 @@ const generateResponse = (query: string): string => {
     const p = knowledgeBase.products.opzenix;
     return `${p.name} is ${p.description}\n\nCapabilities:\n• ${p.features.join("\n• ")}\n\nUsed for: ${p.useCases.join(", ")}.`;
   }
+  if (lowerQuery.includes("chronyx")) {
+    const p = knowledgeBase.products.chronyx;
+    return `${p.name} is ${p.description}\n\nCapabilities:\n• ${p.features.join("\n• ")}\n\nUsed for: ${p.useCases.join(", ")}.`;
+  }
   if (lowerQuery.includes("aeon")) {
-    const p = knowledgeBase.products.aeon;
-    return `${p.name} is ${p.description}\n\nPowered by:\n• ${p.features.join("\n• ")}\n\nApplications: ${p.useCases.join(", ")}.`;
+    const p = knowledgeBase.products.proxinex;
+    return `AEON is integrated inside ${p.name} as its multi-agent orchestration layer.\n\n${p.name} capabilities include:\n• ${p.features.join("\n• ")}\n\nUse cases: ${p.useCases.join(", ")}.`;
   }
   
   // Company queries
@@ -117,7 +120,7 @@ const generateResponse = (query: string): string => {
     return `Our leadership team:\n\n${c.founders.map(f => `• ${f.name} - ${f.role}${f.site ? ` (${f.site})` : ""}`).join("\n")}\n\nTogether they're building the future of autonomous intelligence.`;
   }
   if (lowerQuery.includes("product") || lowerQuery.includes("offer") || lowerQuery.includes("service")) {
-    return `OriginX Labs offers a comprehensive suite of AI platforms:\n\n• COGNIX - AI Backend as a Service\n• QUALYX - AI Quality & Validation Platform\n• TRACEFLOW - Digital Cognition & Experience Infrastructure\n• OPZENIX - Autonomous MLOps & DevSecOps\n• AEON - Supreme Autonomous Intelligence\n\nWould you like to know more about any specific product?`;
+    return `OriginX Labs offers a comprehensive suite of AI platforms:\n\n• PROXINEX - AI Intelligence Control Plane + AEON\n• TRACEFLOW - Digital Cognition & Experience Infrastructure\n• CHRONYX - Autonomous Time Intelligence\n• QUALYX - AI Quality & Validation Platform\n• OPZENIX - Autonomous MLOps & DevSecOps\n• COGNIX - AI Backend as a Service\n\nWould you like to know more about any specific product?`;
   }
   if (lowerQuery.includes("location") || lowerQuery.includes("office") || lowerQuery.includes("where")) {
     const c = knowledgeBase.company;
@@ -127,17 +130,17 @@ const generateResponse = (query: string): string => {
     return `You can reach OriginX Labs through:\n\n• Our website contact form\n• Click "Talk to OriginX" in the navigation\n• Connect with us on LinkedIn\n\nOur team typically responds within 24 hours!`;
   }
   if (lowerQuery.includes("hello") || lowerQuery.includes("hi") || lowerQuery.includes("hey")) {
-    return `Hello! Welcome to OriginX Labs!\n\nI'm here to help you learn about our AI platforms and autonomous systems. Feel free to ask about:\n\n• Our products (COGNIX, QUALYX, TRACEFLOW, OPZENIX, AEON)\n• Company information\n• Our leadership team\n• How we can help your organization\n\nWhat would you like to know?`;
+    return `Hello! Welcome to OriginX Labs!\n\nI'm here to help you learn about our AI platforms and autonomous systems. Feel free to ask about:\n\n• Our products (PROXINEX, TRACEFLOW, CHRONYX, QUALYX, OPZENIX, COGNIX)\n• AEON capabilities inside PROXINEX\n• Company information\n• Our leadership team\n• How we can help your organization\n\nWhat would you like to know?`;
   }
   if (lowerQuery.includes("thank")) {
     return `You're welcome! It was my pleasure helping you.\n\nIf you have any more questions about OriginX Labs or our AI platforms, feel free to ask anytime. Have a wonderful day!`;
   }
   if (lowerQuery.includes("help")) {
-    return `I'm here to help! You can ask me about:\n\nProducts - COGNIX, QUALYX, TRACEFLOW, OPZENIX, AEON\nCompany - About OriginX Labs, our mission\nTeam - Our founders and leadership\nLocations - Our global offices\nContact - How to reach us\n\nJust type your question and I'll do my best to assist!`;
+    return `I'm here to help! You can ask me about:\n\nProducts - PROXINEX, TRACEFLOW, CHRONYX, QUALYX, OPZENIX, COGNIX\nAEON - Integrated in PROXINEX\nCompany - About OriginX Labs, our mission\nTeam - Our founders and leadership\nLocations - Our global offices\nContact - How to reach us\n\nJust type your question and I'll do my best to assist!`;
   }
   
   // Default response
-  return `Thank you for your interest in OriginX Labs! I'd be happy to help you with information about our AI platforms and services.\n\nYou can ask me about:\n• Our products (COGNIX, QUALYX, TRACEFLOW, OPZENIX, AEON)\n• Company details\n• Our leadership team\n• Global presence\n\nWhat would you like to explore?`;
+  return `Thank you for your interest in OriginX Labs! I'd be happy to help you with information about our AI platforms and services.\n\nYou can ask me about:\n• Our products (PROXINEX, TRACEFLOW, CHRONYX, QUALYX, OPZENIX, COGNIX)\n• AEON capabilities inside PROXINEX\n• Company details\n• Our leadership team\n• Global presence\n\nWhat would you like to explore?`;
 };
 
 interface Message {

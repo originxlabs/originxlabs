@@ -1,17 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { useScrollAnimation, useParallax } from "@/hooks/useScrollAnimation";
-import { Sparkles, Zap, Shield, Brain, GitBranch, Settings, Cpu, ArrowRight, Play, Pause, Compass } from "lucide-react";
+import { Sparkles, Zap, Shield, Brain, GitBranch, Settings, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductHoverCard from "./ProductHoverCard";
-import AeonLogo from "./AeonLogo";
-
-import heroVideo1 from "@/assets/video1-ox.mp4";
-import heroVideo2 from "@/assets/video2-ox.mp4";
-import heroVideo3 from "@/assets/originx-hero-video.mp4";
-import heroVideo4 from "@/assets/oxl-hero-video.mp4";
-
-const backgroundVideos = [heroVideo1, heroVideo2, heroVideo3, heroVideo4];
+import ProductLogo from "./ProductLogo";
 
 const taglines = [
   "Where Intelligence Begins.",
@@ -19,33 +12,23 @@ const taglines = [
   "From Origin to Autonomy.",
 ];
 
-// Product icons for each platform - AEON uses special component
-const productIcons: Record<string, React.ElementType | null> = {
-  COGNIX: Cpu,
-  QUALYX: Shield,
-  TRACEFLOW: GitBranch,
-  OPZENIX: Settings,
-  AEON: null, // Uses custom AeonLogo component
-  PROXINEX: Compass,
-};
-
-// Product colors - including AEON
+// Product colors
 const productColors: Record<string, { color: string; from: string; to: string }> = {
   COGNIX: { color: "hsl(210 100% 60%)", from: "hsl(210, 100%, 60%)", to: "hsl(230, 100%, 70%)" },
   QUALYX: { color: "hsl(270 100% 65%)", from: "hsl(270, 100%, 65%)", to: "hsl(290, 100%, 75%)" },
   TRACEFLOW: { color: "hsl(330 70% 55%)", from: "hsl(330, 70%, 55%)", to: "hsl(350, 80%, 65%)" },
   OPZENIX: { color: "hsl(160 70% 45%)", from: "hsl(160, 70%, 45%)", to: "hsl(180, 80%, 55%)" },
-  AEON: { color: "hsl(250 80% 60%)", from: "hsl(250, 80%, 60%)", to: "hsl(280, 70%, 50%)" },
   PROXINEX: { color: "hsl(214 90% 56%)", from: "hsl(214, 90%, 56%)", to: "hsl(228, 84%, 64%)" },
+  CHRONYX: { color: "hsl(285 74% 60%)", from: "hsl(285, 74%, 60%)", to: "hsl(305, 78%, 66%)" },
 };
 
 // Animated line chart component for hero cards
 const AnimatedLineChart = ({ data, color, isActive }: { data: number[], color: string, isActive: boolean }) => {
   const pathRef = useRef<SVGPathElement>(null);
   
-  const width = 200;
-  const height = 60;
-  const padding = 5;
+  const width = 150;
+  const height = 42;
+  const padding = 4;
   
   const maxVal = Math.max(...data);
   const minVal = Math.min(...data);
@@ -100,7 +83,7 @@ const AnimatedLineChart = ({ data, color, isActive }: { data: number[], color: s
         d={pathD}
         fill="none"
         stroke={color}
-        strokeWidth="2"
+        strokeWidth="1.6"
         strokeLinecap="round"
         className={`transition-all duration-1000 ${isActive ? 'opacity-100' : 'opacity-0'}`}
         style={{
@@ -113,7 +96,7 @@ const AnimatedLineChart = ({ data, color, isActive }: { data: number[], color: s
       <circle
         cx={points[points.length - 1]?.x}
         cy={points[points.length - 1]?.y}
-        r="4"
+        r="3"
         fill={color}
         className={`transition-all duration-1000 delay-500 ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
       />
@@ -153,7 +136,6 @@ const AnimatedCounter = ({ value, suffix = '', isActive }: { value: number, suff
 };
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [textRef, textVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   const { ref: parallaxRef, offset } = useParallax(0.3);
@@ -162,8 +144,6 @@ const HeroSection = () => {
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [cardsVisible, setCardsVisible] = useState(false);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -181,89 +161,61 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle video play/pause
-  const toggleVideoPlayback = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsVideoPlaying(!isVideoPlaying);
-    }
-  };
-
-  useEffect(() => {
-    if (!videoRef.current || !isVideoPlaying) {
-      return;
-    }
-
-    const playPromise = videoRef.current.play();
-    if (playPromise && typeof playPromise.catch === "function") {
-      playPromise.catch(() => {});
-    }
-  }, [currentVideoIndex, isVideoPlaying]);
-
-  const handleVideoEnded = () => {
-    setCurrentVideoIndex((prev) => (prev + 1) % backgroundVideos.length);
-  };
-
-  useEffect(() => {
-    const preloaders = backgroundVideos.map((videoSrc) => {
-      const preloader = document.createElement("video");
-      preloader.src = videoSrc;
-      preloader.preload = "auto";
-      preloader.muted = true;
-      preloader.playsInline = true;
-      preloader.load();
-      return preloader;
-    });
-
-    return () => {
-      preloaders.forEach((preloader) => {
-        preloader.src = "";
-      });
-    };
-  }, []);
-
   const products = [
-    { 
-      name: "COGNIX", 
-      tagline: "AI Backend as a Service", 
-      stat: { value: 99.9, suffix: '%', label: 'Uptime' },
-      chartData: [30, 45, 35, 60, 50, 70, 65, 85, 75, 95, 88, 98]
-    },
-    { 
-      name: "QUALYX", 
-      tagline: "AI QA as a Service", 
-      stat: { value: 10, suffix: 'x', label: 'Faster Tests' },
-      chartData: [40, 55, 45, 70, 60, 80, 70, 90, 82, 95, 90, 100]
-    },
-    { 
-      name: "TRACEFLOW", 
-      tagline: "Digital Cognition", 
-      stat: { value: 1, suffix: 'ms', label: 'Latency' },
-      chartData: [50, 35, 55, 40, 65, 50, 75, 60, 85, 70, 95, 80]
-    },
-    { 
-      name: "OPZENIX", 
-      tagline: "MLOps Platform", 
-      stat: { value: 50, suffix: '%', label: 'Deploy Time ↓' },
-      chartData: [45, 60, 50, 75, 65, 85, 75, 92, 85, 97, 92, 100]
-    },
-    { 
-      name: "AEON", 
-      tagline: "Autonomous Agent", 
-      stat: { value: 24, suffix: '/7', label: 'Always On' },
-      chartData: [70, 85, 75, 95, 80, 100, 90, 100, 95, 100, 98, 100]
-    },
     {
       name: "PROXINEX",
-      tagline: "AI Intelligence Control Plane",
+      tagline: "AI Intelligence Control Plane + AEON",
+      href: "/products/proxinex",
       stat: { value: 63, suffix: '%', label: 'Avg Cost Saved' },
       chartData: [42, 48, 55, 61, 68, 72, 79, 84, 88, 91, 95, 99]
     },
+    {
+      name: "TRACEFLOW",
+      tagline: "Digital Cognition",
+      href: "/products/traceflow",
+      stat: { value: 1, suffix: 'ms', label: 'Latency' },
+      chartData: [50, 35, 55, 40, 65, 50, 75, 60, 85, 70, 95, 80]
+    },
+    {
+      name: "CHRONYX",
+      tagline: "Autonomous Time Intelligence",
+      href: "/products/chronyx",
+      stat: { value: 24, suffix: '/7', label: 'Active Monitoring' },
+      chartData: [28, 36, 41, 53, 61, 70, 77, 84, 90, 94, 97, 100]
+    },
+    {
+      name: "QUALYX",
+      tagline: "AI QA as a Service",
+      href: "/products/qualyx",
+      stat: { value: 10, suffix: 'x', label: 'Faster Tests' },
+      chartData: [40, 55, 45, 70, 60, 80, 70, 90, 82, 95, 90, 100]
+    },
+    {
+      name: "OPZENIX",
+      tagline: "MLOps Platform",
+      href: "/products/opzenix",
+      stat: { value: 50, suffix: '%', label: 'Deploy Time ↓' },
+      chartData: [45, 60, 50, 75, 65, 85, 75, 92, 85, 97, 92, 100]
+    },
+    {
+      name: "COGNIX",
+      tagline: "AI Backend as a Service",
+      href: "/products/cognix",
+      stat: { value: 99.9, suffix: '%', label: 'Uptime' },
+      chartData: [30, 45, 35, 60, 50, 70, 65, 85, 75, 95, 88, 98]
+    },
   ];
+
+  const livePreviewNodes = products.map((product, index) => {
+    const colors = productColors[product.name];
+    return {
+      ...product,
+      ...colors,
+      x: [8, 88, 12, 86, 18, 84][index],
+      y: [24, 18, 62, 46, 78, 70][index],
+      delay: 0,
+    };
+  });
 
   // Rotating taglines
   useEffect(() => {
@@ -298,10 +250,10 @@ const HeroSection = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[calc(100vh-76px)] flex items-start justify-center overflow-hidden pt-4 md:pt-6 pb-6"
       style={{ perspective: '1000px' }}
     >
-      {/* Video Background with parallax */}
+      {/* Gradient Background with parallax */}
       <div 
         className="absolute inset-0 z-0"
         style={{ 
@@ -309,34 +261,85 @@ const HeroSection = () => {
           transformStyle: 'preserve-3d'
         }}
       >
-        <video
-          ref={videoRef}
-          autoPlay
-          preload="auto"
-          muted
-          playsInline
-          onEnded={handleVideoEnded}
-          key={backgroundVideos[currentVideoIndex]}
-          src={backgroundVideos[currentVideoIndex]}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/40 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,hsl(var(--primary)/0.15),transparent_45%),radial-gradient(circle_at_80%_25%,hsl(var(--accent)/0.12),transparent_40%),radial-gradient(circle_at_50%_80%,hsl(var(--secondary)/0.1),transparent_45%)]" />
         {/* Gradient overlays for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background dark:from-background/80 dark:via-background/60 dark:to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30" />
       </div>
 
-      {/* Video Play/Pause Button */}
-      <button
-        onClick={toggleVideoPlayback}
-        className="absolute bottom-24 right-6 z-20 p-3 rounded-full bg-background/50 dark:bg-background/30 backdrop-blur-md border border-border/30 hover:bg-background/70 dark:hover:bg-background/50 transition-all duration-300 group"
-        aria-label={isVideoPlaying ? "Pause video" : "Play video"}
-      >
-        {isVideoPlaying ? (
-          <Pause className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors" />
-        ) : (
-          <Play className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors" />
-        )}
-      </button>
+      {/* Live preview background video-style stage */}
+      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden max-[360px]:hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,hsl(var(--primary)/0.12),transparent_55%)] dark:bg-[radial-gradient(circle_at_50%_45%,hsl(var(--primary)/0.22),transparent_55%)]" />
+        <div
+          className="absolute left-1/2 top-[46%] w-[90vw] max-w-6xl h-[50vh] max-h-[420px] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-foreground/10 dark:border-white/15 bg-background/25 dark:bg-black/25 backdrop-blur-[2px]"
+          style={{ boxShadow: "0 30px 120px rgba(0,0,0,0.20), inset 0 0 60px rgba(255,255,255,0.03)" }}
+        >
+          <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
+            <div className="absolute inset-0 opacity-40 dark:opacity-30 bg-[linear-gradient(0deg,transparent_24%,hsl(var(--foreground)/0.08)_25%,transparent_26%,transparent_49%,hsl(var(--foreground)/0.08)_50%,transparent_51%,transparent_74%,hsl(var(--foreground)/0.08)_75%,transparent_76%)] bg-[length:100%_30px]" />
+            <div className="absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-primary/30 to-transparent blur-xl animate-hero-scan" />
+            <div className="absolute -inset-x-20 top-1/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-pulse-slow" />
+            <div className="absolute -inset-x-20 top-2/3 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent animate-pulse-slow" style={{ animationDelay: "1200ms" }} />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px] rounded-full border border-primary/20 dark:border-primary/30 animate-spin-slow">
+                {livePreviewNodes.map((node, idx) => (
+                  <div
+                    key={`orbit-${node.name}`}
+                    className="absolute left-1/2 top-1/2"
+                    style={{ transform: `rotate(${idx * 60}deg) translateY(-92px)` }}
+                  >
+                    <span className="block h-2.5 w-2.5 rounded-full shadow-[0_0_12px_currentColor]" style={{ color: node.color, backgroundColor: node.color }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {[0, 1, 2, 3].map((dot) => (
+              <div
+                key={`preview-dot-${dot}`}
+                className="absolute w-2.5 h-2.5 rounded-full bg-primary/70 dark:bg-primary/80 animate-ping"
+                style={{
+                  left: `${22 + dot * 18}%`,
+                  top: `${28 + (dot % 2) * 30}%`,
+                  animationDelay: `${dot * 500}ms`,
+                  animationDuration: "2.4s",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {livePreviewNodes.map((node) => (
+          <div
+            key={`bg-node-${node.name}`}
+            className={`absolute animate-float ${node.x > 70 ? "z-[12]" : "z-[6]"}`}
+            style={{
+              left: `${node.x}%`,
+              top: `${node.y}%`,
+              animationDelay: `${node.delay}s`,
+              animationDuration: "6s",
+              transform: `translateY(${scrollY * -0.06}px)`,
+            }}
+          >
+            <div
+              className={`rounded-xl border px-2.5 py-1.5 backdrop-blur-md ${
+                node.x > 70 ? "bg-card/90 dark:bg-card/75" : "bg-card/70 dark:bg-card/45"
+              }`}
+              style={{
+                borderColor: `${node.color}55`,
+                boxShadow: `0 12px 34px -16px ${node.color}cc`,
+              }}
+            >
+              <div className="flex items-center gap-2.5">
+                <ProductLogo productId={node.name} className="w-6 h-6" alt={`${node.name} background logo`} />
+                <div className="leading-tight">
+                  <p className="text-[11px] sm:text-xs font-semibold tracking-wide text-foreground">{node.name}</p>
+                  <p className="text-[10px] text-muted-foreground">{node.stat.label}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Parallax floating elements - Layer 1 (slowest) */}
       <div 
@@ -419,7 +422,7 @@ const HeroSection = () => {
       {/* Gradient orbs with parallax */}
       <div 
         ref={parallaxRef}
-        className="absolute inset-0 pointer-events-none overflow-hidden z-[4]"
+        className="absolute inset-0 pointer-events-none overflow-hidden z-[4] max-[360px]:hidden"
         style={{ transform: `translateY(${offset}px)` }}
       >
         <div 
@@ -439,13 +442,13 @@ const HeroSection = () => {
       {/* Main content with parallax */}
       <div 
         ref={textRef} 
-        className="relative z-10 text-center px-6 max-w-7xl mx-auto"
+        className="relative z-10 text-center px-3 sm:px-6 max-w-6xl mx-auto"
         style={{ transform: `translateY(${scrollY * -0.1}px)` }}
       >
         {/* Animated Tagline */}
-        <div className={`h-8 mb-8 overflow-hidden transition-all duration-1000 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`h-6 mb-2 overflow-hidden transition-all duration-1000 max-[360px]:h-5 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <p 
-            className={`text-primary dark:text-primary text-sm md:text-base font-semibold tracking-[0.25em] uppercase transition-all duration-500 ${
+            className={`text-primary dark:text-primary text-xs sm:text-sm md:text-base font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase transition-all duration-500 ${
               isAnimating ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
             }`}
           >
@@ -454,21 +457,39 @@ const HeroSection = () => {
         </div>
         
         {/* Main Heading */}
-        <h1 className={`font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-all duration-1000 delay-200 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <h1 className={`font-display text-[1.65rem] leading-[1.12] sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 transition-all duration-1000 delay-200 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="text-foreground">The Origin of</span>{" "}
           <span className="text-gradient">Autonomous Intelligence</span>
         </h1>
         
         {/* Subtitle */}
-        <p className={`text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-16 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <p className={`text-muted-foreground text-[13px] leading-relaxed sm:text-base md:text-lg max-w-2xl mx-auto mb-4 sm:mb-6 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           AI Platforms. Agentic Systems. Life OS. Built with Ethics.
         </p>
+        <p className={`text-[10px] md:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-primary/80 mb-3 sm:mb-4 transition-all duration-1000 delay-350 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          OriginX Labs Pvt. Ltd.
+        </p>
+        <div
+          className={`mb-4 sm:mb-6 transition-all duration-1000 max-[360px]:hidden ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          style={{ transitionDelay: "380ms" }}
+        >
+          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-full border border-border/50 bg-card/60 backdrop-blur-sm py-1.5">
+            <div className="flex w-max animate-hero-marquee items-center gap-3 px-3">
+              {[...products, ...products].map((product, idx) => (
+                <div key={`${product.name}-${idx}`} className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/70 px-3 py-1.5">
+                  <ProductLogo productId={product.name} className="w-7 h-7" alt={`${product.name} ticker logo`} />
+                  <span className="text-[11px] md:text-xs font-medium tracking-wide text-foreground">{product.name}</span>
+                  <span className="text-[10px] md:text-[11px] text-muted-foreground">{product.tagline}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Animated Product Cards Grid with Icons */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 mb-12 transition-all duration-1000 delay-400 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 mb-3 sm:mb-6 transition-all duration-1000 delay-400 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {products.map((product, index) => {
             const colors = productColors[product.name];
-            const IconComponent = productIcons[product.name];
             
             return (
               <ProductHoverCard
@@ -479,8 +500,10 @@ const HeroSection = () => {
                 gradientTo={colors.to}
               >
                 <Link
-                  to={`/products/${product.name.toLowerCase()}`}
-                  className={`group relative p-5 rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden block ${
+                  to={product.href}
+                  target={product.external ? "_blank" : undefined}
+                  rel={product.external ? "noopener noreferrer" : undefined}
+                  className={`group relative z-10 hover:z-20 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden block min-h-[136px] max-[360px]:min-h-[118px] sm:min-h-[190px] ${
                     cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   } ${
                     resolvedTheme === 'dark'
@@ -488,7 +511,6 @@ const HeroSection = () => {
                       : 'bg-card/70 border-2 border-foreground/10 hover:border-foreground/30 hover:bg-card/90'
                   } hover:scale-[1.03] hover:shadow-2xl hover:-translate-y-1`}
                   style={{ 
-                    transitionDelay: `${500 + index * 100}ms`,
                     boxShadow: activeProductIndex === index 
                       ? `0 20px 40px -15px ${colors.color}30, 0 10px 20px -10px ${colors.color}20`
                       : 'none'
@@ -528,28 +550,19 @@ const HeroSection = () => {
                   
                   <div className="relative z-10">
                     {/* Header with Icon */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                      <div className="flex items-center gap-2 sm:gap-3">
                       {/* Product Icon */}
-                        <div 
-                          className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${
-                            product.name === 'AEON' ? 'bg-transparent' : ''
-                          }`}
-                          style={{ 
-                            background: product.name === 'AEON' ? 'transparent' : `linear-gradient(135deg, ${colors.from}, ${colors.to})`,
-                          }}
-                        >
-                          {product.name === 'AEON' ? (
-                            <AeonLogo size="sm" animated={false} />
-                          ) : IconComponent && (
-                            <IconComponent className="w-5 h-5 text-white" />
-                          )}
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                          <ProductLogo productId={product.name} className="w-6 h-6 sm:w-8 sm:h-8" alt={`${product.name} logo`} />
                         </div>
                         <div className="text-left">
-                          <h3 className="font-display font-bold text-foreground text-sm group-hover:text-primary transition-colors duration-300">
+                          <h3 className="font-display font-bold text-foreground text-[11px] sm:text-base leading-tight group-hover:text-primary transition-colors duration-300">
                             {product.name}
                           </h3>
-                          <p className="text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors">{product.tagline}</p>
+                          <p className="hidden sm:block text-[11px] sm:text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors leading-snug">
+                            {product.tagline}
+                          </p>
                         </div>
                       </div>
                       <ArrowRight 
@@ -558,18 +571,18 @@ const HeroSection = () => {
                     </div>
 
                     {/* Stats with animation */}
-                    <div className="flex items-baseline gap-1 mb-3">
+                    <div className="flex items-baseline gap-1.5 mb-1 sm:mb-2">
                       <span 
-                        className="text-2xl font-bold font-display transition-all duration-300 group-hover:scale-105"
+                        className="text-base sm:text-2xl font-bold font-display transition-all duration-300 group-hover:scale-105"
                         style={{ color: colors.color }}
                       >
                         <AnimatedCounter value={product.stat.value} suffix={product.stat.suffix} isActive={cardsVisible} />
                       </span>
-                      <span className="text-xs text-muted-foreground">{product.stat.label}</span>
+                      <span className="text-[10px] sm:text-xs text-muted-foreground line-clamp-1">{product.stat.label}</span>
                     </div>
 
                     {/* Animated Chart */}
-                    <div className="text-muted-foreground transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className="text-muted-foreground transition-transform duration-500 group-hover:scale-[1.02] max-[360px]:hidden">
                       <AnimatedLineChart 
                         data={product.chartData} 
                         color={colors.color} 
@@ -598,16 +611,16 @@ const HeroSection = () => {
         </div>
         
         {/* CTA Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-700 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center transition-all duration-1000 delay-700 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <a
             href="#products"
-            className="px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20"
+            className="px-5 py-2.5 sm:px-8 sm:py-4 bg-primary text-primary-foreground rounded-xl font-medium text-sm sm:text-base hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20"
           >
             Explore Platforms
           </a>
           <a
             href="#contact"
-            className="px-8 py-4 bg-card/80 dark:bg-card/50 text-foreground rounded-xl font-medium hover:bg-card transition-all duration-300 border border-border/50 backdrop-blur-sm"
+            className="px-5 py-2.5 sm:px-8 sm:py-4 bg-card/80 dark:bg-card/50 text-foreground rounded-xl font-medium text-sm sm:text-base hover:bg-card transition-all duration-300 border border-border/50 backdrop-blur-sm"
           >
             Talk to OriginX
           </a>
@@ -615,7 +628,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float z-10">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float z-10 max-[360px]:hidden">
         <div className="w-6 h-10 border-2 border-muted-foreground/40 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-3 bg-muted-foreground/60 rounded-full animate-pulse" />
         </div>

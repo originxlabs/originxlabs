@@ -13,8 +13,8 @@ import NotFound from "./pages/NotFound";
 import Cognix from "./pages/products/Cognix";
 import Qualyx from "./pages/products/Qualyx";
 import Traceflow from "./pages/products/Traceflow";
+import Chronyx from "./pages/products/Chronyx";
 import Opzenix from "./pages/products/Opzenix";
-import Aeon from "./pages/products/Aeon";
 import Proxinex from "./pages/products/Proxinex";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -25,6 +25,7 @@ import About from "./pages/About";
 import Consulting from "./pages/Consulting";
 import Trust from "./pages/Trust";
 import Press from "./pages/Press";
+import Cropxon from "./pages/Cropxon";
 
 // Platform pages
 import Architecture from "./pages/platform/Architecture";
@@ -99,13 +100,14 @@ const AppContent = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/cropxon" element={<Cropxon />} />
           
           {/* Products */}
           <Route path="/products/cognix" element={<Cognix />} />
           <Route path="/products/qualyx" element={<Qualyx />} />
           <Route path="/products/traceflow" element={<Traceflow />} />
+          <Route path="/products/chronyx" element={<Chronyx />} />
           <Route path="/products/opzenix" element={<Opzenix />} />
-          <Route path="/products/aeon" element={<Aeon />} />
           <Route path="/products/proxinex" element={<Proxinex />} />
           
           {/* Platform */}
@@ -145,7 +147,7 @@ const AppContent = () => {
 };
 
 const App = () => (
-  <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+  <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>

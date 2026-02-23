@@ -1,0 +1,16 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <linearGradient id="chronyxSilver" x1="32" y1="16" x2="230" y2="242" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F1F3F6" />
+      <stop offset="0.5" stop-color="#D7DBE0" />
+      <stop offset="1" stop-color="#B4BAC2" />
+    </linearGradient>
+  </defs>
+  <circle cx="128" cy="128" r="96" stroke="url(#chronyxSilver)" stroke-width="12" />
+  <circle cx="128" cy="128" r="62" stroke="url(#chronyxSilver)" stroke-width="7" stroke-dasharray="18 14" stroke-linecap="round" />
+  <circle cx="128" cy="128" r="14" fill="url(#chronyxSilver)" />
+  <circle cx="128" cy="32" r="8" fill="url(#chronyxSilver)" />
+  <circle cx="224" cy="128" r="8" fill="url(#chronyxSilver)" />
+  <circle cx="128" cy="224" r="8" fill="url(#chronyxSilver)" />
+  <circle cx="32" cy="128" r="8" fill="url(#chronyxSilver)" />
+</svg>

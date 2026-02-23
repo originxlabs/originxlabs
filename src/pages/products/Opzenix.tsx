@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { RefreshCw, Shield, Cpu, Lock, Workflow, Monitor } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
@@ -85,8 +84,8 @@ const Opzenix = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
-      prevProduct={{ name: "TRACEFLOW", href: "/products/traceflow" }}
-      nextProduct={{ name: "AEON", href: "/products/aeon" }}
+      prevProduct={{ name: "QUALYX", href: "/products/qualyx" }}
+      nextProduct={{ name: "COGNIX", href: "/products/cognix" }}
       externalUrl={product.externalUrl}
       productId="opzenix"
     />

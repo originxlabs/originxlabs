@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Compass, ShieldCheck, SearchCheck, BadgeCheck, Wallet, Split } from "lucide-react";
+import { Compass, ShieldCheck, SearchCheck, BadgeCheck, Wallet, Split, Users, RefreshCw, Eye, Heart, Building } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
 
@@ -41,6 +41,31 @@ const Proxinex = () => {
       description: "Purpose-built guardrails, verification layers, and policy-aware orchestration for mission-critical workflows.",
       icon: <ShieldCheck className="h-6 w-6 text-primary" />,
     },
+    {
+      title: "AEON Multi-Agent Orchestration",
+      description: "Embedded AEON layer coordinates specialist agents for planning, reasoning, and execution across complex enterprise workflows.",
+      icon: <Users className="h-6 w-6 text-primary" />,
+    },
+    {
+      title: "Self-Healing Autonomous Flows",
+      description: "Detects route degradation and autonomously re-balances model pathways for reliability and consistent output quality.",
+      icon: <RefreshCw className="h-6 w-6 text-primary" />,
+    },
+    {
+      title: "Human-in-the-Loop Governance",
+      description: "Configurable escalation pathways keep humans in control for high-impact decisions and policy-sensitive operations.",
+      icon: <Eye className="h-6 w-6 text-primary" />,
+    },
+    {
+      title: "Ethics and Explainability by Design",
+      description: "Traceable decisions, confidence rationale, and governance-ready output trails for responsible AI operations.",
+      icon: <Heart className="h-6 w-6 text-primary" />,
+    },
+    {
+      title: "Enterprise-Scale AI Operations",
+      description: "Built for regulated, mission-critical environments with security, compliance, and operational resilience.",
+      icon: <Building className="h-6 w-6 text-primary" />,
+    },
   ];
 
   const capabilities = [
@@ -52,6 +77,11 @@ const Proxinex = () => {
     "Intent detection and response governance",
     "High-impact premium verification path",
     "Developer-ready control plane APIs",
+    "AEON multi-agent orchestration",
+    "Human-in-the-loop decision gates",
+    "Self-healing route reliability",
+    "Ethics-first explainable AI trails",
+    "Enterprise governance and compliance alignment",
   ];
 
   const useCases = [
@@ -71,6 +101,14 @@ const Proxinex = () => {
       title: "Developer Experience Platforms",
       description: "Give engineering teams a unified AI control layer with consistent model orchestration and observability.",
     },
+    {
+      title: "Autonomous Enterprise Intelligence",
+      description: "Run AEON-powered multi-agent reasoning through the Proxinex control plane for autonomous but governed enterprise outcomes.",
+    },
+    {
+      title: "Computer Vision + LLM Decision Stacks",
+      description: "Orchestrate multimodal pipelines where computer vision and LLM systems are jointly routed, verified, and policy-controlled.",
+    },
   ];
 
   return (
@@ -84,11 +122,11 @@ const Proxinex = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
-      prevProduct={{ name: "AEON", href: "/products/aeon" }}
-      nextProduct={{ name: "COGNIX", href: "/products/cognix" }}
+      prevProduct={{ name: "COGNIX", href: "/products/cognix" }}
+      nextProduct={{ name: "TRACEFLOW", href: "/products/traceflow" }}
       externalUrl={product.externalUrl}
       productId="proxinex"
-      pageTitle="PROXINEX by OriginX Labs — AI Intelligence Control Plane"
+      pageTitle="PROXINEX by OriginX Labs — AI Control Plane + AEON Autonomous Intelligence"
     />
   );
 };

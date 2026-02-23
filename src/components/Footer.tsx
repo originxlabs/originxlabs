@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { 
+import {
   MapPin, 
   Mail, 
   Linkedin, 
@@ -15,16 +15,17 @@ import {
   Scale,
   ExternalLink
 } from "lucide-react";
-import originxLogo from "@/assets/originx-logo.svg";
+import BrandLogo from "@/components/BrandLogo";
+import { BRAND } from "@/config/brand";
 
 const productLinks = [
   { name: "COGNIX", href: "/products/cognix", external: "https://www.getcognix.io/" },
   { name: "QUALYX", href: "/products/qualyx", external: "https://www.getqualyx.com/" },
   { name: "TRACEFLOW", href: "/products/traceflow", external: "https://www.traceflowhq.com/" },
+  { name: "CHRONYX", href: "/products/chronyx", external: "https://www.getchronyx.com/" },
   { name: "OPZENIX", href: "/products/opzenix", external: "https://www.opzenix.com/" },
   { name: "PROXINEX", href: "/products/proxinex", external: "https://www.proxinex.com/" },
-  { name: "CHRONYX", href: "#chronyx", external: "https://www.getchronyx.com/" },
-  { name: "AEON", href: "/products/aeon" },
+  { name: "Agriculture (Cropxon)", href: "/cropxon", external: "https://www.cropxon.com/" },
   { name: "NEWSTACK", href: "#", external: "https://www.newstack.live/" },
 ];
 
@@ -80,23 +81,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           {/* Brand Column - Spans 2 */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6 group">
-              <img 
-                src={originxLogo} 
-                alt="OriginX Labs" 
-                className="h-14 w-14 transition-transform duration-300 group-hover:scale-105 dark:invert dark:brightness-200 dark:contrast-100" 
-              />
-              <div>
-                <span className="font-display font-bold text-xl text-foreground block">
-                  OriginX Labs
-                </span>
-                <span className="text-[10px] text-muted-foreground tracking-wider uppercase">
-                  Private Limited
-                </span>
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-6 group flex-nowrap">
+              <BrandLogo className="h-12 w-12 transition-transform duration-300 group-hover:scale-105" alt={BRAND.name} />
+              <span className="font-display font-bold text-xl text-foreground whitespace-nowrap leading-none">
+                {BRAND.name}
+              </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm mb-6 leading-relaxed">
-              Next-generation AI & Agentic Systems company. Building autonomous intelligence with ethics at the core.
+              {BRAND.tagline}
             </p>
             
             {/* Social Links */}
@@ -296,7 +288,7 @@ const Footer = () => {
             {/* Legal Name Banner */}
             <div className="text-center mb-8">
               <p className="text-lg font-display font-bold text-foreground">
-                ORIGINX LABS PRIVATE LIMITED
+                {BRAND.legalName.toUpperCase()}
               </p>
               <div className="flex items-center justify-center gap-2 mt-2 text-muted-foreground text-xs">
                 <Calendar className="w-3 h-3" />
@@ -337,7 +329,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
               <p className="text-muted-foreground text-sm">
-                © {new Date().getFullYear()} OriginX Labs Pvt. Ltd.
+                © {new Date().getFullYear()} {BRAND.legalNameShort}
               </p>
               <span className="hidden sm:inline text-border">•</span>
               <p className="text-muted-foreground text-xs">

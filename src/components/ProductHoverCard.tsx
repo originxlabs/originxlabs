@@ -89,22 +89,9 @@ const productGraphData: Record<string, {
     description: "Self-healing MLOps with autonomous agents",
     keyFeatures: ["Auto-remediation", "Drift detection", "CI/CD native"]
   },
-  aeon: {
-    what: "Supreme autonomous intelligence system with embedded ethical governance for complex decision-making.",
-    why: "The pinnacle of AI - autonomous, ethical, and designed to augment human potential.",
-    stats: [
-      { label: "Agent Accuracy", value: "99.9%", icon: Cpu, trend: 3 },
-      { label: "Decision Time", value: "<100ms", icon: Zap, trend: 25 },
-      { label: "Ethics Score", value: "A+", icon: Shield, trend: 0 },
-    ],
-    barData: [92, 95, 88, 97, 93, 99, 98],
-    lineData: [70, 78, 82, 85, 90, 94, 97, 99],
-    description: "Supreme autonomous intelligence with ethics",
-    keyFeatures: ["Ethical AI", "Multi-domain", "Autonomous"]
-  },
   proxinex: {
-    what: "AI Intelligence Control Plane that routes each query to the right model with transparent outputs and citation-backed confidence.",
-    why: "Eliminate black-box AI risk with governed routing, verifiable answers, and cost-efficient model selection.",
+    what: "AI Intelligence Control Plane that routes each query to the right model with transparent outputs, citation-backed confidence, and AEON orchestration.",
+    why: "Eliminate black-box AI risk with governed routing, verifiable answers, cost-efficient model selection, and embedded AEON autonomous intelligence.",
     stats: [
       { label: "Cost Saved", value: "63%", icon: TrendingUp, trend: 12 },
       { label: "Verified Ans.", value: "94%", icon: Shield, trend: 7 },
@@ -113,7 +100,20 @@ const productGraphData: Record<string, {
     barData: [48, 56, 63, 70, 78, 86, 94],
     lineData: [35, 42, 50, 58, 66, 74, 84, 94],
     description: "Model routing with verification and confidence scoring",
-    keyFeatures: ["Inline Ask", "Citation checks", "Cost routing"]
+    keyFeatures: ["AEON inside", "Citation checks", "Cost routing"]
+  },
+  chronyx: {
+    what: "Autonomous time-intelligence platform for continuous observability, trend memory, and temporal reasoning across systems.",
+    why: "Track change over time with always-on intelligence so your teams can act faster with context-rich signals.",
+    stats: [
+      { label: "Signals/day", value: "5M+", icon: Activity, trend: 18 },
+      { label: "Alert Precision", value: "96%", icon: Target, trend: 11 },
+      { label: "Response Time", value: "<2s", icon: Zap, trend: 22 },
+    ],
+    barData: [34, 44, 52, 61, 73, 84, 93],
+    lineData: [22, 30, 39, 49, 61, 72, 84, 95],
+    description: "Temporal intelligence for continuous autonomous operations",
+    keyFeatures: ["Time memory", "Signal ranking", "Predictive alerts"]
   },
 };
 

@@ -48,7 +48,7 @@ const TermsOfService = () => {
                 </div>
                 <div className="ml-14 space-y-4 text-muted-foreground">
                   <p>By accessing or using the services provided by ORIGINX LABS PRIVATE LIMITED ("OriginX Labs," "we," "us," or "our"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you may not access or use our services.</p>
-                  <p>These Terms apply to all visitors, users, and others who access or use our services, including but not limited to COGNIX, QUALYX, TRACEFLOW, OPZENIX, CHRONYX, and AEON platforms.</p>
+                  <p>These Terms apply to all visitors, users, and others who access or use our services, including but not limited to PROXINEX (with AEON capabilities), COGNIX, QUALYX, TRACEFLOW, OPZENIX, and CHRONYX platforms.</p>
                 </div>
               </section>
 
@@ -69,8 +69,8 @@ const TermsOfService = () => {
                     <li><strong>QUALYX:</strong> AI-powered Quality Assurance services</li>
                     <li><strong>TRACEFLOW:</strong> Digital Cognition Infrastructure</li>
                     <li><strong>OPZENIX:</strong> MLOps, LLMOps, and DevSecOps solutions</li>
-                    <li><strong>CHRONYX:</strong> Agentic task management systems</li>
-                    <li><strong>AEON:</strong> Autonomous Enterprise Operating Network</li>
+                    <li><strong>CHRONYX:</strong> Autonomous time intelligence systems</li>
+                    <li><strong>PROXINEX + AEON:</strong> AI control plane with embedded autonomous multi-agent orchestration</li>
                   </ul>
                   <p className="mt-4">We reserve the right to modify, suspend, or discontinue any part of our services at any time with reasonable notice.</p>
                 </div>

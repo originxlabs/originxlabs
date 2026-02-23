@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Zap, Database, Cloud, Lock, Gauge, Globe } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
@@ -85,7 +84,8 @@ const Cognix = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
-      nextProduct={{ name: "QUALYX", href: "/products/qualyx" }}
+      prevProduct={{ name: "OPZENIX", href: "/products/opzenix" }}
+      nextProduct={{ name: "PROXINEX", href: "/products/proxinex" }}
       externalUrl={product.externalUrl}
       productId="cognix"
     />
