@@ -54,6 +54,12 @@ const knowledgeBase = {
       features: ["Session replay", "Heatmaps", "User journey mapping", "Anomaly detection"],
       useCases: ["Product optimization", "UX research", "Conversion optimization", "Error tracking"]
     },
+    proxinex: {
+      name: "PROXINEX",
+      description: "AI Intelligence Control Plane + AEON for governed model routing, verification, and orchestration.",
+      features: ["Intent-aware routing", "Citation-backed responses", "Cost-aware execution", "AEON orchestration"],
+      useCases: ["Enterprise AI operations", "Model governance", "Agentic orchestration", "Decision intelligence"]
+    },
     opzenix: {
       name: "OPZENIX",
       description: "Autonomous MLOps, LLMOps & DevSecOps - Self-healing operations platform.",
@@ -65,6 +71,18 @@ const knowledgeBase = {
       description: "Autonomous Time Intelligence for continuous observability and temporal signal prediction.",
       features: ["Temporal signal graph", "Predictive alerts", "Trend memory", "24/7 timeline monitoring"],
       useCases: ["Operational forecasting", "Anomaly windows", "SLA anticipation", "Real-time timeline decisions"]
+    },
+    huminex: {
+      name: "HUMINEX",
+      description: "AI Workforce Operating System for payroll, HR, finance, recruitment, ATS workflows, and enterprise compliance.",
+      features: ["Hire-to-retire workflows", "Payroll and HR operations", "Recruitment + ATS + BGV", "Compliance and governance controls"],
+      useCases: ["Workforce operations", "Payroll centralization", "Recruitment orchestration", "Enterprise process automation"]
+    },
+    originxone: {
+      name: "ORIGINX ONE",
+      description: "One API platform for AI, payments, messaging, web, finance, identity, and enterprise integrations.",
+      features: ["One API key", "Intelligent provider routing", "Transparent metered billing", "Marketplace + OneAuth + Docs"],
+      useCases: ["Unified API integration", "Provider abstraction", "Fast multi-category shipping", "Enterprise API orchestration"]
     }
   },
   company: {
@@ -105,6 +123,14 @@ const generateResponse = (query: string): string => {
     const p = knowledgeBase.products.chronyx;
     return `${p.name} is ${p.description}\n\nCapabilities:\n• ${p.features.join("\n• ")}\n\nUsed for: ${p.useCases.join(", ")}.`;
   }
+  if (lowerQuery.includes("huminex")) {
+    const p = knowledgeBase.products.huminex;
+    return `${p.name} is ${p.description}\n\nCapabilities:\n• ${p.features.join("\n• ")}\n\nUsed for: ${p.useCases.join(", ")}.`;
+  }
+  if (lowerQuery.includes("originx one") || lowerQuery.includes("originxone") || lowerQuery.includes("originx cloud")) {
+    const p = knowledgeBase.products.originxone;
+    return `${p.name} is ${p.description}\n\nCapabilities:\n• ${p.features.join("\n• ")}\n\nUsed for: ${p.useCases.join(", ")}.`;
+  }
   if (lowerQuery.includes("aeon")) {
     const p = knowledgeBase.products.proxinex;
     return `AEON is integrated inside ${p.name} as its multi-agent orchestration layer.\n\n${p.name} capabilities include:\n• ${p.features.join("\n• ")}\n\nUse cases: ${p.useCases.join(", ")}.`;
@@ -120,7 +146,7 @@ const generateResponse = (query: string): string => {
     return `Our leadership team:\n\n${c.founders.map(f => `• ${f.name} - ${f.role}${f.site ? ` (${f.site})` : ""}`).join("\n")}\n\nTogether they're building the future of autonomous intelligence.`;
   }
   if (lowerQuery.includes("product") || lowerQuery.includes("offer") || lowerQuery.includes("service")) {
-    return `OriginX Labs offers a comprehensive suite of AI platforms:\n\n• PROXINEX - AI Intelligence Control Plane + AEON\n• TRACEFLOW - Digital Cognition & Experience Infrastructure\n• CHRONYX - Autonomous Time Intelligence\n• QUALYX - AI Quality & Validation Platform\n• OPZENIX - Autonomous MLOps & DevSecOps\n• COGNIX - AI Backend as a Service\n\nWould you like to know more about any specific product?`;
+    return `OriginX Labs offers a comprehensive suite of AI platforms:\n\n• PROXINEX - AI Intelligence Control Plane + AEON\n• TRACEFLOW - Digital Cognition & Experience Infrastructure\n• CHRONYX - Autonomous Time Intelligence\n• HUMINEX - AI Workforce Operating System\n• QUALYX - AI Quality & Validation Platform\n• OPZENIX - Autonomous MLOps & DevSecOps\n• COGNIX - AI Backend as a Service\n• ORIGINX ONE - One API. Every Capability.\n\nWould you like to know more about any specific product?`;
   }
   if (lowerQuery.includes("location") || lowerQuery.includes("office") || lowerQuery.includes("where")) {
     const c = knowledgeBase.company;
@@ -130,17 +156,17 @@ const generateResponse = (query: string): string => {
     return `You can reach OriginX Labs through:\n\n• Our website contact form\n• Click "Talk to OriginX" in the navigation\n• Connect with us on LinkedIn\n\nOur team typically responds within 24 hours!`;
   }
   if (lowerQuery.includes("hello") || lowerQuery.includes("hi") || lowerQuery.includes("hey")) {
-    return `Hello! Welcome to OriginX Labs!\n\nI'm here to help you learn about our AI platforms and autonomous systems. Feel free to ask about:\n\n• Our products (PROXINEX, TRACEFLOW, CHRONYX, QUALYX, OPZENIX, COGNIX)\n• AEON capabilities inside PROXINEX\n• Company information\n• Our leadership team\n• How we can help your organization\n\nWhat would you like to know?`;
+    return `Hello! Welcome to OriginX Labs!\n\nI'm here to help you learn about our AI platforms and autonomous systems. Feel free to ask about:\n\n• Our products (PROXINEX, TRACEFLOW, CHRONYX, HUMINEX, QUALYX, OPZENIX, COGNIX, ORIGINX ONE)\n• AEON capabilities inside PROXINEX\n• Company information\n• Our leadership team\n• How we can help your organization\n\nWhat would you like to know?`;
   }
   if (lowerQuery.includes("thank")) {
     return `You're welcome! It was my pleasure helping you.\n\nIf you have any more questions about OriginX Labs or our AI platforms, feel free to ask anytime. Have a wonderful day!`;
   }
   if (lowerQuery.includes("help")) {
-    return `I'm here to help! You can ask me about:\n\nProducts - PROXINEX, TRACEFLOW, CHRONYX, QUALYX, OPZENIX, COGNIX\nAEON - Integrated in PROXINEX\nCompany - About OriginX Labs, our mission\nTeam - Our founders and leadership\nLocations - Our global offices\nContact - How to reach us\n\nJust type your question and I'll do my best to assist!`;
+    return `I'm here to help! You can ask me about:\n\nProducts - PROXINEX, TRACEFLOW, CHRONYX, HUMINEX, QUALYX, OPZENIX, COGNIX, ORIGINX ONE\nAEON - Integrated in PROXINEX\nCompany - About OriginX Labs, our mission\nTeam - Our founders and leadership\nLocations - Our global offices\nContact - How to reach us\n\nJust type your question and I'll do my best to assist!`;
   }
   
   // Default response
-  return `Thank you for your interest in OriginX Labs! I'd be happy to help you with information about our AI platforms and services.\n\nYou can ask me about:\n• Our products (PROXINEX, TRACEFLOW, CHRONYX, QUALYX, OPZENIX, COGNIX)\n• AEON capabilities inside PROXINEX\n• Company details\n• Our leadership team\n• Global presence\n\nWhat would you like to explore?`;
+  return `Thank you for your interest in OriginX Labs! I'd be happy to help you with information about our AI platforms and services.\n\nYou can ask me about:\n• Our products (PROXINEX, TRACEFLOW, CHRONYX, HUMINEX, QUALYX, OPZENIX, COGNIX, ORIGINX ONE)\n• AEON capabilities inside PROXINEX\n• Company details\n• Our leadership team\n• Global presence\n\nWhat would you like to explore?`;
 };
 
 interface Message {
@@ -341,7 +367,7 @@ const OriginXChatbot = () => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-50 group"
+        className="fixed bottom-4 right-4 z-[160] group"
         aria-label="Open chat"
       >
         <div className={`
@@ -398,7 +424,7 @@ const OriginXChatbot = () => {
       </AlertDialog>
 
       <div className={`
-        fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 
+        fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-[160] 
         ${isMinimized ? 'w-56 sm:w-64' : 'w-[calc(100vw-1.5rem)] sm:w-80 max-w-[340px]'}
         transition-all duration-300
       `}>

@@ -8,6 +8,7 @@ import {
   TrendingUp,
   Shield,
   Activity,
+  Users,
   CheckCircle,
   AlertCircle,
   BarChart3,
@@ -113,6 +114,31 @@ const products: ProductData[] = [
     ]
   },
   {
+    id: "huminex",
+    name: "Huminex",
+    tagline: "AI Workforce Operating System",
+    href: "/products/huminex",
+    color: "hsl(204 84% 46%)",
+    stats: [
+      { label: "UNIFIED MODULES", value: "15", change: "+3", changeType: "positive" },
+      { label: "WORKFLOWS", value: "Hire-Retire", changeType: "positive" },
+      { label: "CORE STACK", value: "HR+Payroll+Fin" },
+      { label: "AUTOMATION", value: "AI Native" }
+    ],
+    features: [
+      { icon: Users, label: "Workforce Ops", status: "active" },
+      { icon: BarChart3, label: "Payroll Engine", status: "active" },
+      { icon: Shield, label: "Compliance", status: "active" },
+      { icon: Cpu, label: "AI Insights", status: "processing" }
+    ],
+    chartData: [30, 38, 46, 57, 65, 73, 81, 88, 92, 96, 98, 100],
+    healthMetrics: [
+      { label: "Process Integrity", value: 97 },
+      { label: "Workflow Coverage", value: 94 },
+      { label: "Ops Automation", value: 91 }
+    ]
+  },
+  {
     id: "qualyx",
     name: "Qualyx",
     tagline: "Quality & Compliance",
@@ -185,6 +211,31 @@ const products: ProductData[] = [
       { label: "API Health", value: 99 },
       { label: "Database", value: 97 },
       { label: "Cache Hit", value: 94 }
+    ]
+  },
+  {
+    id: "originxone",
+    name: "OriginX One",
+    tagline: "One API. Every Capability.",
+    href: "/products/originx-one",
+    color: "hsl(220 82% 56%)",
+    stats: [
+      { label: "PROVIDERS", value: "50+", change: "+8", changeType: "positive" },
+      { label: "AVG LATENCY", value: "<50ms", change: "-9ms", changeType: "positive" },
+      { label: "UPTIME", value: "99.99%" },
+      { label: "API CALLS", value: "1B+" }
+    ],
+    features: [
+      { icon: Layers, label: "Unified Gateway", status: "active" },
+      { icon: GitBranch, label: "Smart Routing", status: "active" },
+      { icon: Shield, label: "OneAuth", status: "active" },
+      { icon: Zap, label: "Marketplace", status: "processing" }
+    ],
+    chartData: [25, 33, 44, 53, 62, 71, 80, 87, 93, 97, 99, 100],
+    healthMetrics: [
+      { label: "Route Reliability", value: 98 },
+      { label: "Security Posture", value: 96 },
+      { label: "Provider Reach", value: 95 }
     ]
   },
 ];

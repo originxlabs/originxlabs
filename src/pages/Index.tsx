@@ -3,6 +3,11 @@ import HeroSection from "@/components/HeroSection";
 import ParallaxProductShowcase from "@/components/ParallaxProductShowcase";
 import AnimatedProductShowcase from "@/components/AnimatedProductShowcase";
 import ChronyxSection from "@/components/ChronyxSection";
+import OriginxOneSection from "@/components/OriginxOneSection";
+import ServicesStackSection from "@/components/ServicesStackSection";
+import CropxonSection from "@/components/CropxonSection";
+import StackcraftSection from "@/components/StackcraftSection";
+import NewstackSection from "@/components/NewstackSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
@@ -126,6 +131,13 @@ const Index = () => {
       >
         <ChronyxSection />
       </div>
+      <OriginxOneSection />
+
+      {/* Services stack and service ecosystem sections */}
+      <ServicesStackSection />
+      <CropxonSection />
+      <StackcraftSection />
+      <NewstackSection />
       </main>
 
       <Footer />

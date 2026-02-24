@@ -7,6 +7,7 @@ import {
   Shield, 
   BarChart3, 
   Activity, 
+  Layers,
   Cpu, 
   Database,
   Target,
@@ -25,6 +26,7 @@ interface ProductHoverCardProps {
   gradientFrom: string;
   gradientTo: string;
   children: React.ReactNode;
+  centerOnHover?: boolean;
 }
 
 // Enhanced product data with what/why sections
@@ -115,6 +117,32 @@ const productGraphData: Record<string, {
     description: "Temporal intelligence for continuous autonomous operations",
     keyFeatures: ["Time memory", "Signal ranking", "Predictive alerts"]
   },
+  huminex: {
+    what: "AI-powered workforce operating system covering payroll, HR, finance, recruitment, and compliance in one suite.",
+    why: "Run hire-to-retire operations on a unified platform instead of disconnected tools and manual handoffs.",
+    stats: [
+      { label: "Modules", value: "15", icon: Layers, trend: 20 },
+      { label: "Core Ops", value: "Unified", icon: Users, trend: 16 },
+      { label: "Automation", value: "AI Native", icon: Zap, trend: 24 },
+    ],
+    barData: [36, 44, 52, 63, 72, 84, 96],
+    lineData: [22, 31, 42, 55, 67, 79, 90, 98],
+    description: "Unified workforce OS with AI + automation",
+    keyFeatures: ["Payroll engine", "Recruitment ATS", "Compliance layer"]
+  },
+  originxone: {
+    what: "Unified API infrastructure that gives teams one endpoint for AI, payments, messaging, web, finance, identity, and more.",
+    why: "Ship faster with one API key, provider abstraction, intelligent routing, transparent billing, and enterprise-grade security.",
+    stats: [
+      { label: "Providers", value: "50+", icon: Layers, trend: 18 },
+      { label: "Avg Latency", value: "<50ms", icon: Zap, trend: 14 },
+      { label: "Uptime", value: "99.99%", icon: Shield, trend: 4 },
+    ],
+    barData: [32, 44, 55, 63, 72, 84, 96],
+    lineData: [21, 29, 38, 50, 62, 74, 86, 97],
+    description: "Unified gateway for multi-provider APIs and enterprise integration",
+    keyFeatures: ["One API key", "Provider routing", "OneAuth security"]
+  },
 };
 
 // Mini animated bar chart - more compact
@@ -182,21 +210,25 @@ const ProductHoverCard = ({
   gradientFrom,
   gradientTo,
   children,
+  centerOnHover = false,
 }: ProductHoverCardProps) => {
   const { resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const data = productGraphData[productId] || productGraphData.cognix;
+  const normalizedProductId = productId.toLowerCase().replace(/\s+/g, "");
+  const data = productGraphData[normalizedProductId] || productGraphData.cognix;
 
   return (
-    <HoverCard openDelay={200} closeDelay={100} open={isOpen} onOpenChange={setIsOpen}>
+    <HoverCard openDelay={centerOnHover ? 120 : 200} closeDelay={centerOnHover ? 320 : 100} open={isOpen} onOpenChange={setIsOpen}>
       <HoverCardTrigger asChild>
         <div className="cursor-pointer">{children}</div>
       </HoverCardTrigger>
       <HoverCardContent
-        side="bottom"
+        side={centerOnHover ? "top" : "bottom"}
         align="center"
-        sideOffset={8}
+        sideOffset={centerOnHover ? 0 : 8}
         className={`w-[280px] sm:w-[320px] p-0 overflow-hidden rounded-xl backdrop-blur-xl max-h-[70vh] overflow-y-auto ${
+          centerOnHover ? "fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[90]" : ""
+        } ${
           resolvedTheme === 'dark'
             ? 'bg-card/95 border border-white/20 shadow-xl shadow-black/20'
             : 'bg-card/98 border border-foreground/20 shadow-xl shadow-black/10'

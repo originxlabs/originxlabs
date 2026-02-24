@@ -2,11 +2,13 @@
 // When admin changes a logo, it automatically updates across all components
 
 import cognixIcon from "@/assets/cognix-logo.png";
-import qualyxIcon from "@/assets/qualyx-icon.svg";
+import qualyxIcon from "@/assets/qualyx-logo.png";
 import traceflowIcon from "@/assets/traceflow-logo.png";
 import opzenixIcon from "@/assets/opzenix-logo.png";
 import proxinexIcon from "@/assets/proxinex-icon.svg";
 import chronyxIcon from "@/assets/chronyx-icon.svg";
+import huminexLogo from "@/assets/Huminex_logo.png";
+import originxOneLogo from "@/assets/originxone-logo.svg";
 
 import proxinexLogoTransparent from "@/assets/proxinex-icon.svg";
 
@@ -96,6 +98,20 @@ export const products: Record<string, ProductConfig> = {
     href: "/products/chronyx",
     externalUrl: "https://www.getchronyx.com/",
   },
+  huminex: {
+    id: "huminex",
+    name: "HUMINEX",
+    tagline: "AI Workforce Operating System",
+    description: "AI-powered hire-to-retire platform for payroll, HR, finance, recruitment, compliance, and enterprise workforce operations.",
+    icon: huminexLogo,
+    logo: huminexLogo,
+    logoTransparent: huminexLogo,
+    gradientFrom: "hsl(204 84% 46%)",
+    gradientTo: "hsl(194 86% 52%)",
+    accentColor: "hsl(204 84% 46%)",
+    href: "/products/huminex",
+    externalUrl: "https://www.gethuminex.com/",
+  },
   proxinex: {
     id: "proxinex",
     name: "PROXINEX",
@@ -110,15 +126,31 @@ export const products: Record<string, ProductConfig> = {
     href: "/products/proxinex",
     externalUrl: "https://www.proxinex.com/",
   },
+  originxone: {
+    id: "originxone",
+    name: "ORIGINX ONE",
+    tagline: "One API. Every Capability.",
+    description: "Unified API infrastructure for AI, payments, messaging, web, finance, identity, and enterprise integrations through one gateway.",
+    icon: originxOneLogo,
+    logo: originxOneLogo,
+    logoTransparent: originxOneLogo,
+    gradientFrom: "hsl(220 82% 56%)",
+    gradientTo: "hsl(196 82% 58%)",
+    accentColor: "hsl(220 82% 56%)",
+    href: "/products/originx-one",
+    externalUrl: "https://www.originxcloud.com/",
+  },
 };
 
 export const productList = [
   products.proxinex,
   products.traceflow,
   products.chronyx,
+  products.huminex,
   products.qualyx,
   products.opzenix,
   products.cognix,
+  products.originxone,
 ];
 
 export const getProduct = (id: string): ProductConfig | undefined => products[id];

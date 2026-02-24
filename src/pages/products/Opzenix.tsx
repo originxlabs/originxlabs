@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { RefreshCw, Shield, Cpu, Lock, Workflow, Monitor } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
+import { productSnapshots } from "@/config/productSnapshots";
 
 const Opzenix = () => {
   useEffect(() => {
@@ -84,6 +85,7 @@ const Opzenix = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
+      snapshots={productSnapshots.opzenix}
       prevProduct={{ name: "QUALYX", href: "/products/qualyx" }}
       nextProduct={{ name: "COGNIX", href: "/products/cognix" }}
       externalUrl={product.externalUrl}

@@ -3,11 +3,13 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 import cognixIcon from "@/assets/cognix-logo.png";
-import qualyxIcon from "@/assets/qualyx-icon.svg";
+import qualyxIcon from "@/assets/qualyx-logo.png";
 import traceflowIcon from "@/assets/traceflow-logo.png";
 import opzenixIcon from "@/assets/opzenix-logo.png";
 import proxinexIcon from "@/assets/proxinex-icon.svg";
 import chronyxIcon from "@/assets/chronyx-icon.svg";
+import huminexLogo from "@/assets/Huminex_logo.png";
+import originxOneLogo from "@/assets/originxone-logo.svg";
 
 const productLogoMap: Record<string, string> = {
   cognix: cognixIcon,
@@ -16,6 +18,9 @@ const productLogoMap: Record<string, string> = {
   opzenix: opzenixIcon,
   proxinex: proxinexIcon,
   chronyx: chronyxIcon,
+  huminex: huminexLogo,
+  "originx one": originxOneLogo,
+  originxone: originxOneLogo,
 };
 
 interface ProductLogoProps {
@@ -40,9 +45,15 @@ const ProductLogo = ({ productId, className, alt }: ProductLogoProps) => {
   const isOpzenix = normalizedId === "opzenix";
   const isQualyx = normalizedId === "qualyx";
   const isTraceflow = normalizedId === "traceflow";
-  const isFullBrandLogo = isCognix || isTraceflow || isOpzenix;
-  const isHighDetailIcon = isCognix || isOpzenix || isQualyx || isTraceflow;
-  const imageClass = isFullBrandLogo
+  const isHuminex = normalizedId === "huminex";
+  const isOriginxOne = normalizedId === "originx one" || normalizedId === "originxone";
+  const isFullBrandLogo = isCognix || isTraceflow || isOpzenix || isHuminex || isOriginxOne || isQualyx;
+  const isHighDetailIcon = isCognix || isOpzenix || isTraceflow;
+  const imageClass = isOriginxOne
+    ? isDark
+      ? "brightness-0 invert contrast-125 saturate-0"
+      : "brightness-0 contrast-150 saturate-0"
+    : isFullBrandLogo
     ? "brightness-100 contrast-100 saturate-100"
     : isChronyx
     ? isDark
@@ -56,7 +67,9 @@ const ProductLogo = ({ productId, className, alt }: ProductLogoProps) => {
     <span
       className={cn(
         "inline-flex items-center justify-center rounded-md border overflow-hidden",
-        isDark
+        isHuminex
+          ? "bg-black border-white/20 shadow-[0_0_10px_rgba(255,255,255,0.1)]"
+          : isDark
           ? "bg-slate-900/70 border-white/30 shadow-[0_0_10px_rgba(255,255,255,0.14)]"
           : "bg-white border-slate-400/80 shadow-[0_2px_12px_rgba(0,0,0,0.18)]",
         className
@@ -67,7 +80,7 @@ const ProductLogo = ({ productId, className, alt }: ProductLogoProps) => {
         alt={alt || `${productId} logo`}
         className={cn(
           "w-full h-full object-contain",
-          isFullBrandLogo ? "p-0 scale-105" : isHighDetailIcon ? "p-0.5 scale-110" : "p-1 scale-105",
+          isHuminex ? "p-0.5 scale-100" : isFullBrandLogo ? "p-0 scale-105" : isHighDetailIcon ? "p-0.5 scale-110" : "p-1 scale-105",
           imageClass
         )}
       />

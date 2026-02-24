@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Compass, ShieldCheck, SearchCheck, BadgeCheck, Wallet, Split, Users, RefreshCw, Eye, Heart, Building } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
+import { productSnapshots } from "@/config/productSnapshots";
 
 const Proxinex = () => {
   useEffect(() => {
@@ -122,6 +123,7 @@ const Proxinex = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
+      snapshots={productSnapshots.proxinex}
       prevProduct={{ name: "COGNIX", href: "/products/cognix" }}
       nextProduct={{ name: "TRACEFLOW", href: "/products/traceflow" }}
       externalUrl={product.externalUrl}

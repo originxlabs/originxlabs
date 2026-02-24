@@ -318,7 +318,7 @@ const Contact = () => {
                       <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary" />
                     </a>
                     <a 
-                      href="mailto:official@originxlabs.com" 
+                      href="mailto:office@originxlabs.com" 
                       className="w-10 h-10 rounded-full bg-muted/50 hover:bg-primary/10 flex items-center justify-center transition-colors group"
                     >
                       <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary" />
@@ -342,7 +342,7 @@ const Contact = () => {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <a href="mailto:official@originxlabs.com">
+                  <a href="mailto:office@originxlabs.com">
                     <Button variant="outline" className="gap-2">
                       <Mail className="w-4 h-4" />
                       Email Us

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Shield, Eye, Bug, Target, Workflow, Layers } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
+import { productSnapshots } from "@/config/productSnapshots";
 
 const Qualyx = () => {
   useEffect(() => {
@@ -84,7 +85,8 @@ const Qualyx = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
-      prevProduct={{ name: "CHRONYX", href: "/products/chronyx" }}
+      snapshots={productSnapshots.qualyx}
+      prevProduct={{ name: "HUMINEX", href: "/products/huminex" }}
       nextProduct={{ name: "OPZENIX", href: "/products/opzenix" }}
       externalUrl={product.externalUrl}
       productId="qualyx"

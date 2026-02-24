@@ -83,7 +83,7 @@ const Press = () => {
               </p>
               
               <a
-                href="mailto:official@originxlabs.com"
+                href="mailto:office@originxlabs.com"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-all"
               >
                 <Mail className="w-4 h-4" />
@@ -183,13 +183,13 @@ const Press = () => {
                   
                   <div className="space-y-4">
                     <a 
-                      href="mailto:official@originxlabs.com"
+                      href="mailto:office@originxlabs.com"
                       className="flex items-center gap-3 p-4 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors"
                     >
                       <Mail className="w-5 h-5 text-primary" />
                       <div>
                         <p className="font-medium text-foreground text-sm">General Inquiries</p>
-                        <p className="text-xs text-primary">official@originxlabs.com</p>
+                        <p className="text-xs text-primary">office@originxlabs.com</p>
                       </div>
                     </a>
                     

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Activity, Brain, Map, Fingerprint, Network, Sparkles } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
+import { productSnapshots } from "@/config/productSnapshots";
 
 const Traceflow = () => {
   useEffect(() => {
@@ -84,6 +85,7 @@ const Traceflow = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
+      snapshots={productSnapshots.traceflow}
       prevProduct={{ name: "PROXINEX", href: "/products/proxinex" }}
       nextProduct={{ name: "CHRONYX", href: "/products/chronyx" }}
       externalUrl={product.externalUrl}

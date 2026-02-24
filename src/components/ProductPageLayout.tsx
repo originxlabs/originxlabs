@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, ExternalLink, Home, Package2, Sparkles } from "lucide-react";
 import { Helmet } from "react-helmet-async";
@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import InteractiveDemo from "./InteractiveDemo";
 import ProductHoverCard from "./ProductHoverCard";
 import ProductLogo from "./ProductLogo";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 interface ProductPageLayoutProps {
   name: string;
@@ -26,6 +27,7 @@ interface ProductPageLayoutProps {
   externalUrl?: string;
   productId?: string;
   pageTitle?: string;
+  snapshots?: Array<{ title: string; description: string; image: string; href?: string }>;
 }
 
 const ProductPageLayout = ({
@@ -44,8 +46,10 @@ const ProductPageLayout = ({
   externalUrl,
   productId,
   pageTitle,
+  snapshots = [],
 }: ProductPageLayoutProps) => {
   const { resolvedTheme } = useTheme();
+  const [selectedSnapshotIndex, setSelectedSnapshotIndex] = useState<number | null>(null);
   const slug = productId || name.toLowerCase();
   const featuredCapabilities = capabilities.slice(0, 3);
   const canonicalUrl = `https://originxlabs.com/products/${slug}`;
@@ -260,28 +264,49 @@ const ProductPageLayout = ({
                     backgroundColor: resolvedTheme === "dark" ? "hsl(222 35% 10% / 0.92)" : "hsl(0 0% 100% / 0.86)",
                   }}
                 >
+                  <div
+                    className="relative rounded-2xl overflow-hidden"
+                    style={{
+                      boxShadow: `0 18px 44px -24px ${gradientFrom}aa`,
+                    }}
+                  >
+                    <div
+                      className="pointer-events-none absolute inset-0 opacity-60"
+                      style={{
+                        background: `radial-gradient(circle at 20% 10%, ${gradientFrom}30 0%, transparent 45%), radial-gradient(circle at 85% 90%, ${gradientTo}26 0%, transparent 50%)`,
+                      }}
+                    />
                   {logoImage ? (
                     productId === "proxinex" ? (
-                      <div className="flex justify-center py-2">
-                        <ProductLogo productId="proxinex" className="h-36 w-36 md:h-40 md:w-40 rounded-2xl" alt="PROXINEX logo" />
+                      <div className="flex justify-center py-2 animate-float" style={{ animationDuration: "5.5s" }}>
+                        <ProductLogo productId="proxinex" className="h-36 w-36 md:h-40 md:w-40 rounded-2xl transition-transform duration-500 hover:scale-105" alt="PROXINEX logo" />
                       </div>
                     ) : productId === "opzenix" ? (
-                      <div className="flex justify-center py-2">
-                        <ProductLogo productId="opzenix" className="h-36 w-36 md:h-40 md:w-40 rounded-2xl" alt="OPZENIX logo" />
+                      <div className="flex justify-center py-2 animate-float" style={{ animationDuration: "5.3s" }}>
+                        <ProductLogo productId="opzenix" className="h-36 w-36 md:h-40 md:w-40 rounded-2xl transition-transform duration-500 hover:scale-105" alt="OPZENIX logo" />
                       </div>
                     ) : (
                       <img
                         src={logoImage}
                         alt={`${name} logo`}
-                        className="w-full h-auto rounded-2xl object-contain p-1"
+                        className="w-full h-auto rounded-2xl object-contain p-1 animate-float transition-all duration-700 hover:scale-[1.02]"
                         style={{
-                          filter: resolvedTheme === "dark" ? "brightness(1.08)" : "brightness(0.97)",
+                          animationDuration: "5.6s",
+                          filter:
+                            productId === "originxone"
+                              ? resolvedTheme === "dark"
+                                ? "brightness(0) invert(1) contrast(1.2)"
+                                : "brightness(0.12) contrast(1.25)"
+                              : resolvedTheme === "dark"
+                              ? "brightness(1.08)"
+                              : "brightness(0.97)",
                         }}
                       />
                     )
                   ) : (
-                    <div className="flex justify-center py-8">{icon}</div>
+                    <div className="flex justify-center py-8 animate-float" style={{ animationDuration: "5.4s" }}>{icon}</div>
                   )}
+                  </div>
 
                   <div className="mt-5 grid grid-cols-3 gap-2 rounded-2xl border border-border/50 bg-background/50 p-3 text-center">
                     <div>
@@ -312,10 +337,68 @@ const ProductPageLayout = ({
           </div>
         </section>
 
+        {snapshots.length > 0 && (
+          <section className="py-16 border-t border-border/20 bg-muted/10">
+            <div className="container mx-auto px-6">
+              <div className="mb-8 text-center">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Product Snapshots</h2>
+                <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+                  Real interface snapshots and key experiences from {name}.
+                </p>
+              </div>
+              <div className="grid gap-6 md:grid-cols-3">
+                {snapshots.map((snapshot, idx) => (
+                  <article
+                    key={snapshot.title}
+                    className="rounded-2xl border border-border/40 bg-card/70 p-4 backdrop-blur-sm shadow-[0_12px_30px_rgba(2,8,23,0.08)] cursor-zoom-in transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+                    onClick={() => setSelectedSnapshotIndex(idx)}
+                  >
+                    <img
+                      src={snapshot.image}
+                      alt={snapshot.title}
+                      className="w-full h-44 rounded-xl object-cover border border-border/40"
+                    />
+                    <h3 className="mt-4 text-base font-semibold text-foreground">{snapshot.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{snapshot.description}</p>
+                    {snapshot.href && (
+                      <a
+                        href={snapshot.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors"
+                      >
+                        Open source page
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <Dialog open={selectedSnapshotIndex !== null} onOpenChange={(open) => !open && setSelectedSnapshotIndex(null)}>
+          <DialogContent className="max-w-5xl p-3 sm:p-4 border-border/50 bg-background/96">
+            {selectedSnapshotIndex !== null && snapshots[selectedSnapshotIndex] && (
+              <div className="space-y-3">
+                <DialogTitle className="text-base sm:text-lg">{snapshots[selectedSnapshotIndex].title}</DialogTitle>
+                <img
+                  src={snapshots[selectedSnapshotIndex].image}
+                  alt={snapshots[selectedSnapshotIndex].title}
+                  className="w-full max-h-[78vh] object-contain rounded-lg border border-border/40 bg-muted/20"
+                />
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
         {/* Interactive Demo Section */}
         <div id="demo">
           <InteractiveDemo 
             productName={name}
+            productId={slug}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
           />

@@ -1,15 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { useScrollAnimation, useParallax } from "@/hooks/useScrollAnimation";
-import { Sparkles, Zap, Shield, Brain, GitBranch, Settings, ArrowRight } from "lucide-react";
+import { Sparkles, Zap, Shield, Brain, GitBranch, Settings, ArrowRight, Laptop, Smartphone, Boxes } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductHoverCard from "./ProductHoverCard";
 import ProductLogo from "./ProductLogo";
 
 const taglines = [
-  "Where Intelligence Begins.",
-  "Engineering Autonomous Intelligence.",
-  "From Origin to Autonomy.",
+  "Built for Agents. Trusted by Enterprises.",
+  "From Models to Measurable Outcomes.",
+  "Applied AI for Real-World Operations.",
+];
+
+const headingPhrases = [
+  "Agentic Platforms",
+  "Intelligent Infrastructure",
+  "Autonomous Operations",
+  "Enterprise AI Systems",
 ];
 
 // Product colors
@@ -20,6 +27,8 @@ const productColors: Record<string, { color: string; from: string; to: string }>
   OPZENIX: { color: "hsl(160 70% 45%)", from: "hsl(160, 70%, 45%)", to: "hsl(180, 80%, 55%)" },
   PROXINEX: { color: "hsl(214 90% 56%)", from: "hsl(214, 90%, 56%)", to: "hsl(228, 84%, 64%)" },
   CHRONYX: { color: "hsl(285 74% 60%)", from: "hsl(285, 74%, 60%)", to: "hsl(305, 78%, 66%)" },
+  HUMINEX: { color: "hsl(204 84% 46%)", from: "hsl(204, 84%, 46%)", to: "hsl(220, 86%, 58%)" },
+  "ORIGINX ONE": { color: "hsl(226 88% 62%)", from: "hsl(226, 88%, 62%)", to: "hsl(244, 92%, 70%)" },
 };
 
 // Animated line chart component for hero cards
@@ -141,9 +150,13 @@ const HeroSection = () => {
   const { ref: parallaxRef, offset } = useParallax(0.3);
   const [currentTagline, setCurrentTagline] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [headingPhraseIndex, setHeadingPhraseIndex] = useState(0);
+  const [typedHeading, setTypedHeading] = useState("");
+  const [isDeletingHeading, setIsDeletingHeading] = useState(false);
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [cardsVisible, setCardsVisible] = useState(false);
+  const [heroModal, setHeroModal] = useState<"desktop" | "originxone" | null>(null);
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -184,6 +197,13 @@ const HeroSection = () => {
       chartData: [28, 36, 41, 53, 61, 70, 77, 84, 90, 94, 97, 100]
     },
     {
+      name: "HUMINEX",
+      tagline: "AI Workforce Operating System",
+      href: "/products/huminex",
+      stat: { value: 15, suffix: '', label: 'Unified Modules' },
+      chartData: [34, 40, 47, 55, 64, 73, 81, 88, 93, 97, 99, 100]
+    },
+    {
       name: "QUALYX",
       tagline: "AI QA as a Service",
       href: "/products/qualyx",
@@ -204,6 +224,13 @@ const HeroSection = () => {
       stat: { value: 99.9, suffix: '%', label: 'Uptime' },
       chartData: [30, 45, 35, 60, 50, 70, 65, 85, 75, 95, 88, 98]
     },
+    {
+      name: "ORIGINX ONE",
+      tagline: "One API. Every Capability.",
+      href: "/products/originx-one",
+      stat: { value: 50, suffix: '+', label: 'Providers' },
+      chartData: [28, 36, 43, 50, 59, 68, 76, 85, 91, 95, 98, 100]
+    },
   ];
 
   const livePreviewNodes = products.map((product, index) => {
@@ -211,8 +238,8 @@ const HeroSection = () => {
     return {
       ...product,
       ...colors,
-      x: [8, 88, 12, 86, 18, 84][index],
-      y: [24, 18, 62, 46, 78, 70][index],
+      x: [8, 88, 12, 86, 18, 84, 22, 80][index],
+      y: [24, 18, 62, 46, 78, 70, 36, 58][index],
       delay: 0,
     };
   });
@@ -237,6 +264,33 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [products.length]);
 
+  // Typewriter heading animation
+  useEffect(() => {
+    const fullText = headingPhrases[headingPhraseIndex];
+    const isTypingComplete = !isDeletingHeading && typedHeading === fullText;
+    const isDeletingComplete = isDeletingHeading && typedHeading === "";
+
+    if (isTypingComplete) {
+      const pauseTimer = setTimeout(() => setIsDeletingHeading(true), 1200);
+      return () => clearTimeout(pauseTimer);
+    }
+
+    if (isDeletingComplete) {
+      setIsDeletingHeading(false);
+      setHeadingPhraseIndex((prev) => (prev + 1) % headingPhrases.length);
+      return;
+    }
+
+    const speed = isDeletingHeading ? 45 : 78;
+    const timer = setTimeout(() => {
+      setTypedHeading((prev) =>
+        isDeletingHeading ? fullText.slice(0, prev.length - 1) : fullText.slice(0, prev.length + 1)
+      );
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [typedHeading, isDeletingHeading, headingPhraseIndex]);
+
   // Floating elements data for parallax layers
   const floatingElements = [
     { size: 120, x: 10, y: 20, speed: 0.1, delay: 0, icon: Sparkles },
@@ -250,7 +304,7 @@ const HeroSection = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[calc(100vh-76px)] flex items-start justify-center overflow-hidden pt-4 md:pt-6 pb-6"
+      className="relative h-[calc(100vh-76px)] min-h-[calc(100vh-76px)] flex items-center justify-center overflow-hidden pt-2 md:pt-3 pb-3"
       style={{ perspective: '1000px' }}
     >
       {/* Gradient Background with parallax */}
@@ -286,7 +340,7 @@ const HeroSection = () => {
                   <div
                     key={`orbit-${node.name}`}
                     className="absolute left-1/2 top-1/2"
-                    style={{ transform: `rotate(${idx * 60}deg) translateY(-92px)` }}
+                    style={{ transform: `rotate(${idx * (360 / livePreviewNodes.length)}deg) translateY(-92px)` }}
                   >
                     <span className="block h-2.5 w-2.5 rounded-full shadow-[0_0_12px_currentColor]" style={{ color: node.color, backgroundColor: node.color }} />
                   </div>
@@ -442,11 +496,11 @@ const HeroSection = () => {
       {/* Main content with parallax */}
       <div 
         ref={textRef} 
-        className="relative z-10 text-center px-3 sm:px-6 max-w-6xl mx-auto"
+        className="relative z-10 text-center px-3 sm:px-6 max-w-6xl mx-auto h-full flex flex-col justify-center"
         style={{ transform: `translateY(${scrollY * -0.1}px)` }}
       >
         {/* Animated Tagline */}
-        <div className={`h-6 mb-2 overflow-hidden transition-all duration-1000 max-[360px]:h-5 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`h-6 mb-1 overflow-hidden transition-all duration-1000 max-[360px]:h-5 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <p 
             className={`text-primary dark:text-primary text-xs sm:text-sm md:text-base font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase transition-all duration-500 ${
               isAnimating ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
@@ -457,20 +511,23 @@ const HeroSection = () => {
         </div>
         
         {/* Main Heading */}
-        <h1 className={`font-display text-[1.65rem] leading-[1.12] sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 transition-all duration-1000 delay-200 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <h1 className={`font-display text-[1.65rem] leading-[1.12] sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 transition-all duration-1000 delay-200 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="text-foreground">The Origin of</span>{" "}
-          <span className="text-gradient">Autonomous Intelligence</span>
+          <span className="text-gradient inline-flex items-center gap-1">
+            <span>{typedHeading}</span>
+            <span className="inline-block w-[2px] h-[0.95em] bg-primary/80 animate-pulse" />
+          </span>
         </h1>
         
         {/* Subtitle */}
-        <p className={`text-muted-foreground text-[13px] leading-relaxed sm:text-base md:text-lg max-w-2xl mx-auto mb-4 sm:mb-6 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <p className={`text-muted-foreground text-[13px] leading-relaxed sm:text-base md:text-lg max-w-2xl mx-auto mb-2.5 sm:mb-3.5 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           AI Platforms. Agentic Systems. Life OS. Built with Ethics.
         </p>
-        <p className={`text-[10px] md:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-primary/80 mb-3 sm:mb-4 transition-all duration-1000 delay-350 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <p className={`text-[10px] md:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-primary/80 mb-2 sm:mb-2.5 transition-all duration-1000 delay-350 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           OriginX Labs Pvt. Ltd.
         </p>
         <div
-          className={`mb-4 sm:mb-6 transition-all duration-1000 max-[360px]:hidden ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`mb-2.5 sm:mb-3.5 transition-all duration-1000 max-[360px]:hidden ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           style={{ transitionDelay: "380ms" }}
         >
           <div className="relative mx-auto max-w-4xl overflow-hidden rounded-full border border-border/50 bg-card/60 backdrop-blur-sm py-1.5">
@@ -487,35 +544,41 @@ const HeroSection = () => {
         </div>
 
         {/* Animated Product Cards Grid with Icons */}
-        <div className={`grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 mb-3 sm:mb-6 transition-all duration-1000 delay-400 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          {products.map((product, index) => {
-            const colors = productColors[product.name];
-            
-            return (
-              <ProductHoverCard
-                key={product.name}
-                productId={product.name.toLowerCase()}
-                productName={product.name}
-                gradientFrom={colors.from}
-                gradientTo={colors.to}
-              >
-                <Link
-                  to={product.href}
-                  target={product.external ? "_blank" : undefined}
-                  rel={product.external ? "noopener noreferrer" : undefined}
-                  className={`group relative z-10 hover:z-20 p-2.5 sm:p-4 rounded-xl sm:rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden block min-h-[136px] max-[360px]:min-h-[118px] sm:min-h-[190px] ${
-                    cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  } ${
-                    resolvedTheme === 'dark'
-                      ? 'bg-card/40 border border-white/10 hover:border-white/30 hover:bg-card/60'
-                      : 'bg-card/70 border-2 border-foreground/10 hover:border-foreground/30 hover:bg-card/90'
-                  } hover:scale-[1.03] hover:shadow-2xl hover:-translate-y-1`}
-                  style={{ 
-                    boxShadow: activeProductIndex === index 
-                      ? `0 20px 40px -15px ${colors.color}30, 0 10px 20px -10px ${colors.color}20`
-                      : 'none'
-                  }}
-                >
+        <div className={`mb-2.5 sm:mb-3 transition-all duration-1000 delay-400 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className="relative mx-auto max-w-6xl rounded-[26px] border border-white/20 dark:border-white/15 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 p-2 sm:p-3 md:p-4 overflow-hidden shadow-[0_16px_64px_rgba(0,0,0,0.28)]">
+            <div className="absolute inset-0 bg-background/55 dark:bg-background/35 backdrop-blur-md" />
+            <div className="absolute inset-0 rounded-[26px] ring-1 ring-white/20 dark:ring-white/10" />
+            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+              {products.map((product, index) => {
+                const colors = productColors[product.name];
+
+                return (
+                  <ProductHoverCard
+                    key={product.name}
+                    productId={product.name.toLowerCase()}
+                    productName={product.name}
+                    gradientFrom={colors.from}
+                    gradientTo={colors.to}
+                    centerOnHover
+                  >
+                    <Link
+                      to={product.href}
+                      target={product.external ? "_blank" : undefined}
+                      rel={product.external ? "noopener noreferrer" : undefined}
+                      className={`group relative z-10 hover:z-20 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden block min-h-[114px] max-[360px]:min-h-[102px] sm:min-h-[138px] ${
+                        cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                      } ${
+                        resolvedTheme === "dark"
+                          ? "bg-card/45 border border-white/10 hover:border-white/30 hover:bg-card/65"
+                          : "bg-card/78 border-2 border-foreground/10 hover:border-foreground/30 hover:bg-card/92"
+                      } hover:scale-[1.02] hover:shadow-2xl hover:-translate-y-1`}
+                      style={{
+                        boxShadow:
+                          activeProductIndex === index
+                            ? `0 18px 32px -16px ${colors.color}40, 0 8px 18px -12px ${colors.color}30`
+                            : "none",
+                      }}
+                    >
                   {/* Animated gradient background on hover */}
                   <div 
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-2xl"
@@ -604,35 +667,97 @@ const HeroSection = () => {
                   <div className={`absolute bottom-2 right-2 w-2 h-2 border-b border-r rounded-br transition-all duration-300 group-hover:w-4 group-hover:h-4 ${
                     resolvedTheme === 'dark' ? 'border-white/20 group-hover:border-white/40' : 'border-foreground/20 group-hover:border-foreground/40'
                   }`} />
-                </Link>
-              </ProductHoverCard>
-            );
-          })}
+                    </Link>
+                  </ProductHoverCard>
+                );
+              })}
+            </div>
+          </div>
         </div>
         
         {/* CTA Buttons */}
         <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center transition-all duration-1000 delay-700 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <a
-            href="#products"
-            className="px-5 py-2.5 sm:px-8 sm:py-4 bg-primary text-primary-foreground rounded-xl font-medium text-sm sm:text-base hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20"
+          <button
+            type="button"
+            onClick={() => setHeroModal("desktop")}
+            className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-primary/40 bg-primary/10 text-foreground hover:bg-primary/20 transition-all duration-300 text-sm sm:text-base inline-flex items-center justify-center gap-2"
           >
-            Explore Platforms
-          </a>
-          <a
-            href="#contact"
-            className="px-5 py-2.5 sm:px-8 sm:py-4 bg-card/80 dark:bg-card/50 text-foreground rounded-xl font-medium text-sm sm:text-base hover:bg-card transition-all duration-300 border border-border/50 backdrop-blur-sm"
+            <Laptop className="w-4 h-4" />
+            OriginX Desktop
+          </button>
+          <button
+            type="button"
+            onClick={() => setHeroModal("originxone")}
+            className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-primary/40 bg-card/65 text-foreground hover:bg-card transition-all duration-300 text-sm sm:text-base inline-flex items-center justify-center gap-2"
           >
-            Talk to OriginX
-          </a>
+            <Sparkles className="w-4 h-4" />
+            Try OriginX One
+          </button>
+          <Link
+            to="/products/originx-one"
+            className="px-4 py-2.5 sm:px-6 sm:py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm sm:text-base hover:bg-primary/90 transition-all duration-300 inline-flex items-center justify-center gap-2"
+          >
+            <Boxes className="w-4 h-4" />
+            Explore 8 Intelligent Platforms
+          </Link>
+        </div>
+        <div
+          className={`mt-2 sm:mt-2.5 transition-all duration-1000 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          style={{ transitionDelay: "780ms" }}
+        >
+          <div className="mx-auto max-w-xl rounded-xl border border-border/40 bg-card/45 px-3 py-2.5 backdrop-blur-sm text-left">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Coming Soon</p>
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm sm:text-base font-semibold text-foreground">OriginX Desktop + OriginX Mobile</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">macOS, Windows, iPhone apps for your complete OriginX suite.</p>
+              </div>
+              <div className="flex items-center gap-2 text-primary">
+                <Laptop className="w-4 h-4" />
+                <Smartphone className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float z-10 max-[360px]:hidden">
-        <div className="w-6 h-10 border-2 border-muted-foreground/40 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-muted-foreground/60 rounded-full animate-pulse" />
+      {heroModal && (
+        <div className="fixed inset-0 z-[120] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-md rounded-2xl border border-border/50 bg-background p-5 shadow-2xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Coming Soon</p>
+            {heroModal === "desktop" ? (
+              <>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">OriginX Desktop</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Native apps for macOS and Windows, plus OriginX Mobile for iPhone.
+                </p>
+                <div className="flex items-center gap-3 text-primary mb-5">
+                  <Laptop className="w-5 h-5" />
+                  <Smartphone className="w-5 h-5" />
+                </div>
+              </>
+            ) : (
+              <>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">Try OriginX One</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  OriginX One interactive trial workflow is rolling out soon on the landing experience.
+                </p>
+                <div className="flex items-center gap-3 text-primary mb-5">
+                  <Sparkles className="w-5 h-5" />
+                  <Boxes className="w-5 h-5" />
+                </div>
+              </>
+            )}
+            <button
+              type="button"
+              onClick={() => setHeroModal(null)}
+              className="w-full rounded-xl bg-primary text-primary-foreground py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              Close
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

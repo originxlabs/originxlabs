@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Zap, Database, Cloud, Lock, Gauge, Globe } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
+import { productSnapshots } from "@/config/productSnapshots";
 
 const Cognix = () => {
   useEffect(() => {
@@ -84,8 +85,9 @@ const Cognix = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
+      snapshots={productSnapshots.cognix}
       prevProduct={{ name: "OPZENIX", href: "/products/opzenix" }}
-      nextProduct={{ name: "PROXINEX", href: "/products/proxinex" }}
+      nextProduct={{ name: "ORIGINX ONE", href: "/products/originx-one" }}
       externalUrl={product.externalUrl}
       productId="cognix"
     />

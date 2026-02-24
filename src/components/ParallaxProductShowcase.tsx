@@ -74,6 +74,15 @@ const ParallaxProductShowcase = () => {
       graphData: [35, 44, 52, 60, 72, 81, 90, 98]
     },
     {
+      name: "HUMINEX",
+      tagline: "AI Workforce Operating System",
+      description: "Hire-to-retire workflows across payroll, HR, finance, and recruitment",
+      accentColor: "hsl(204 84% 46%)",
+      href: "/products/huminex",
+      stats: { value: 15, label: "Unified Modules", suffix: "" },
+      graphData: [33, 41, 50, 59, 68, 78, 88, 100]
+    },
+    {
       name: "QUALYX",
       tagline: "AI QA as a Service",
       description: "Autonomous testing and quality assurance",
@@ -100,6 +109,15 @@ const ParallaxProductShowcase = () => {
       stats: { value: 99.9, label: "Uptime", suffix: "%" },
       graphData: [40, 65, 45, 80, 55, 90, 75, 95]
     },
+    {
+      name: "ORIGINX ONE",
+      tagline: "One API. Every Capability.",
+      description: "Unified API layer for AI, finance, messaging, identity, and web services",
+      accentColor: "hsl(220 82% 56%)",
+      href: "/products/originx-one",
+      stats: { value: 50, label: "Providers", suffix: "+" },
+      graphData: [28, 38, 46, 58, 68, 79, 90, 100]
+    },
   ];
 
   const getColumnTransform = (columnIndex: number) => {
@@ -107,7 +125,7 @@ const ParallaxProductShowcase = () => {
     const speeds = [baseSpeed, -baseSpeed * 0.7, baseSpeed * 0.5, -baseSpeed * 0.3];
     const speed = speeds[columnIndex % speeds.length];
     const translateY = (scrollY - 0.5) * speed;
-    return `translateY(${translateY}px)`;
+    return translateY;
   };
 
   // Animated mini bar chart component
@@ -162,13 +180,13 @@ const ParallaxProductShowcase = () => {
           Our <span className="text-gradient">Product Suite</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Six pillars of autonomous intelligence, working in harmony
+          Eight pillars of autonomous intelligence, working in harmony
         </p>
       </div>
 
       {/* Product cards */}
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {products.map((product, index) => {
             const cardClasses = `group block relative z-10 hover:z-20 rounded-2xl backdrop-blur-xl p-5 sm:p-6 h-full min-h-[300px] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 overflow-hidden ${
               resolvedTheme === 'dark'
@@ -181,7 +199,7 @@ const ParallaxProductShowcase = () => {
               key={product.name}
               className={`relative transition-all duration-700 ease-out will-change-transform ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ 
-                transform: getColumnTransform(index),
+                transform: `translateY(${getColumnTransform(index) + (index >= 4 ? -10 : 10)}px)`,
               }}
             >
               {product.external ? (

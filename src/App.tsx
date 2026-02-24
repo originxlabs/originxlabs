@@ -14,6 +14,8 @@ import Cognix from "./pages/products/Cognix";
 import Qualyx from "./pages/products/Qualyx";
 import Traceflow from "./pages/products/Traceflow";
 import Chronyx from "./pages/products/Chronyx";
+import Huminex from "./pages/products/Huminex";
+import OriginxOne from "./pages/products/OriginxOne";
 import Opzenix from "./pages/products/Opzenix";
 import Proxinex from "./pages/products/Proxinex";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -26,6 +28,14 @@ import Consulting from "./pages/Consulting";
 import Trust from "./pages/Trust";
 import Press from "./pages/Press";
 import Cropxon from "./pages/Cropxon";
+import NewstackPage from "./pages/Newstack";
+import StackcraftPage from "./pages/Stackcraft";
+import ZenithPage from "./pages/Zenith";
+import ServicesPage from "./pages/Services";
+import FinioraaPage from "./pages/services/Finioraa";
+import CareerscraftPage from "./pages/services/Careerscraft";
+import GroovifyPage from "./pages/services/Groovify";
+import ConvertixPage from "./pages/services/Convertix";
 
 // Platform pages
 import Architecture from "./pages/platform/Architecture";
@@ -33,6 +43,7 @@ import Intelligence from "./pages/platform/Intelligence";
 import Autonomy from "./pages/platform/Autonomy";
 import Security from "./pages/platform/Security";
 import Integrations from "./pages/platform/Integrations";
+import HuminexPlatform from "./pages/platform/Huminex";
 
 // Solutions pages
 import EnterpriseAI from "./pages/solutions/EnterpriseAI";
@@ -101,12 +112,22 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/cropxon" element={<Cropxon />} />
+          <Route path="/newstack" element={<NewstackPage />} />
+          <Route path="/stackcraft" element={<StackcraftPage />} />
+          <Route path="/zenith" element={<ZenithPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/finioraa" element={<FinioraaPage />} />
+          <Route path="/services/careerscraft" element={<CareerscraftPage />} />
+          <Route path="/services/convertix" element={<ConvertixPage />} />
+          <Route path="/services/groovify" element={<GroovifyPage />} />
           
           {/* Products */}
           <Route path="/products/cognix" element={<Cognix />} />
           <Route path="/products/qualyx" element={<Qualyx />} />
           <Route path="/products/traceflow" element={<Traceflow />} />
           <Route path="/products/chronyx" element={<Chronyx />} />
+          <Route path="/products/huminex" element={<Huminex />} />
+          <Route path="/products/originx-one" element={<OriginxOne />} />
           <Route path="/products/opzenix" element={<Opzenix />} />
           <Route path="/products/proxinex" element={<Proxinex />} />
           
@@ -116,6 +137,7 @@ const AppContent = () => {
           <Route path="/platform/autonomy" element={<Autonomy />} />
           <Route path="/platform/security" element={<Security />} />
           <Route path="/platform/integrations" element={<Integrations />} />
+          <Route path="/platform/huminex" element={<HuminexPlatform />} />
           
           {/* Solutions */}
           <Route path="/solutions/enterprise" element={<EnterpriseAI />} />

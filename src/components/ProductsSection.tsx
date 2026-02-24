@@ -26,6 +26,13 @@ const products = [
     href: "/products/chronyx",
   },
   {
+    name: "HUMINEX",
+    tagline: "AI Workforce Operating System",
+    description: "Unified hire-to-retire operations across HR, payroll, finance, and hiring.",
+    accent: "hsl(204 84% 46%)",
+    href: "/products/huminex",
+  },
+  {
     name: "QUALYX",
     tagline: "AI QA as a Service",
     description: "Autonomous quality pipelines with zero-noise validation.",
@@ -46,6 +53,13 @@ const products = [
     accent: "hsl(210 100% 60%)",
     href: "/products/cognix",
   },
+  {
+    name: "ORIGINX ONE",
+    tagline: "One API. Every Capability.",
+    description: "Single gateway to AI, payments, messaging, identity, web, and finance APIs.",
+    accent: "hsl(220 82% 56%)",
+    href: "/products/originx-one",
+  },
 ];
 
 const ProductsSection = () => {
@@ -62,7 +76,7 @@ const ProductsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className={`text-center mb-14 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <p className="text-muted-foreground text-xs md:text-sm tracking-[0.24em] uppercase mb-4">Product Division</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Six Autonomous Platforms</h2>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Eight Autonomous Platforms</h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
             Unified product ecosystem engineered for enterprise autonomy.
           </p>

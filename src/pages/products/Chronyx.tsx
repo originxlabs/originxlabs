@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BookOpenCheck, BookOpenText, FileLock2, Files, GraduationCap, Newspaper, ScanSearch, Wallet } from "lucide-react";
 import ProductPageLayout from "@/components/ProductPageLayout";
 import { products } from "@/config/products";
+import { productSnapshots } from "@/config/productSnapshots";
 
 const Chronyx = () => {
   useEffect(() => {
@@ -104,8 +105,9 @@ const Chronyx = () => {
       features={features}
       capabilities={capabilities}
       useCases={useCases}
+      snapshots={productSnapshots.chronyx}
       prevProduct={{ name: "TRACEFLOW", href: "/products/traceflow" }}
-      nextProduct={{ name: "QUALYX", href: "/products/qualyx" }}
+      nextProduct={{ name: "HUMINEX", href: "/products/huminex" }}
       externalUrl={product.externalUrl}
       productId="chronyx"
       pageTitle="CHRONYX by OriginX Labs — Personal System of Record"
