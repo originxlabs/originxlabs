@@ -45,7 +45,7 @@ const ThreadsIcon = ({ className }: { className?: string }) => (
 
 const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://linkedin.com/company/originx-labs/", label: "LinkedIn" },
   { icon: InstagramIcon, href: "#", label: "Instagram" },
   { icon: WhatsAppIcon, href: "#", label: "WhatsApp" },
   { icon: TelegramIcon, href: "#", label: "Telegram" },
@@ -75,6 +75,8 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="w-10 h-10 rounded-full bg-muted/30 hover:bg-primary/10 hover:border-primary/30 border border-transparent flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                   aria-label={social.label}
                 >

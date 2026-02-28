@@ -450,7 +450,7 @@ const AnimatedProductShowcase = () => {
     <section 
       ref={sectionRef}
       id="products" 
-      className="py-24 relative overflow-hidden bg-muted/30 dark:bg-transparent"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-muted/30 dark:bg-transparent"
     >
       {/* Background Effects with Parallax */}
       <div 
@@ -458,14 +458,14 @@ const AnimatedProductShowcase = () => {
         style={{ transform: `translateY(${scrollY * 0.05}px)` }}
       />
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] opacity-10 dark:opacity-20 transition-all duration-1000"
+        className="absolute top-1/2 left-1/2 w-[70vw] h-[70vw] max-w-[600px] max-h-[600px] rounded-full blur-[150px] opacity-10 dark:opacity-20 transition-all duration-1000"
         style={{ 
           backgroundColor: products[activeIndex].color,
-          transform: `translateY(${scrollY * -0.1}px)` 
+          transform: `translate(-50%, calc(-50% + ${scrollY * -0.1}px))` 
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header with Parallax */}
         <div 
           className={`text-center mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
@@ -474,10 +474,10 @@ const AnimatedProductShowcase = () => {
           <p className="text-muted-foreground text-sm tracking-widest uppercase mb-4">
             Product Division
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-4">
             OriginX Labs
           </h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
             Enterprise-grade AI platforms with live analytics and autonomous operations.
           </p>
         </div>
@@ -491,7 +491,7 @@ const AnimatedProductShowcase = () => {
             <ChevronLeft className="w-5 h-5 text-foreground" />
           </button>
           
-          <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 rounded-full bg-card dark:bg-card/80 backdrop-blur-xl border border-border overflow-x-auto max-w-[80vw]">
+          <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 rounded-full bg-card dark:bg-card/80 backdrop-blur-xl border border-border overflow-x-auto max-w-[86vw] sm:max-w-[80vw]">
             {products.map((product, index) => {
               return (
                 <button
@@ -532,7 +532,7 @@ const AnimatedProductShowcase = () => {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 text-center">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/30 hover:bg-muted/50 transition-colors text-sm"
@@ -546,7 +546,7 @@ const AnimatedProductShowcase = () => {
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-10 sm:mt-12 px-2">
           {products[activeIndex].external ? (
             <a
               href={products[activeIndex].href}

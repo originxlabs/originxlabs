@@ -6,19 +6,19 @@ const CropxonSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
 
   return (
-    <section ref={sectionRef} id="cropxon" className="py-28 relative overflow-hidden">
+    <section ref={sectionRef} id="cropxon" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-emerald-500/5 to-background" />
       <div className="absolute -top-20 -right-20 w-[360px] h-[360px] rounded-full bg-emerald-500/10 blur-[90px]" />
       <div className="absolute -bottom-24 -left-24 w-[340px] h-[340px] rounded-full bg-lime-500/12 blur-[95px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground mb-4">Agriculture Intelligence</p>
             <div className="mb-5">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Cropxon</h2>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">Cropxon</h2>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-7">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-7">
               AI-driven agri intelligence platform for field operations, advisory workflows, and ecosystem-level decision systems.
             </p>
 

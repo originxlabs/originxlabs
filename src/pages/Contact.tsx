@@ -312,7 +312,9 @@ const Contact = () => {
                       <Twitter className="w-5 h-5 text-muted-foreground group-hover:text-primary" />
                     </a>
                     <a 
-                      href="#" 
+                      href="https://linkedin.com/company/originx-labs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-muted/50 hover:bg-primary/10 flex items-center justify-center transition-colors group"
                     >
                       <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary" />

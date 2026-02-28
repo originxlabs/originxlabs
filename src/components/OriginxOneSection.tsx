@@ -27,24 +27,24 @@ const OriginxOneSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
 
   return (
-    <section ref={sectionRef} id="originx-one" className="py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="originx-one" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute top-1/4 left-0 w-[460px] h-[460px] bg-primary/10 rounded-full blur-[90px] animate-pulse-slow" />
       <div className="absolute bottom-1/3 right-0 w-[420px] h-[420px] bg-accent/10 rounded-full blur-[84px] animate-pulse-slow" style={{ animationDelay: "1.8s" }} />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <div>
             <p className={`text-muted-foreground text-sm tracking-widest uppercase mb-4 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               API Infrastructure Product
             </p>
-            <h2 className={`font-display text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <h2 className={`font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 sm:mb-6 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               ORIGINX ONE
             </h2>
-            <p className={`text-2xl text-muted-foreground mb-4 font-light transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <p className={`text-lg sm:text-xl md:text-2xl text-muted-foreground mb-3 sm:mb-4 font-light transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               One API. Every Capability.
             </p>
-            <p className={`text-lg text-muted-foreground mb-8 leading-relaxed transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <p className={`text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               Build with AI, payments, messaging, web intelligence, and identity systems through one unified integration layer.
             </p>
 
@@ -63,7 +63,7 @@ const OriginxOneSection = () => {
                 href={ORIGINX_ONE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20"
               >
                 Visit OriginX One
                 <ExternalLink className="w-4 h-4" />
@@ -72,7 +72,7 @@ const OriginxOneSection = () => {
                 href={MARKETPLACE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-primary/40 rounded-xl text-foreground font-medium hover:bg-primary/10 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 border border-primary/40 rounded-xl text-foreground font-medium hover:bg-primary/10 transition-all duration-300"
               >
                 Marketplace
                 <ExternalLink className="w-4 h-4" />
@@ -81,7 +81,7 @@ const OriginxOneSection = () => {
                 href={ONEAUTH_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-primary/40 rounded-xl text-foreground font-medium hover:bg-primary/10 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 border border-primary/40 rounded-xl text-foreground font-medium hover:bg-primary/10 transition-all duration-300"
               >
                 OneAuth
                 <ExternalLink className="w-4 h-4" />

@@ -148,7 +148,7 @@ const ParallaxProductShowcase = () => {
   return (
     <div 
       ref={containerRef}
-      className="relative py-24 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
       style={{ perspective: '1000px' }}
     >
       {/* Gradient Background with parallax */}
@@ -176,19 +176,19 @@ const ParallaxProductShowcase = () => {
           <BarChart3 className="w-3.5 h-3.5" />
           Product Suite
         </div>
-        <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-4">
           Our <span className="text-gradient">Product Suite</span>
         </h2>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-0">
           Eight pillars of autonomous intelligence, working in harmony
         </p>
       </div>
 
       {/* Product cards */}
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {products.map((product, index) => {
-            const cardClasses = `group block relative z-10 hover:z-20 rounded-2xl backdrop-blur-xl p-5 sm:p-6 h-full min-h-[300px] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 overflow-hidden ${
+            const cardClasses = `group block relative z-10 hover:z-20 rounded-2xl backdrop-blur-xl p-4 sm:p-6 h-full min-h-[270px] sm:min-h-[300px] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 overflow-hidden ${
               resolvedTheme === 'dark'
                 ? 'bg-card/50 border border-white/10 hover:border-white/30'
                 : 'bg-card/80 border-2 border-foreground/10 hover:border-foreground/30'

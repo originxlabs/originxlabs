@@ -8,6 +8,7 @@ import traceflowIcon from "@/assets/traceflow-logo.png";
 import opzenixIcon from "@/assets/opzenix-logo.png";
 import proxinexIcon from "@/assets/proxinex-icon.svg";
 import chronyxIcon from "@/assets/chronyx-icon.svg";
+import cropxonIcon from "@/assets/cropxon/favicon-180.png";
 import huminexLogo from "@/assets/Huminex_logo.png";
 import originxOneLogo from "@/assets/originxone-logo.svg";
 
@@ -18,6 +19,7 @@ const productLogoMap: Record<string, string> = {
   opzenix: opzenixIcon,
   proxinex: proxinexIcon,
   chronyx: chronyxIcon,
+  cropxon: cropxonIcon,
   huminex: huminexLogo,
   "originx one": originxOneLogo,
   originxone: originxOneLogo,
@@ -45,9 +47,10 @@ const ProductLogo = ({ productId, className, alt }: ProductLogoProps) => {
   const isOpzenix = normalizedId === "opzenix";
   const isQualyx = normalizedId === "qualyx";
   const isTraceflow = normalizedId === "traceflow";
+  const isCropxon = normalizedId === "cropxon";
   const isHuminex = normalizedId === "huminex";
   const isOriginxOne = normalizedId === "originx one" || normalizedId === "originxone";
-  const isFullBrandLogo = isCognix || isTraceflow || isOpzenix || isHuminex || isOriginxOne || isQualyx;
+  const isFullBrandLogo = isCognix || isTraceflow || isOpzenix || isHuminex || isOriginxOne || isQualyx || isCropxon;
   const isHighDetailIcon = isCognix || isOpzenix || isTraceflow;
   const imageClass = isOriginxOne
     ? isDark

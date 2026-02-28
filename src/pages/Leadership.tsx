@@ -128,11 +128,11 @@ const Leadership = () => {
                         <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary" />
                       </a>
                       <a 
-                        href="https://www.linkedin.com/in/abhishekpandaofficial/"
+                        href="https://linkedin.com/company/originx-labs/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-12 h-12 rounded-full bg-muted/50 hover:bg-primary/10 border border-border/20 hover:border-primary/30 flex items-center justify-center transition-all duration-300 group"
-                        title="Abhishek Panda LinkedIn"
+                        title="OriginX Labs LinkedIn"
                       >
                         <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary" />
                       </a>

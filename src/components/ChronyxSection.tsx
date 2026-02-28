@@ -31,26 +31,26 @@ const ChronyxSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.15 });
 
   return (
-    <section ref={sectionRef} id="chronyx" className="py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="chronyx" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background" />
       
       {/* Decorative orbs */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] animate-pulse-slow" />
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[80px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <div>
             <p className={`text-muted-foreground text-sm tracking-widest uppercase mb-4 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               Consumer Product
             </p>
-            <h2 className={`font-display text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <h2 className={`font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 sm:mb-6 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               CHRONYX
             </h2>
-            <p className={`text-2xl text-muted-foreground mb-4 font-light transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <p className={`text-lg sm:text-xl md:text-2xl text-muted-foreground mb-3 sm:mb-4 font-light transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               Life OS
             </p>
-            <p className={`text-lg text-muted-foreground mb-8 leading-relaxed transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <p className={`text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               A quiet, encrypted personal universe. Your entire life, organized with intelligence and secured with trust.
             </p>
             
@@ -77,7 +77,7 @@ const ChronyxSection = () => {
             </a>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {features.map((feature, index) => {
               const CardWrapper = feature.href ? 'a' : 'div';
               const cardProps = feature.href ? {

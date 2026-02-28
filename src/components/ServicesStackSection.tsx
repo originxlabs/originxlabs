@@ -130,20 +130,20 @@ const ServicesStackSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="services" className="py-24 relative overflow-hidden">
+    <section ref={sectionRef} id="services" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[620px] h-[620px] rounded-full bg-primary/10 blur-[110px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-12">
           <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground mb-4">Services by OriginX Labs</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-3">Scroll Through the Service Stack</h2>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-3">Scroll Through the Service Stack</h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">
             One stack. Eight service layers. Each card opens its full service page with details, previews, and workflows.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {services.map((service, index) => (
             <article
               key={service.name}
@@ -165,7 +165,7 @@ const ServicesStackSection = () => {
                 <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">{service.status}</span>
               </div>
               <h3 className="relative z-10 font-display text-xl font-semibold text-foreground">{service.name}</h3>
-              <p className="text-sm text-muted-foreground mt-2 min-h-[68px]">{service.description}</p>
+              <p className="text-sm text-muted-foreground mt-2 min-h-[56px] sm:min-h-[68px]">{service.description}</p>
               <Link to={service.href} className="relative z-10 mt-4 inline-flex items-center gap-1.5 text-sm text-primary hover:opacity-80">
                 Open service page
                 <ArrowUpRight className="w-4 h-4" />

@@ -19,6 +19,15 @@ const headingPhrases = [
   "Enterprise AI Systems",
 ];
 
+const getRandomIndex = (length: number, currentIndex: number) => {
+  if (length <= 1) return 0;
+  let nextIndex = currentIndex;
+  while (nextIndex === currentIndex) {
+    nextIndex = Math.floor(Math.random() * length);
+  }
+  return nextIndex;
+};
+
 // Product colors
 const productColors: Record<string, { color: string; from: string; to: string }> = {
   COGNIX: { color: "hsl(210 100% 60%)", from: "hsl(210, 100%, 60%)", to: "hsl(230, 100%, 70%)" },
@@ -26,7 +35,7 @@ const productColors: Record<string, { color: string; from: string; to: string }>
   TRACEFLOW: { color: "hsl(330 70% 55%)", from: "hsl(330, 70%, 55%)", to: "hsl(350, 80%, 65%)" },
   OPZENIX: { color: "hsl(160 70% 45%)", from: "hsl(160, 70%, 45%)", to: "hsl(180, 80%, 55%)" },
   PROXINEX: { color: "hsl(214 90% 56%)", from: "hsl(214, 90%, 56%)", to: "hsl(228, 84%, 64%)" },
-  CHRONYX: { color: "hsl(285 74% 60%)", from: "hsl(285, 74%, 60%)", to: "hsl(305, 78%, 66%)" },
+  CROPXON: { color: "hsl(142 70% 42%)", from: "hsl(142, 70%, 42%)", to: "hsl(165, 68%, 48%)" },
   HUMINEX: { color: "hsl(204 84% 46%)", from: "hsl(204, 84%, 46%)", to: "hsl(220, 86%, 58%)" },
   "ORIGINX ONE": { color: "hsl(226 88% 62%)", from: "hsl(226, 88%, 62%)", to: "hsl(244, 92%, 70%)" },
 };
@@ -149,10 +158,8 @@ const HeroSection = () => {
   const [textRef, textVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
   const { ref: parallaxRef, offset } = useParallax(0.3);
   const [currentTagline, setCurrentTagline] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [headingPhraseIndex, setHeadingPhraseIndex] = useState(0);
   const [typedHeading, setTypedHeading] = useState("");
-  const [isDeletingHeading, setIsDeletingHeading] = useState(false);
   const [activeProductIndex, setActiveProductIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [cardsVisible, setCardsVisible] = useState(false);
@@ -190,11 +197,11 @@ const HeroSection = () => {
       chartData: [50, 35, 55, 40, 65, 50, 75, 60, 85, 70, 95, 80]
     },
     {
-      name: "CHRONYX",
-      tagline: "Autonomous Time Intelligence",
-      href: "/products/chronyx",
-      stat: { value: 24, suffix: '/7', label: 'Active Monitoring' },
-      chartData: [28, 36, 41, 53, 61, 70, 77, 84, 90, 94, 97, 100]
+      name: "CROPXON",
+      tagline: "Agriculture Intelligence Platform",
+      href: "/cropxon",
+      stat: { value: 24, suffix: '/7', label: 'Field Advisory' },
+      chartData: [26, 34, 40, 49, 58, 66, 73, 81, 88, 92, 96, 100]
     },
     {
       name: "HUMINEX",
@@ -244,17 +251,38 @@ const HeroSection = () => {
     };
   });
 
-  // Rotating taglines
+  // Randomized tagline transitions
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentTagline((prev) => (prev + 1) % taglines.length);
-        setIsAnimating(false);
-      }, 500);
-    }, 3500);
+      setCurrentTagline((prev) => getRandomIndex(taglines.length, prev));
+    }, 5200);
     return () => clearInterval(interval);
   }, []);
+
+  // Continuous typewriter line for heading details (no intentional pause)
+  useEffect(() => {
+    const phrase = headingPhrases[headingPhraseIndex] ?? headingPhrases[0];
+    let characterIndex = 0;
+    let typeTimer: ReturnType<typeof setInterval> | null = null;
+
+    const startTimer = setTimeout(() => {
+      setTypedHeading("");
+      typeTimer = setInterval(() => {
+        characterIndex += 1;
+        setTypedHeading(phrase.slice(0, characterIndex));
+
+        if (characterIndex >= phrase.length) {
+          if (typeTimer) clearInterval(typeTimer);
+          setHeadingPhraseIndex((prev) => (prev + 1) % headingPhrases.length);
+        }
+      }, 85);
+    }, 2000);
+
+    return () => {
+      clearTimeout(startTimer);
+      if (typeTimer) clearInterval(typeTimer);
+    };
+  }, [headingPhraseIndex]);
 
   // Rotating product showcase
   useEffect(() => {
@@ -263,33 +291,6 @@ const HeroSection = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [products.length]);
-
-  // Typewriter heading animation
-  useEffect(() => {
-    const fullText = headingPhrases[headingPhraseIndex];
-    const isTypingComplete = !isDeletingHeading && typedHeading === fullText;
-    const isDeletingComplete = isDeletingHeading && typedHeading === "";
-
-    if (isTypingComplete) {
-      const pauseTimer = setTimeout(() => setIsDeletingHeading(true), 1200);
-      return () => clearTimeout(pauseTimer);
-    }
-
-    if (isDeletingComplete) {
-      setIsDeletingHeading(false);
-      setHeadingPhraseIndex((prev) => (prev + 1) % headingPhrases.length);
-      return;
-    }
-
-    const speed = isDeletingHeading ? 45 : 78;
-    const timer = setTimeout(() => {
-      setTypedHeading((prev) =>
-        isDeletingHeading ? fullText.slice(0, prev.length - 1) : fullText.slice(0, prev.length + 1)
-      );
-    }, speed);
-
-    return () => clearTimeout(timer);
-  }, [typedHeading, isDeletingHeading, headingPhraseIndex]);
 
   // Floating elements data for parallax layers
   const floatingElements = [
@@ -304,7 +305,7 @@ const HeroSection = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-[calc(100vh-76px)] min-h-[calc(100vh-76px)] flex items-center justify-center overflow-hidden pt-2 md:pt-3 pb-3"
+      className="relative min-h-[calc(100svh-76px)] lg:min-h-[calc(100vh-76px)] flex items-center justify-center overflow-hidden py-5 sm:py-6"
       style={{ perspective: '1000px' }}
     >
       {/* Gradient Background with parallax */}
@@ -323,10 +324,10 @@ const HeroSection = () => {
       </div>
 
       {/* Live preview background video-style stage */}
-      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden max-[360px]:hidden">
+      <div className="absolute inset-0 z-[5] pointer-events-none overflow-hidden hidden sm:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,hsl(var(--primary)/0.12),transparent_55%)] dark:bg-[radial-gradient(circle_at_50%_45%,hsl(var(--primary)/0.22),transparent_55%)]" />
         <div
-          className="absolute left-1/2 top-[46%] w-[90vw] max-w-6xl h-[50vh] max-h-[420px] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-foreground/10 dark:border-white/15 bg-background/25 dark:bg-black/25 backdrop-blur-[2px]"
+          className="absolute left-1/2 top-[46%] w-[92vw] max-w-6xl h-[44vh] sm:h-[48vh] min-h-[240px] max-h-[420px] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border border-foreground/10 dark:border-white/15 bg-background/25 dark:bg-black/25 backdrop-blur-[2px]"
           style={{ boxShadow: "0 30px 120px rgba(0,0,0,0.20), inset 0 0 60px rgba(255,255,255,0.03)" }}
         >
           <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
@@ -335,7 +336,7 @@ const HeroSection = () => {
             <div className="absolute -inset-x-20 top-1/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-pulse-slow" />
             <div className="absolute -inset-x-20 top-2/3 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent animate-pulse-slow" style={{ animationDelay: "1200ms" }} />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px] rounded-full border border-primary/20 dark:border-primary/30 animate-spin-slow">
+              <div className="relative w-[min(52vw,180px)] h-[min(52vw,180px)] md:w-[240px] md:h-[240px] rounded-full border border-primary/20 dark:border-primary/30 animate-spin-slow">
                 {livePreviewNodes.map((node, idx) => (
                   <div
                     key={`orbit-${node.name}`}
@@ -423,7 +424,7 @@ const HeroSection = () => {
 
       {/* Parallax floating elements - Layer 2 (medium) */}
       <div 
-        className="absolute inset-0 pointer-events-none overflow-hidden z-[2]"
+        className="absolute inset-0 pointer-events-none overflow-hidden z-[2] hidden sm:block"
         style={{ transform: `translateY(${scrollY * 0.1}px)` }}
       >
         {floatingElements.slice(2, 4).map((el, i) => (
@@ -449,7 +450,7 @@ const HeroSection = () => {
 
       {/* Parallax floating elements - Layer 3 (fastest) */}
       <div 
-        className="absolute inset-0 pointer-events-none overflow-hidden z-[3]"
+        className="absolute inset-0 pointer-events-none overflow-hidden z-[3] hidden sm:block"
         style={{ transform: `translateY(${scrollY * 0.2}px)` }}
       >
         {floatingElements.slice(4).map((el, i) => (
@@ -476,19 +477,19 @@ const HeroSection = () => {
       {/* Gradient orbs with parallax */}
       <div 
         ref={parallaxRef}
-        className="absolute inset-0 pointer-events-none overflow-hidden z-[4] max-[360px]:hidden"
+        className="absolute inset-0 pointer-events-none overflow-hidden z-[4] hidden sm:block"
         style={{ transform: `translateY(${offset}px)` }}
       >
         <div 
-          className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/10 dark:bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" 
+          className="absolute top-1/4 left-1/4 w-[52vw] h-[52vw] max-w-[400px] max-h-[400px] bg-primary/10 dark:bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" 
           style={{ transform: `translateY(${scrollY * -0.1}px)` }}
         />
         <div 
-          className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-accent/10 dark:bg-accent/15 rounded-full blur-[100px] animate-pulse-slow" 
+          className="absolute bottom-1/4 right-1/4 w-[48vw] h-[48vw] max-w-[350px] max-h-[350px] bg-accent/10 dark:bg-accent/15 rounded-full blur-[100px] animate-pulse-slow" 
           style={{ animationDelay: "2s", transform: `translateY(${scrollY * -0.15}px)` }} 
         />
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/5 dark:bg-secondary/10 rounded-full blur-[150px] animate-pulse-slow" 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[58vw] h-[58vw] max-w-[500px] max-h-[500px] bg-secondary/5 dark:bg-secondary/10 rounded-full blur-[150px] animate-pulse-slow" 
           style={{ animationDelay: "4s", transform: `translateY(${scrollY * -0.05}px)` }} 
         />
       </div>
@@ -496,34 +497,35 @@ const HeroSection = () => {
       {/* Main content with parallax */}
       <div 
         ref={textRef} 
-        className="relative z-10 text-center px-3 sm:px-6 max-w-6xl mx-auto h-full flex flex-col justify-center"
+        className="relative z-10 text-center px-3 sm:px-6 max-w-6xl mx-auto w-full flex flex-col justify-center"
         style={{ transform: `translateY(${scrollY * -0.1}px)` }}
       >
         {/* Animated Tagline */}
         <div className={`h-6 mb-1 overflow-hidden transition-all duration-1000 max-[360px]:h-5 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <p 
-            className={`text-primary dark:text-primary text-xs sm:text-sm md:text-base font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase transition-all duration-500 ${
-              isAnimating ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
-            }`}
+          <p
+            key={currentTagline}
+            className="text-primary dark:text-primary text-xs sm:text-sm md:text-base font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase animate-fade-in motion-reduce:animate-none"
           >
             {taglines[currentTagline]}
           </p>
         </div>
         
         {/* Main Heading */}
-        <h1 className={`font-display text-[1.65rem] leading-[1.12] sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 transition-all duration-1000 delay-200 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <span className="text-foreground">The Origin of</span>{" "}
-          <span className="text-gradient inline-flex items-center gap-1">
+        <div className={`mb-2 sm:mb-3 transition-all duration-1000 delay-200 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <h1 className="font-display text-[clamp(1.5rem,6vw,3.75rem)] leading-[1.12] font-bold text-foreground">
+            The Origin Of
+          </h1>
+          <p className="font-display text-[clamp(1.35rem,5.4vw,3.25rem)] leading-[1.12] font-bold text-gradient min-h-[1.2em] inline-flex items-center gap-1">
             <span>{typedHeading}</span>
-            <span className="inline-block w-[2px] h-[0.95em] bg-primary/80 animate-pulse" />
-          </span>
-        </h1>
+            <span className="inline-block w-[2px] h-[0.95em] bg-primary/80 animate-pulse" style={{ animationDuration: "1.8s" }} />
+          </p>
+        </div>
         
         {/* Subtitle */}
-        <p className={`text-muted-foreground text-[13px] leading-relaxed sm:text-base md:text-lg max-w-2xl mx-auto mb-2.5 sm:mb-3.5 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <p className={`text-muted-foreground text-sm leading-relaxed sm:text-base md:text-lg max-w-2xl mx-auto mb-2.5 sm:mb-3.5 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           AI Platforms. Agentic Systems. Life OS. Built with Ethics.
         </p>
-        <p className={`text-[10px] md:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-primary/80 mb-2 sm:mb-2.5 transition-all duration-1000 delay-350 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <p className={`text-[10px] md:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-primary/80 font-bold mb-2 sm:mb-2.5 transition-all duration-1000 delay-350 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           OriginX Labs Pvt. Ltd.
         </p>
         <div
@@ -548,7 +550,7 @@ const HeroSection = () => {
           <div className="relative mx-auto max-w-6xl rounded-[26px] border border-white/20 dark:border-white/15 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 p-2 sm:p-3 md:p-4 overflow-hidden shadow-[0_16px_64px_rgba(0,0,0,0.28)]">
             <div className="absolute inset-0 bg-background/55 dark:bg-background/35 backdrop-blur-md" />
             <div className="absolute inset-0 rounded-[26px] ring-1 ring-white/20 dark:ring-white/10" />
-            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+            <div className="relative z-10 grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
               {products.map((product, index) => {
                 const colors = productColors[product.name];
 
@@ -565,7 +567,7 @@ const HeroSection = () => {
                       to={product.href}
                       target={product.external ? "_blank" : undefined}
                       rel={product.external ? "noopener noreferrer" : undefined}
-                      className={`group relative z-10 hover:z-20 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden block min-h-[114px] max-[360px]:min-h-[102px] sm:min-h-[138px] ${
+                      className={`group relative z-10 hover:z-20 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden block min-h-[106px] sm:min-h-[128px] ${
                         cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                       } ${
                         resolvedTheme === "dark"
@@ -620,7 +622,7 @@ const HeroSection = () => {
                           <ProductLogo productId={product.name} className="w-6 h-6 sm:w-8 sm:h-8" alt={`${product.name} logo`} />
                         </div>
                         <div className="text-left">
-                          <h3 className="font-display font-bold text-foreground text-[11px] sm:text-base leading-tight group-hover:text-primary transition-colors duration-300">
+                          <h3 className="font-display font-bold text-foreground text-xs sm:text-base leading-tight group-hover:text-primary transition-colors duration-300">
                             {product.name}
                           </h3>
                           <p className="hidden sm:block text-[11px] sm:text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors leading-snug">
