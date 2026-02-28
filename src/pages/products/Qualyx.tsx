@@ -90,6 +90,7 @@ const Qualyx = () => {
       nextProduct={{ name: "OPZENIX", href: "/products/opzenix" }}
       externalUrl={product.externalUrl}
       productId="qualyx"
+      pageTitle="QUALYX by OriginX Labs — Autonomous AI Testing Platform"
     />
   );
 };

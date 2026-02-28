@@ -59,6 +59,7 @@ export const companyLinks: FooterLinkItem[] = [
 export const legalLinks: FooterLinkItem[] = [
   { name: "Privacy Policy", href: "/privacy", isRoute: true },
   { name: "Terms of Service", href: "/terms", isRoute: true },
+  { name: "Refund Policy", href: "/refund-policy", isRoute: true },
   { name: "Trust & Security", href: "/trust", isRoute: true },
 ];
 

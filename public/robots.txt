@@ -16,9 +16,19 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: *
 Allow: /
 
 # Primary XML sitemap for search engines
 Sitemap: https://originxlabs.com/sitemap.xml
+Sitemap: https://originxlabs.com/llms.txt
 Host: originxlabs.com

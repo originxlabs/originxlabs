@@ -20,6 +20,7 @@ import Opzenix from "./pages/products/Opzenix";
 import Proxinex from "./pages/products/Proxinex";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import RefundPolicy from "./pages/RefundPolicy";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Leadership from "./pages/Leadership";
@@ -158,6 +159,7 @@ const AppContent = () => {
           {/* Legal */}
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

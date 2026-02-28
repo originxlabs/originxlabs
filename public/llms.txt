@@ -1,0 +1,35 @@
+# OriginX Labs
+
+OriginX Labs Pvt. Ltd. builds agentic AI, autonomous AI systems, enterprise LLM applications, computer vision systems, and AI SaaS products.
+
+## Primary Site
+- https://originxlabs.com/
+
+## Key Topics
+- Agentic AI
+- Agentic Systems
+- Autonomous AI Operations
+- Enterprise LLM Platforms
+- Computer Vision
+- AI SaaS
+- AI Research and Development
+
+## Key Product Pages
+- https://originxlabs.com/products/proxinex
+- https://originxlabs.com/products/cognix
+- https://originxlabs.com/products/qualyx
+- https://originxlabs.com/products/traceflow
+- https://originxlabs.com/products/chronyx
+- https://originxlabs.com/products/opzenix
+- https://originxlabs.com/products/huminex
+- https://originxlabs.com/products/originx-one
+- https://originxlabs.com/cropxon
+
+## Legal
+- https://originxlabs.com/privacy
+- https://originxlabs.com/terms
+- https://originxlabs.com/refund-policy
+
+## Contact
+- https://originxlabs.com/contact
+- mailto:office@originxlabs.com

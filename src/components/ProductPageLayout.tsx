@@ -27,6 +27,9 @@ interface ProductPageLayoutProps {
   externalUrl?: string;
   productId?: string;
   pageTitle?: string;
+  canonicalPath?: string;
+  seoImageWidth?: number;
+  seoImageHeight?: number;
   snapshots?: Array<{ title: string; description: string; image: string; href?: string }>;
 }
 
@@ -46,13 +49,25 @@ const ProductPageLayout = ({
   externalUrl,
   productId,
   pageTitle,
+  canonicalPath,
+  seoImageWidth = 1200,
+  seoImageHeight = 630,
   snapshots = [],
 }: ProductPageLayoutProps) => {
   const { resolvedTheme } = useTheme();
   const [selectedSnapshotIndex, setSelectedSnapshotIndex] = useState<number | null>(null);
   const slug = productId || name.toLowerCase();
   const featuredCapabilities = capabilities.slice(0, 3);
-  const canonicalUrl = `https://originxlabs.com/products/${slug}`;
+  const canonicalUrl = canonicalPath
+    ? `https://originxlabs.com${canonicalPath}`
+    : `https://originxlabs.com/products/${slug}`;
+  const defaultSeoImage = "https://originxlabs.com/originx-icon.png";
+  const imageCandidate = snapshots[0]?.image || logoImage;
+  const seoImage = imageCandidate
+    ? imageCandidate.startsWith("http")
+      ? imageCandidate
+      : `https://originxlabs.com${imageCandidate.startsWith("/") ? "" : "/"}${imageCandidate}`
+    : defaultSeoImage;
   const seoDescription = `${description} ${name} is part of the OriginX Labs multi-product AI SaaS ecosystem focused on agentic systems, LLM workflows, computer vision, and enterprise R&D.`;
   const seoKeywords = [
     name,
@@ -79,6 +94,8 @@ const ProductPageLayout = ({
     "name": name,
     "applicationCategory": "BusinessApplication",
     "description": description,
+    "image": seoImage,
+    "screenshot": seoImage,
     "operatingSystem": "Cloud",
     "offers": {
       "@type": "Offer",
@@ -146,11 +163,17 @@ const ProductPageLayout = ({
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="OriginX Labs" />
-        <meta property="og:image" content="https://originxlabs.com/originx-icon.png" />
+        <meta property="og:image" content={seoImage} />
+        <meta property="og:image:width" content={String(seoImageWidth)} />
+        <meta property="og:image:height" content={String(seoImageHeight)} />
+        <meta property="og:image:alt" content={`${name} by OriginX Labs`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={seoDescription} />
-        <meta name="twitter:image" content="https://originxlabs.com/originx-icon.png" />
+        <meta name="twitter:image" content={seoImage} />
+        <meta name="twitter:image:width" content={String(seoImageWidth)} />
+        <meta name="twitter:image:height" content={String(seoImageHeight)} />
+        <meta name="twitter:image:alt" content={`${name} by OriginX Labs`} />
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>

@@ -90,6 +90,7 @@ const Opzenix = () => {
       nextProduct={{ name: "COGNIX", href: "/products/cognix" }}
       externalUrl={product.externalUrl}
       productId="opzenix"
+      pageTitle="OPZENIX by OriginX Labs — Self-Healing MLOps and LLMOps"
     />
   );
 };

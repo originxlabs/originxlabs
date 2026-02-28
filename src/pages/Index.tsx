@@ -15,9 +15,9 @@ import { useEffect, useState } from "react";
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
   const seoDescription =
-    "OriginX Labs Pvt. Ltd. builds agentic AI, LLM, computer vision, and R&D-driven SaaS platforms for autonomous enterprise operations. Explore Proxinex, Cognix, Qualyx, Traceflow, Chronyx, Opzenix, and Cropxon.";
+    "OriginX Labs Pvt. Ltd. builds agentic AI, autonomous AI systems, LLM applications, computer vision, and enterprise AI SaaS platforms for real-world operations. Explore Proxinex, Cognix, Qualyx, Traceflow, Chronyx, Opzenix, and Cropxon.";
   const seoKeywords =
-    "OriginX Labs, Agentic AI, LLM, Large Language Models, Computer Vision, AI SaaS, Autonomous AI, Enterprise AI, Multi Product Startup, AI R&D, Proxinex, Cognix, Qualyx, Traceflow, Chronyx, Opzenix, Cropxon";
+    "OriginX Labs, Agentic AI, Agentic System, Agentic Systems, Autonomous AI, AI Agents, AI Automation, LLM, Large Language Models, Enterprise AI, AI SaaS, Computer Vision, AI R&D, AI Platform, Applied AI, Proxinex, Cognix, Qualyx, Traceflow, Chronyx, Opzenix, Cropxon";
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -40,6 +40,21 @@ const Index = () => {
     name: "OriginX Labs",
     url: "https://originxlabs.com",
     description: seoDescription,
+  };
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "OriginX Labs AI Platform Suite",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    url: "https://originxlabs.com",
+    description: seoDescription,
+    creator: {
+      "@type": "Organization",
+      name: "OriginX Labs Pvt. Ltd.",
+      url: "https://originxlabs.com"
+    },
+    keywords: seoKeywords,
   };
   const productListSchema = {
     "@context": "https://schema.org",
@@ -70,19 +85,24 @@ const Index = () => {
         <title>OriginX Labs | Agentic AI, LLM, Computer Vision & Enterprise SaaS</title>
         <meta name="description" content={seoDescription} />
         <meta name="keywords" content={seoKeywords} />
+        <meta name="author" content="OriginX Labs Pvt. Ltd." />
+        <meta name="application-name" content="OriginX Labs" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta property="og:title" content="OriginX Labs | Agentic AI, LLM, Computer Vision & Enterprise SaaS" />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://originxlabs.com/" />
         <meta property="og:site_name" content="OriginX Labs" />
+        <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="OriginX Labs | Agentic AI, LLM, Computer Vision & Enterprise SaaS" />
         <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:site" content="@originxlabs" />
         <link rel="canonical" href="https://originxlabs.com/" />
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(productListSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(softwareSchema)}</script>
       </Helmet>
       <Navbar />
 

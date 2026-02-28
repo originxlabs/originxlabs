@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Building2, Calendar, Github, Linkedin, MapPin, Shield, Twitter } from "lucide-react";
 import BrandLogo from "@/components/BrandLogo";
 import { BRAND } from "@/config/brand";
@@ -54,6 +55,28 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    const trackedKey = "originx-visit-tracked-v1";
+    const alreadyTracked = sessionStorage.getItem(trackedKey) === "1";
+    const endpoint = alreadyTracked
+      ? "https://api.countapi.xyz/get/originxlabs.com/visitors"
+      : "https://api.countapi.xyz/hit/originxlabs.com/visitors";
+
+    fetch(endpoint)
+      .then((response) => response.json())
+      .then((data: { value?: number }) => {
+        if (typeof data?.value === "number") {
+          setVisitorCount(data.value);
+          sessionStorage.setItem(trackedKey, "1");
+        }
+      })
+      .catch(() => {
+        setVisitorCount(null);
+      });
+  }, []);
+
   return (
     <footer id="contact" className="relative py-20 border-t border-border/20 overflow-hidden bg-gradient-to-b from-background to-muted/5">
       <div className="absolute inset-0 pointer-events-none">
@@ -170,6 +193,12 @@ const Footer = () => {
               <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} {BRAND.legalNameShort}</p>
               <span className="hidden sm:inline text-border">•</span>
               <p className="text-muted-foreground text-xs">All rights reserved.</p>
+              {visitorCount !== null ? (
+                <>
+                  <span className="hidden sm:inline text-border">•</span>
+                  <p className="text-muted-foreground text-xs">Visitors: {visitorCount.toLocaleString()}</p>
+                </>
+              ) : null}
             </div>
             <p className="text-muted-foreground text-xs italic font-display">"This company is inevitable."</p>
           </div>

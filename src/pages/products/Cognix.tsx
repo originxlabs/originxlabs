@@ -90,6 +90,7 @@ const Cognix = () => {
       nextProduct={{ name: "ORIGINX ONE", href: "/products/originx-one" }}
       externalUrl={product.externalUrl}
       productId="cognix"
+      pageTitle="COGNIX by OriginX Labs — Intelligent AI Infrastructure Platform"
     />
   );
 };

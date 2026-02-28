@@ -119,6 +119,7 @@ const OriginxOne = () => {
       nextProduct={{ name: "PROXINEX", href: "/products/proxinex" }}
       externalUrl={product.externalUrl}
       productId="originxone"
+      canonicalPath="/products/originx-one"
       pageTitle="OriginX One by OriginX Labs — One API. Every Capability."
     />
   );

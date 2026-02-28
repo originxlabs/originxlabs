@@ -90,6 +90,7 @@ const Traceflow = () => {
       nextProduct={{ name: "CHRONYX", href: "/products/chronyx" }}
       externalUrl={product.externalUrl}
       productId="traceflow"
+      pageTitle="TRACEFLOW by OriginX Labs — Real-Time Behavioral Intelligence"
     />
   );
 };
