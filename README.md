@@ -1,4 +1,4 @@
-# OriginX Labs Website
+# Welcome to OriginX Labs 
 
 Official web platform for **OriginX Labs Pvt. Ltd.** with the core product suite, company pages, and the new **CROPXON** agriculture microsite.
 
