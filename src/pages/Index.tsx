@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import EnterpriseApplicationsSection from "@/components/EnterpriseApplicationsSection";
 import ParallaxProductShowcase from "@/components/ParallaxProductShowcase";
 import AnimatedProductShowcase from "@/components/AnimatedProductShowcase";
 import ChronyxSection from "@/components/ChronyxSection";
@@ -8,6 +9,7 @@ import ServicesStackSection from "@/components/ServicesStackSection";
 import CropxonSection from "@/components/CropxonSection";
 import StackcraftSection from "@/components/StackcraftSection";
 import NewstackSection from "@/components/NewstackSection";
+import TrustSection from "@/components/TrustSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
@@ -116,6 +118,8 @@ const Index = () => {
       >
         <HeroSection />
       </div>
+
+      <EnterpriseApplicationsSection />
       
       {/* Reverse-scrolling product showcase with parallax */}
       <section 
@@ -155,6 +159,7 @@ const Index = () => {
 
       {/* Services stack and service ecosystem sections */}
       <ServicesStackSection />
+      <TrustSection />
       <CropxonSection />
       <StackcraftSection />
       <NewstackSection />

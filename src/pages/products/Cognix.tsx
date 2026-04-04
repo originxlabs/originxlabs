@@ -13,33 +13,33 @@ const Cognix = () => {
 
   const features = [
     {
-      title: "AI-Native Architecture",
-      description: "Built from the ground up for AI workloads with intelligent resource allocation and auto-scaling capabilities.",
+      title: "AI-Native Backend Foundation",
+      description: "Purpose-built backend infrastructure for AI-enabled applications, with architecture patterns tuned for intelligent workloads and production delivery.",
       icon: <Globe className="h-6 w-6 text-primary" />,
     },
     {
-      title: "Instant Deployment",
-      description: "Deploy AI-powered backends in minutes, not months. Zero configuration required for common patterns.",
+      title: "Accelerated Deployment",
+      description: "Reduce backend setup time for modern product teams by providing a faster route from concept to production-ready service delivery.",
       icon: <Zap className="h-6 w-6 text-primary" />,
     },
     {
-      title: "Intelligent Data Layer",
-      description: "Vector databases, real-time sync, and semantic search built into every deployment.",
+      title: "Intelligent Data Services",
+      description: "Vector support, real-time synchronization, and semantic retrieval patterns aligned to AI product and application needs.",
       icon: <Database className="h-6 w-6 text-primary" />,
     },
     {
-      title: "Multi-Cloud Ready",
-      description: "Deploy anywhere—AWS, GCP, Azure, or on-premises—with consistent APIs and behavior.",
+      title: "Deployment Flexibility",
+      description: "Support deployment across cloud and enterprise environments without forcing teams into a narrow infrastructure model.",
       icon: <Cloud className="h-6 w-6 text-primary" />,
     },
     {
-      title: "Enterprise Security",
-      description: "SOC2 compliant infrastructure with end-to-end encryption and fine-grained access controls.",
+      title: "Enterprise Security Controls",
+      description: "Security-aware backend delivery with access controls, infrastructure protections, and enterprise-aligned operational posture.",
       icon: <Lock className="h-6 w-6 text-primary" />,
     },
     {
-      title: "Performance Optimized",
-      description: "Sub-millisecond latency with intelligent caching and edge computing capabilities.",
+      title: "Performance Engineering",
+      description: "Backend delivery optimized for speed, responsiveness, and reliability across demanding application experiences.",
       icon: <Gauge className="h-6 w-6 text-primary" />,
     },
   ];
@@ -53,6 +53,8 @@ const Cognix = () => {
     "Integrated monitoring and alerting",
     "Multi-region deployment",
     "Automatic backup and recovery",
+    "AI product backend patterns for enterprise teams",
+    "Infrastructure simplification for modern application delivery",
   ];
 
   const useCases = [
@@ -66,11 +68,15 @@ const Cognix = () => {
     },
     {
       title: "Enterprise Integration",
-      description: "Connect legacy systems with modern AI capabilities through our universal adapter layer and transformation pipelines.",
+      description: "Connect enterprise systems with modern AI-ready backend services through adaptable infrastructure and integration-friendly delivery patterns.",
+    },
+    {
+      title: "Platform Modernization",
+      description: "Support teams modernizing legacy backend estates while introducing AI-ready services, observability, and improved delivery velocity.",
     },
     {
       title: "Rapid Prototyping",
-      description: "Go from idea to production-ready backend in days. Perfect for startups and innovation teams that need to move fast.",
+      description: "Go from idea to production-ready backend faster, making Cognix a strong fit for innovation teams and enterprise product groups moving at startup speed.",
     },
   ];
 
@@ -78,7 +84,7 @@ const Cognix = () => {
     <ProductPageLayout
       name={product.name}
       tagline={product.tagline}
-      description="Intelligent infrastructure that scales with your ambition. COGNIX provides a complete backend platform optimized for AI workloads, enabling you to build, deploy, and scale intelligent applications without infrastructure complexity."
+      description="COGNIX is the AI backend platform from OriginX Labs for teams building intelligent applications, modern enterprise services, and AI-ready digital products without the usual infrastructure drag."
       logoImage={product.logo}
       gradientFrom={product.gradientFrom}
       gradientTo={product.gradientTo}

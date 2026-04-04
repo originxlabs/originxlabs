@@ -7,16 +7,16 @@ import ProductHoverCard from "./ProductHoverCard";
 import ProductLogo from "./ProductLogo";
 
 const taglines = [
-  "Built for Agents. Trusted by Enterprises.",
-  "From Models to Measurable Outcomes.",
-  "Applied AI for Real-World Operations.",
+  "Enterprise AI Systems. Structured for Real Operations.",
+  "From Platform Architecture to Business Outcomes.",
+  "Agentic Infrastructure for Complex Organizations.",
 ];
 
 const headingPhrases = [
-  "Agentic Platforms",
-  "Intelligent Infrastructure",
-  "Autonomous Operations",
   "Enterprise AI Systems",
+  "Applied AI Platforms",
+  "Operational Intelligence",
+  "Autonomous Enterprise Workflows",
 ];
 
 const getRandomIndex = (length: number, currentIndex: number) => {
@@ -522,8 +522,8 @@ const HeroSection = () => {
         </div>
         
         {/* Subtitle */}
-        <p className={`text-muted-foreground text-sm leading-relaxed sm:text-base md:text-lg max-w-2xl mx-auto mb-2.5 sm:mb-3.5 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          AI Platforms. Agentic Systems. Life OS. Built with Ethics.
+        <p className={`text-muted-foreground text-sm leading-relaxed sm:text-base md:text-lg max-w-3xl mx-auto mb-2.5 sm:mb-3.5 transition-all duration-1000 delay-300 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          Enterprise-grade AI platforms, digital operations systems, and applied intelligence products for modern organizations.
         </p>
         <p className={`text-[10px] md:text-xs tracking-[0.16em] sm:tracking-[0.2em] uppercase text-primary/80 font-bold mb-2 sm:mb-2.5 transition-all duration-1000 delay-350 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           OriginX Labs Pvt. Ltd.
@@ -685,7 +685,7 @@ const HeroSection = () => {
             className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-primary/40 bg-primary/10 text-foreground hover:bg-primary/20 transition-all duration-300 text-sm sm:text-base inline-flex items-center justify-center gap-2"
           >
             <Laptop className="w-4 h-4" />
-            OriginX Desktop
+            Platform Preview
           </button>
           <button
             type="button"
@@ -693,14 +693,14 @@ const HeroSection = () => {
             className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-primary/40 bg-card/65 text-foreground hover:bg-card transition-all duration-300 text-sm sm:text-base inline-flex items-center justify-center gap-2"
           >
             <Sparkles className="w-4 h-4" />
-            Try OriginX One
+            Solution Walkthrough
           </button>
           <Link
-            to="/products/originx-one"
+            to="/platform/architecture"
             className="px-4 py-2.5 sm:px-6 sm:py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm sm:text-base hover:bg-primary/90 transition-all duration-300 inline-flex items-center justify-center gap-2"
           >
             <Boxes className="w-4 h-4" />
-            Explore 8 Intelligent Platforms
+            Explore Enterprise Architecture
           </Link>
         </div>
         <div
@@ -708,11 +708,11 @@ const HeroSection = () => {
           style={{ transitionDelay: "780ms" }}
         >
           <div className="mx-auto max-w-xl rounded-xl border border-border/40 bg-card/45 px-3 py-2.5 backdrop-blur-sm text-left">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Coming Soon</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Enterprise Delivery</p>
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-sm sm:text-base font-semibold text-foreground">OriginX Desktop + OriginX Mobile</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">macOS, Windows, iPhone apps for your complete OriginX suite.</p>
+                <p className="text-sm sm:text-base font-semibold text-foreground">Platform previews, product demos, and rollout-ready experiences</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">OriginX Labs combines product storytelling, architecture clarity, and enterprise-ready solution framing.</p>
               </div>
               <div className="flex items-center gap-2 text-primary">
                 <Laptop className="w-4 h-4" />
@@ -731,7 +731,7 @@ const HeroSection = () => {
               <>
                 <h3 className="font-display text-2xl font-bold text-foreground mb-2">OriginX Desktop</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Native apps for macOS and Windows, plus OriginX Mobile for iPhone.
+                  Platform-grade preview experiences and enterprise delivery surfaces across OriginX touchpoints are being expanded.
                 </p>
                 <div className="flex items-center gap-3 text-primary mb-5">
                   <Laptop className="w-5 h-5" />
@@ -742,7 +742,7 @@ const HeroSection = () => {
               <>
                 <h3 className="font-display text-2xl font-bold text-foreground mb-2">Try OriginX One</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  OriginX One interactive trial workflow is rolling out soon on the landing experience.
+                  Product walkthroughs and enterprise solution experiences are being refined for OriginX One and the broader suite.
                 </p>
                 <div className="flex items-center gap-3 text-primary mb-5">
                   <Sparkles className="w-5 h-5" />

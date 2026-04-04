@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, ExternalLink, Home, Package2, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Building2, CheckCircle2, ChevronRight, ExternalLink, Home, Package2, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useTheme } from "next-themes";
 import { BRAND } from "@/config/brand";
@@ -58,6 +58,8 @@ const ProductPageLayout = ({
   const [selectedSnapshotIndex, setSelectedSnapshotIndex] = useState<number | null>(null);
   const slug = productId || name.toLowerCase();
   const featuredCapabilities = capabilities.slice(0, 3);
+  const enterpriseSignals = capabilities.slice(0, 6);
+  const priorityUseCases = useCases.slice(0, 3);
   const canonicalUrl = canonicalPath
     ? `https://originxlabs.com${canonicalPath}`
     : `https://originxlabs.com/products/${slug}`;
@@ -226,7 +228,7 @@ const ProductPageLayout = ({
                   style={{ borderColor: `${gradientFrom}55`, backgroundColor: `${gradientFrom}18` }}
                 >
                   <ProductLogo productId={slug} className="h-5 w-5 rounded-sm border-none bg-transparent shadow-none p-0" alt={`${name} icon`} />
-                  OriginX Product Division
+                  Enterprise Product Platform
                 </span>
 
                 {!logoImage && icon && (
@@ -249,6 +251,21 @@ const ProductPageLayout = ({
                 <p className="mt-5 max-w-3xl text-base md:text-xl text-muted-foreground leading-relaxed">
                   {description}
                 </p>
+
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-border/50 bg-background/60 p-4 backdrop-blur-sm">
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Platform Scope</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">Enterprise application layer</p>
+                  </div>
+                  <div className="rounded-2xl border border-border/50 bg-background/60 p-4 backdrop-blur-sm">
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Deployment Fit</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">Operations, governance, and scale</p>
+                  </div>
+                  <div className="rounded-2xl border border-border/50 bg-background/60 p-4 backdrop-blur-sm">
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Buyer Lens</p>
+                    <p className="mt-2 text-sm font-semibold text-foreground">Architecture, trust, and ROI readiness</p>
+                  </div>
+                </div>
 
                 <div className="mt-9 flex flex-wrap gap-4">
                   <a
@@ -354,8 +371,54 @@ const ProductPageLayout = ({
                       </p>
                     ))}
                   </div>
+
+                  <div className="mt-5 rounded-2xl border border-border/50 bg-background/60 p-4">
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Enterprise Summary</p>
+                    <div className="mt-3 space-y-3">
+                      <div className="flex items-start gap-3">
+                        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" style={{ color: gradientFrom }} />
+                        <p className="text-xs leading-relaxed text-muted-foreground">Governance-oriented delivery for AI, platform, and operational workflows.</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Workflow className="mt-0.5 h-4 w-4 shrink-0" style={{ color: gradientFrom }} />
+                        <p className="text-xs leading-relaxed text-muted-foreground">Structured for cross-functional implementation, integration, and rollout.</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Building2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: gradientFrom }} />
+                        <p className="text-xs leading-relaxed text-muted-foreground">Positioned for enterprise evaluation, architecture review, and stakeholder alignment.</p>
+                      </div>
+                    </div>
+                  </div>
                 </aside>
               </ProductHoverCard>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-border/20 bg-muted/10 py-16">
+          <div className="container mx-auto px-6">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Enterprise Positioning</p>
+                <h2 className="mt-3 font-display text-3xl font-bold text-foreground md:text-4xl">
+                  Built to fit enterprise decision criteria
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                  {name} is presented as an enterprise application layer inside the OriginX ecosystem, with emphasis on operating fit,
+                  integration value, governance posture, and real implementation outcomes.
+                </p>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {enterpriseSignals.map((capability, index) => (
+                  <div key={capability} className="rounded-2xl border border-border/40 bg-card/70 p-4 backdrop-blur-sm">
+                    <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10">
+                      <span className="text-sm font-semibold" style={{ color: gradientFrom }}>{index + 1}</span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-foreground">{capability}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -364,10 +427,10 @@ const ProductPageLayout = ({
           <section className="py-16 border-t border-border/20 bg-muted/10">
             <div className="container mx-auto px-6">
               <div className="mb-8 text-center">
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Product Snapshots</h2>
-                <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-                  Real interface snapshots and key experiences from {name}.
-                </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Interface and Product Views</h2>
+              <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+                  Visual proof points from {name}, useful for platform walkthroughs, stakeholder reviews, and product storytelling.
+              </p>
               </div>
               <div className="grid gap-6 md:grid-cols-3">
                 {snapshots.map((snapshot, idx) => (
@@ -432,7 +495,7 @@ const ProductPageLayout = ({
           <div className="container mx-auto px-6">
             <p className="text-xs md:text-sm tracking-[0.24em] uppercase text-muted-foreground">Core Features</p>
             <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-              Core Capabilities
+              Product Architecture and Capabilities
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -469,7 +532,7 @@ const ProductPageLayout = ({
             <div className="max-w-4xl mx-auto">
               <p className="text-xs md:text-sm tracking-[0.24em] uppercase text-muted-foreground text-center">Enterprise Readiness</p>
               <h2 className="mt-3 font-display text-3xl font-bold text-foreground mb-12 text-center">
-                Built for Enterprise
+                Operational and Enterprise Requirements
               </h2>
               
               <div className="grid md:grid-cols-2 gap-4">
@@ -498,7 +561,7 @@ const ProductPageLayout = ({
           <div className="container mx-auto px-6">
             <p className="text-xs md:text-sm tracking-[0.24em] uppercase text-muted-foreground">Implementation Paths</p>
             <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-              Use Cases
+              Enterprise Use Cases
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -523,6 +586,34 @@ const ProductPageLayout = ({
           </div>
         </section>
 
+        <section className="bg-muted/10 py-16">
+          <div className="container mx-auto px-6">
+            <div className="rounded-[28px] border border-border/40 bg-card/65 p-6 backdrop-blur-xl md:p-8">
+              <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Buyer Overview</p>
+                  <h2 className="mt-3 font-display text-3xl font-bold text-foreground">
+                    What enterprise teams can evaluate quickly
+                  </h2>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    This page is structured to support product understanding across technology leadership, operations, platform teams,
+                    and business stakeholders reviewing OriginX solutions for fit, readiness, and rollout potential.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-3">
+                  {priorityUseCases.map((useCase) => (
+                    <div key={useCase.title} className="rounded-2xl border border-border/40 bg-background/70 p-4">
+                      <p className="text-sm font-semibold text-foreground">{useCase.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{useCase.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         {externalUrl && (
           <section className="py-20 relative overflow-hidden">
@@ -535,10 +626,10 @@ const ProductPageLayout = ({
             <div className="container mx-auto px-6 relative z-10">
               <div className="max-w-3xl mx-auto text-center">
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Ready to Get Started with {name}?
+                  Ready to Evaluate {name} in More Detail?
                 </h2>
                 <p className="text-muted-foreground text-lg mb-8">
-                  Visit the official {name} website to learn more, access documentation, and start building.
+                  Visit the official {name} website to continue the product evaluation, review more detail, and explore external product material.
                 </p>
                 <a
                   href={externalUrl}
