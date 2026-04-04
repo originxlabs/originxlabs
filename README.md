@@ -1,121 +1,240 @@
 # OriginX Labs
 
 <p align="center">
-  <img src="./public/originx-wordmark.png" alt="OriginX Labs" width="320" />
+  <img src="./public/originx-wordmark.png" alt="OriginX Labs" width="340" />
 </p>
 
 <p align="center">
-  Official website platform for OriginX Labs Pvt. Ltd. building agentic AI systems, enterprise applications, digital products, and intelligent operating platforms.
+  <strong>OriginX Labs Pvt. Ltd.</strong><br/>
+  Agentic AI, enterprise applications, digital operating systems, and intelligent product ecosystems.
 </p>
 
 <p align="center">
-  <a href="https://originxlabs.com">Official Website</a>
+  <a href="https://originxlabs.com">
+    <img src="https://img.shields.io/badge/Official%20Website-originxlabs.com-111827?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Official Website" />
+  </a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=06151f" alt="React" />
-  <img src="https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/GSAP-Enabled-88CE02?logo=greensock&logoColor=white" alt="GSAP" />
-  <img src="https://img.shields.io/badge/Status-Production%20Ready-16a34a" alt="Status" />
+  <img src="https://img.shields.io/badge/Company-OriginX%20Labs-2563eb?style=flat-square" alt="OriginX Labs" />
+  <img src="https://img.shields.io/badge/Focus-Agentic%20AI-7c3aed?style=flat-square" alt="Agentic AI" />
+  <img src="https://img.shields.io/badge/Category-Enterprise%20Applications-0f766e?style=flat-square" alt="Enterprise Applications" />
+  <img src="https://img.shields.io/badge/Experience-Animated%20Web%20Platform-f59e0b?style=flat-square" alt="Animated Web Platform" />
 </p>
 
 ## Overview
 
-This repository powers the main OriginX Labs web presence. It brings together the company landing experience, enterprise platform pages, solution pages, product pages, and service ecosystem pages into one branded frontend.
+OriginX Labs is the official company website and digital platform for the OriginX Labs ecosystem. This repository brings together the main corporate presence, product pages, enterprise solution pages, platform architecture pages, and ecosystem/service experiences into one polished frontend.
 
-The site is designed to present OriginX Labs as:
+<p align="center">
+  <video src="./src/assets/originx-hero-video.mp4" width="100%" autoplay muted loop playsinline preload="metadata"></video>
+</p>
 
-- An enterprise AI and agentic systems company
-- A multi-product SaaS platform builder
-- A company with dedicated product, service, and ecosystem brands
-- A polished digital presence with motion, media, trust messaging, and structured enterprise storytelling
+<p align="center">
+  <sub>Live brand preview powered by the OriginX Labs hero video asset.</sub>
+</p>
+
+## Brand Snapshot
+
+<table>
+  <tr>
+    <td><strong>Identity</strong></td>
+    <td>OriginX Labs Pvt. Ltd.</td>
+  </tr>
+  <tr>
+    <td><strong>Positioning</strong></td>
+    <td>Enterprise AI and agentic systems company</td>
+  </tr>
+  <tr>
+    <td><strong>Website</strong></td>
+    <td><a href="https://originxlabs.com">https://originxlabs.com</a></td>
+  </tr>
+  <tr>
+    <td><strong>Platform Style</strong></td>
+    <td>Enterprise-grade, animated, product-led, media-rich</td>
+  </tr>
+</table>
 
 ## Products
 
-| Product | Route | External | Details |
-| --- | --- | --- | --- |
-| PROXINEX | `/products/proxinex` | [proxinex.com](https://www.proxinex.com/) | AI intelligence control plane with routing, verification, governance, and AEON orchestration |
-| COGNIX | `/products/cognix` | [getcognix.io](https://www.getcognix.io/) | AI backend platform for intelligent applications and enterprise-ready infrastructure |
-| QUALYX | `/products/qualyx` | [getqualyx.com](https://www.getqualyx.com/) | AI-led quality and compliance platform |
-| TRACEFLOW | `/products/traceflow` | [traceflowhq.com](https://www.traceflowhq.com/) | Digital cognition and real-time behavioral intelligence platform |
-| CHRONYX | `/products/chronyx` | [getchronyx.com](https://www.getchronyx.com/) | Personal system of record and continuity intelligence workspace |
-| HUMINEX | `/products/huminex` | `Configured in app` | AI workforce operating system for HR, payroll, finance, recruitment, and workforce operations |
-| OPZENIX | `/products/opzenix` | [opzenix.com](https://www.opzenix.com/) | MLOps, LLMOps, and DevSecOps platform |
-| ORIGINX ONE | `/products/originx-one` | [originxcloud.com](https://www.originxcloud.com/) | Unified API infrastructure for AI, messaging, identity, finance, and enterprise integrations |
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Status</th>
+    <th>Route</th>
+    <th>Website</th>
+    <th>Details</th>
+  </tr>
+  <tr>
+    <td><strong>PROXINEX</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/proxinex</code></td>
+    <td><a href="https://www.proxinex.com/">proxinex.com</a></td>
+    <td>AI intelligence control plane with routing, verification, governance, and AEON orchestration.</td>
+  </tr>
+  <tr>
+    <td><strong>COGNIX</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/cognix</code></td>
+    <td><a href="https://www.getcognix.io/">getcognix.io</a></td>
+    <td>AI backend platform for intelligent applications and enterprise-ready infrastructure.</td>
+  </tr>
+  <tr>
+    <td><strong>QUALYX</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/qualyx</code></td>
+    <td><a href="https://www.getqualyx.com/">getqualyx.com</a></td>
+    <td>AI-led quality and compliance platform.</td>
+  </tr>
+  <tr>
+    <td><strong>TRACEFLOW</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/traceflow</code></td>
+    <td><a href="https://www.traceflowhq.com/">traceflowhq.com</a></td>
+    <td>Digital cognition and real-time behavioral intelligence platform.</td>
+  </tr>
+  <tr>
+    <td><strong>CHRONYX</strong></td>
+    <td><img src="https://img.shields.io/badge/Live-16a34a?style=flat-square" alt="Live" /></td>
+    <td><code>/products/chronyx</code></td>
+    <td><a href="https://www.getchronyx.com/">getchronyx.com</a></td>
+    <td>Personal system of record and continuity intelligence workspace.</td>
+  </tr>
+  <tr>
+    <td><strong>HUMINEX</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/huminex</code></td>
+    <td><a href="https://www.gethuminex.com/">gethuminex.com</a></td>
+    <td>AI workforce operating system for HR, payroll, finance, recruitment, compliance, and workforce operations.</td>
+  </tr>
+  <tr>
+    <td><strong>OPZENIX</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/opzenix</code></td>
+    <td><a href="https://www.opzenix.com/">opzenix.com</a></td>
+    <td>MLOps, LLMOps, and DevSecOps platform.</td>
+  </tr>
+  <tr>
+    <td><strong>ORIGINX ONE</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/products/originx-one</code></td>
+    <td><a href="https://www.originxcloud.com/">originxcloud.com</a></td>
+    <td>Unified API infrastructure for AI, messaging, identity, finance, and enterprise integrations.</td>
+  </tr>
+</table>
 
 ## Services And Ecosystem
 
-| Experience | Route | External | Details |
-| --- | --- | --- | --- |
-| CropXon | `/cropxon` | [cropxon.com](https://www.cropxon.com/) | Agriculture intelligence platform and ecosystem experience |
-| Newstack | `/newstack` | [newstack.live](https://www.newstack.live/) | Live news intelligence and source-linked updates |
-| StackCraft | `/stackcraft` | [stackcraft.io](https://www.stackcraft.io/) | Professional network and company platform for developers |
-| Zenith | `/zenith` | `Internal page` | Digital business operating system experience |
-| Services Hub | `/services` | `Internal page` | Central service layer for OriginX Labs offerings |
-| Finioraa | `/services/finioraa` | `Internal page` | Personal finance operating system |
-| CareersCraft | `/services/careerscraft` | `Internal page` | Career operating system and AI-guided career tooling |
-| Convertix | `/services/convertix` | `Internal page` | Premium PDF and image workflow studio |
-| Groovify | `/services/groovify` | `Internal page` | Music and lyrics app experience |
+<table>
+  <tr>
+    <th>Experience</th>
+    <th>Status</th>
+    <th>Route</th>
+    <th>Website</th>
+    <th>Details</th>
+  </tr>
+  <tr>
+    <td><strong>CropXon</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/cropxon</code></td>
+    <td><a href="https://www.cropxon.com/">cropxon.com</a></td>
+    <td>Agriculture intelligence platform and ecosystem experience.</td>
+  </tr>
+  <tr>
+    <td><strong>Newstack</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/newstack</code></td>
+    <td><a href="https://www.newstack.live/">newstack.live</a></td>
+    <td>Live news intelligence and source-linked updates.</td>
+  </tr>
+  <tr>
+    <td><strong>StackCraft</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/stackcraft</code></td>
+    <td><a href="https://www.stackcraft.io/">stackcraft.io</a></td>
+    <td>Professional network and company platform for developers.</td>
+  </tr>
+  <tr>
+    <td><strong>Zenith</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/zenith</code></td>
+    <td>Internal page</td>
+    <td>Digital business operating system experience.</td>
+  </tr>
+  <tr>
+    <td><strong>Services Hub</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/services</code></td>
+    <td>Internal page</td>
+    <td>Central service layer for OriginX Labs offerings.</td>
+  </tr>
+  <tr>
+    <td><strong>Finioraa</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/services/finioraa</code></td>
+    <td>Internal page</td>
+    <td>Personal finance operating system.</td>
+  </tr>
+  <tr>
+    <td><strong>CareersCraft</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/services/careerscraft</code></td>
+    <td>Internal page</td>
+    <td>Career operating system and AI-guided career tooling.</td>
+  </tr>
+  <tr>
+    <td><strong>Convertix</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/services/convertix</code></td>
+    <td>Internal page</td>
+    <td>Premium PDF and image workflow studio.</td>
+  </tr>
+  <tr>
+    <td><strong>Groovify</strong></td>
+    <td><img src="https://img.shields.io/badge/In%20Progress-f59e0b?style=flat-square" alt="In Progress" /></td>
+    <td><code>/services/groovify</code></td>
+    <td>Internal page</td>
+    <td>Music and lyrics app experience.</td>
+  </tr>
+</table>
 
-## Company And Platform Pages
+## Company, Platform, Solutions
 
-### Company
+### Company Pages
 
-- `/`
-- `/about`
-- `/leadership`
-- `/consulting`
-- `/trust`
-- `/press`
-- `/careers`
-- `/contact`
+- `🏢` `/`
+- `ℹ️` `/about`
+- `👥` `/leadership`
+- `🤝` `/consulting`
+- `🛡️` `/trust`
+- `📰` `/press`
+- `💼` `/careers`
+- `✉️` `/contact`
 
-### Platform
+### Platform Pages
 
-- `/platform/architecture`
-- `/platform/intelligence`
-- `/platform/autonomy`
-- `/platform/security`
-- `/platform/integrations`
-- `/platform/huminex`
+- `🧱` `/platform/architecture`
+- `🧠` `/platform/intelligence`
+- `⚙️` `/platform/autonomy`
+- `🔐` `/platform/security`
+- `🔌` `/platform/integrations`
+- `👤` `/platform/huminex`
 
-### Solutions
+### Solution Pages
 
-- `/solutions/enterprise`
-- `/solutions/autonomous`
-- `/solutions/regulated`
-- `/solutions/scale`
-- `/solutions/experience`
-
-### Legal
-
-- `/privacy`
-- `/terms`
-- `/refund-policy`
+- `🏛️` `/solutions/enterprise`
+- `🤖` `/solutions/autonomous`
+- `📋` `/solutions/regulated`
+- `📈` `/solutions/scale`
+- `✨` `/solutions/experience`
 
 ## Experience Highlights
 
-- Enterprise-grade landing page and product storytelling
-- Motion-led hero sections, parallax, and interactive product showcases
-- Dedicated product pages with snapshots, demos, and buyer-facing structure
-- Service and ecosystem pages with independent brand identity
-- SEO-focused metadata, structured schema, and deployment-ready routing
-- SPA support for Vercel and Netlify
-
-## Tech Stack
-
-- React 18
-- TypeScript
-- Vite 5
-- Tailwind CSS
-- GSAP
-- React Router v6
-- TanStack Query
-- Radix UI
-- `next-themes`
-- Vitest + Testing Library
+- `🎬` Animated landing experience with branded motion and media
+- `🏗️` Enterprise-style storytelling across platform, solution, and product pages
+- `🧩` Multi-product and multi-service ecosystem navigation
+- `🖼️` Rich visuals including screenshots, previews, logos, and video assets
+- `📍` SEO-aware route structure with schema and deployment support
 
 ## Getting Started
 
@@ -164,16 +283,16 @@ npm run lint
 
 ```text
 src/
-  assets/              Logos, videos, previews, product snapshots, media
-  components/          Shared UI, animated sections, layout, navigation, footer
-  config/              Central brand, product, and ecosystem configuration
-  hooks/               Scroll and animation hooks
-  pages/               Company, product, platform, solution, and service routes
-  test/                Vitest setup and test files
+  assets/              logos, videos, previews, screenshots, media
+  components/          animated sections, shared UI, layout, navigation, footer
+  config/              brand, product, and ecosystem configuration
+  hooks/               animation and interaction hooks
+  pages/               company, platform, solutions, products, services
+  test/                Vitest setup and tests
 public/
   _redirects           Netlify SPA rewrites
-  robots.txt           Crawl policy
-  sitemap.xml          Search route map
+  robots.txt           crawl policy
+  sitemap.xml          route map
 vercel.json            Vercel SPA rewrites
 ```
 
@@ -181,8 +300,11 @@ vercel.json            Vercel SPA rewrites
 
 - `vercel.json` handles Vercel SPA rewrites
 - `public/_redirects` handles Netlify SPA rewrites
-- Update `public/sitemap.xml` and `public/robots.txt` when adding new public routes
+- Update `public/sitemap.xml` and `public/robots.txt` when routes change
 
 ## Company
 
-**OriginX Labs Pvt. Ltd.** builds agentic AI systems, enterprise SaaS products, intelligent infrastructure, and digital operating platforms with a focus on trust, design quality, and real-world usability.
+<p align="center">
+  <strong>OriginX Labs Pvt. Ltd.</strong><br/>
+  Building agentic AI systems, enterprise SaaS products, intelligent infrastructure, and digital operating platforms with a focus on trust, design quality, and real-world usability.
+</p>
