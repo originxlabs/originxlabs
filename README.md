@@ -1,90 +1,124 @@
-# Welcome to OriginX Labs 
+# OriginX Labs
 
-Official web platform for **OriginX Labs Pvt. Ltd.** with the core product suite, company pages, and the new **CROPXON** agriculture microsite.
+<p align="center">
+  <img src="./public/originx-wordmark.png" alt="OriginX Labs" width="320" />
+</p>
 
-![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)
-![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=06151f)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss&logoColor=white)
-![Build](https://img.shields.io/badge/Build-Passing-16a34a)
+<p align="center">
+  Agentic AI company building animated, enterprise-grade SaaS platforms for autonomous operations, intelligent infrastructure, and applied AI products.
+</p>
 
-## Quick Links
+<p align="center">
+  <a href="https://originxlabs.com">Website</a> •
+  <a href="https://originxlabs.com/cropxon">CropXon</a> •
+  <a href="https://www.cropxon.com/">CropXon External</a>
+</p>
 
-- Production: [originxlabs.com](https://originxlabs.com/)
-- Agriculture microsite: [originxlabs.com/cropxon](https://originxlabs.com/cropxon)
-- CropXon external site: [cropxon.com](https://www.cropxon.com/)
-- Sitemap: [public/sitemap.xml](public/sitemap.xml)
-- SPA rewrites:
-`public/_redirects`, `vercel.json`
+<p align="center">
+  <img src="https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=06151f" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/GSAP-Enabled-88CE02?logo=greensock&logoColor=white" alt="GSAP" />
+  <img src="https://img.shields.io/badge/Status-Production%20Ready-16a34a" alt="Status" />
+</p>
 
-## Brand Colors
+## Overview
 
-### OriginX Core Palette
+OriginX Labs is the official web platform for **OriginX Labs Pvt. Ltd.**, designed as a modern SaaS-style experience for an agentic AI company. The site combines motion-driven storytelling, product-led navigation, platform architecture pages, solution pages, and branded microsites into one polished frontend.
 
-| Token | HSL |
-|---|---|
-| `--primary` | `250 80% 55%` |
-| `--secondary` | `210 60% 50%` |
-| `--accent` | `280 70% 55%` |
-| `--background` | `0 0% 100%` |
-| `--foreground` | `220 30% 10%` |
+This repository powers:
 
-### Product Accent Colors
+- The main OriginX Labs company site
+- Product pages for the AI and enterprise SaaS suite
+- Platform and solutions pages
+- Service ecosystem pages
+- The CropXon agriculture intelligence microsite
 
-| Product | Color |
-|---|---|
-| PROXINEX | `hsl(214 90% 56%)` |
-| COGNIX | `hsl(210 100% 60%)` |
-| TRACEFLOW | `hsl(330 70% 55%)` |
-| QUALYX | `hsl(270 100% 65%)` |
-| OPZENIX | `hsl(160 70% 45%)` |
-| AEON | `hsl(250 80% 60%)` |
+## Preview
 
-### CropXon Palette Used on `/cropxon`
+### Hero / Motion Preview
 
-| Token | HSL |
-|---|---|
-| Primary Green | `149 67% 34%` |
-| Accent Gold | `42 90% 45%` |
-| Dark Background | `160 30% 4%` |
-| Light Background | `150 40% 98%` |
+<p align="center">
+  <video src="./src/assets/oxl-hero-video.mp4" width="100%" controls muted playsinline preload="metadata"></video>
+</p>
 
-## Product & Ecosystem Links
+### Brand / Product Preview
 
-### OriginX Product Suite
+<p align="center">
+  <video src="./src/assets/video2-ox.mp4" width="100%" controls muted playsinline preload="metadata"></video>
+</p>
 
-| Product | Product Page | Official Site |
-|---|---|---|
-| COGNIX | [/products/cognix](https://originxlabs.com/products/cognix) | [getcognix.io](https://www.getcognix.io/) |
-| QUALYX | [/products/qualyx](https://originxlabs.com/products/qualyx) | [getqualyx.com](https://www.getqualyx.com/) |
-| TRACEFLOW | [/products/traceflow](https://originxlabs.com/products/traceflow) | [traceflowhq.com](https://www.traceflowhq.com/) |
-| OPZENIX | [/products/opzenix](https://originxlabs.com/products/opzenix) | [opzenix.com](https://www.opzenix.com/) |
-| PROXINEX | [/products/proxinex](https://originxlabs.com/products/proxinex) | [proxinex.com](https://www.proxinex.com/) |
-| AEON | [/products/aeon](https://originxlabs.com/products/aeon) | - |
+### Product Experience Snapshots
 
-### Ecosystem Products
+<p align="center">
+  <img src="./src/assets/originxone-home-full.png" alt="OriginX One Preview" width="100%" />
+</p>
 
-| Product | Link |
-|---|---|
-| CHRONYX | [getchronyx.com](https://www.getchronyx.com/) |
-| NEWSTACK | [newstack.live](https://www.newstack.live/) |
-| CROPXON | [cropxon.com](https://www.cropxon.com/) |
+<p align="center">
+  <img src="./src/assets/traceflow-snapshot.png" alt="Traceflow Preview" width="49%" />
+  <img src="./src/assets/cognix-snapshot.png" alt="Cognix Preview" width="49%" />
+</p>
+
+<p align="center">
+  <img src="./src/assets/qualyx-snapshot.png" alt="Qualyx Preview" width="49%" />
+  <img src="./src/assets/opzenix-snapshot.png" alt="Opzenix Preview" width="49%" />
+</p>
+
+If your Git host does not render embedded videos in Markdown, open the source files directly:
+
+- `src/assets/oxl-hero-video.mp4`
+- `src/assets/video2-ox.mp4`
+
+## What This Site Communicates
+
+- **Agentic positioning** with messaging around autonomous operations, enterprise AI, LLM systems, and intelligent infrastructure
+- **Animated storytelling** through splash screens, parallax sections, interactive showcases, hover cards, and motion-led hero content
+- **Multi-product navigation** for the OriginX Labs ecosystem
+- **SaaS-grade presentation** with brand-led product pages, platform trust messaging, and enterprise solution flows
+- **Microsite support** for domain-specific products like CropXon
+
+## Product Ecosystem
+
+### Core Products
+
+| Product | Route | Focus |
+| --- | --- | --- |
+| PROXINEX | `/products/proxinex` | AI intelligence control plane |
+| COGNIX | `/products/cognix` | AI backend as a service |
+| QUALYX | `/products/qualyx` | AI QA as a service |
+| TRACEFLOW | `/products/traceflow` | Digital cognition |
+| CHRONYX | `/products/chronyx` | Workflow and timeline intelligence |
+| HUMINEX | `/products/huminex` | AI workforce operating system |
+| ORIGINX ONE | `/products/originx-one` | Unified API and capability layer |
+| OPZENIX | `/products/opzenix` | MLOps platform |
+
+### Ecosystem and Services
+
+| Experience | Route |
+| --- | --- |
+| CropXon | `/cropxon` |
+| Newstack | `/newstack` |
+| Stackcraft | `/stackcraft` |
+| Zenith | `/zenith` |
+| Services Hub | `/services` |
+| Finioraa | `/services/finioraa` |
+| Careerscraft | `/services/careerscraft` |
+| Convertix | `/services/convertix` |
+| Groovify | `/services/groovify` |
 
 ## Route Map
 
-### Core
+### Main
 
 - `/`
-- `/cropxon`
-
-### Products
-
-- `/products/cognix`
-- `/products/qualyx`
-- `/products/traceflow`
-- `/products/opzenix`
-- `/products/aeon`
-- `/products/proxinex`
+- `/about`
+- `/leadership`
+- `/consulting`
+- `/trust`
+- `/press`
+- `/careers`
+- `/contact`
 
 ### Platform
 
@@ -93,6 +127,7 @@ Official web platform for **OriginX Labs Pvt. Ltd.** with the core product suite
 - `/platform/autonomy`
 - `/platform/security`
 - `/platform/integrations`
+- `/platform/huminex`
 
 ### Solutions
 
@@ -102,30 +137,36 @@ Official web platform for **OriginX Labs Pvt. Ltd.** with the core product suite
 - `/solutions/scale`
 - `/solutions/experience`
 
-### Company & Legal
+### Legal
 
-- `/about`
-- `/leadership`
-- `/consulting`
-- `/trust`
-- `/press`
-- `/careers`
-- `/contact`
 - `/privacy`
 - `/terms`
+- `/refund-policy`
+
+## Experience Highlights
+
+- Animated splash screen on initial load and route transitions
+- Motion-rich hero with rotating messaging and product-linked cards
+- Parallax product showcase and multi-section storytelling
+- Theme support with `next-themes`
+- SEO-focused metadata and structured schema markup
+- Chatbot integration for on-site interaction
+- SPA deployment support for Vercel and Netlify
 
 ## Tech Stack
 
-- React 18 + TypeScript
+- React 18
+- TypeScript
 - Vite 5
-- Tailwind CSS + custom animation utilities
-- next-themes for light/dark toggle
+- Tailwind CSS
+- GSAP
 - React Router v6
 - TanStack Query
-- Radix UI primitives
+- Radix UI
+- `next-themes`
 - Vitest + Testing Library
 
-## Local Development
+## Getting Started
 
 ### Requirements
 
@@ -134,37 +175,37 @@ Official web platform for **OriginX Labs Pvt. Ltd.** with the core product suite
 
 ### Install
 
-```sh
+```bash
 npm install
 ```
 
-### Start dev server
+### Run Development Server
 
-```sh
+```bash
 npm run dev
 ```
 
-### Build production
+### Build for Production
 
-```sh
+```bash
 npm run build
 ```
 
-### Preview production build
+### Preview Production Build
 
-```sh
+```bash
 npm run preview
 ```
 
-### Run tests
+### Run Tests
 
-```sh
+```bash
 npm run test
 ```
 
-### Lint
+### Run Lint
 
-```sh
+```bash
 npm run lint
 ```
 
@@ -172,35 +213,40 @@ npm run lint
 
 ```text
 src/
-  components/         # Reusable UI and sections (Hero, Navbar, Footer, Product cards)
-  config/             # Centralized brand/product/agriculture config
-  pages/              # Route-level pages (Index, Cropxon, product pages, company pages)
-  assets/             # Logos, icons, media
+  assets/              Media, logos, product visuals, and video previews
+  components/          Shared UI, animated sections, navigation, footer, chatbot
+  config/              Brand, product, and ecosystem configuration
+  hooks/               Scroll and animation hooks
+  pages/               Route-level pages for products, platform, solutions, company, services
+  test/                Vitest setup and tests
 public/
-  _redirects          # Netlify SPA rewrite
-  sitemap.xml         # SEO route map
-  robots.txt          # Crawl policy
-vercel.json           # Vercel SPA rewrite
+  _redirects           Netlify SPA rewrites
+  robots.txt           Crawl policy
+  sitemap.xml          Search engine route map
+vercel.json            Vercel SPA rewrites
 ```
 
-## Deployment Notes
+## Deployment
 
-- **Vercel** rewrite already configured in `vercel.json`:
-  - `/(.*) -> /`
-- **Netlify** rewrite already configured in `public/_redirects`:
-  - `/* /index.html 200`
-- Keep `public/sitemap.xml` and `public/robots.txt` updated when adding routes.
+### Vercel
 
-## Branding & Content Guidelines
+- `vercel.json` is already configured for SPA rewrites
 
-- Use logo/icon components instead of hardcoding product image paths where possible.
-- Maintain visibility for both themes (light/dark) on logos and cards.
-- Use centralized config files:
-  - `src/config/brand.ts`
-  - `src/config/products.ts`
-  - `src/config/agriculture.ts`
+### Netlify
+
+- `public/_redirects` includes the SPA fallback rule
+
+### SEO
+
+- Update `public/sitemap.xml` and `public/robots.txt` whenever new public routes are added
+
+## Brand Notes
+
+- Use the centralized config files in `src/config/` before hardcoding product content
+- Reuse existing logos, screenshots, and motion assets from `src/assets/`
+- Maintain visual quality in both light and dark themes
+- Keep the README preview sections updated when hero videos or flagship screenshots change
 
 ## Company
 
-**OriginX Labs Pvt. Ltd.**  
-Next-generation AI & Agentic Systems company building autonomous intelligence with ethics at the core.
+**OriginX Labs Pvt. Ltd.** builds next-generation agentic AI systems, enterprise SaaS products, LLM applications, and autonomous digital experiences with a strong focus on real-world utility, trust, and design quality.
