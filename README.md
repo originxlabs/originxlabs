@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Official website of OriginX Labs Pvt. Ltd., an agentic AI and enterprise SaaS company building intelligent digital products and autonomous systems.
+  Official website platform for OriginX Labs Pvt. Ltd. building agentic AI systems, enterprise applications, digital products, and intelligent operating platforms.
 </p>
 
 <p align="center">
@@ -23,49 +23,45 @@
 
 ## Overview
 
-OriginX Labs is the official web platform for **OriginX Labs Pvt. Ltd.**, designed as a modern SaaS-style experience for an agentic AI company. The site combines motion-driven storytelling, product-led navigation, platform architecture pages, solution pages, and branded microsites into one polished frontend.
+This repository powers the main OriginX Labs web presence. It brings together the company landing experience, enterprise platform pages, solution pages, product pages, and service ecosystem pages into one branded frontend.
 
-This repository powers:
+The site is designed to present OriginX Labs as:
 
-- The main OriginX Labs company site
-- Product pages for the AI and enterprise SaaS suite
-- Platform and solutions pages
-- Service ecosystem pages
-- The CropXon agriculture intelligence microsite
+- An enterprise AI and agentic systems company
+- A multi-product SaaS platform builder
+- A company with dedicated product, service, and ecosystem brands
+- A polished digital presence with motion, media, trust messaging, and structured enterprise storytelling
 
-## Brand Preview
+## Products
 
-<p align="center">
-  <img src="./public/originx-wordmark.png" alt="OriginX Labs Logo" width="420" />
-</p>
+| Product | Route | External | Details |
+| --- | --- | --- | --- |
+| PROXINEX | `/products/proxinex` | [proxinex.com](https://www.proxinex.com/) | AI intelligence control plane with routing, verification, governance, and AEON orchestration |
+| COGNIX | `/products/cognix` | [getcognix.io](https://www.getcognix.io/) | AI backend platform for intelligent applications and enterprise-ready infrastructure |
+| QUALYX | `/products/qualyx` | [getqualyx.com](https://www.getqualyx.com/) | AI-led quality and compliance platform |
+| TRACEFLOW | `/products/traceflow` | [traceflowhq.com](https://www.traceflowhq.com/) | Digital cognition and real-time behavioral intelligence platform |
+| CHRONYX | `/products/chronyx` | [getchronyx.com](https://www.getchronyx.com/) | Personal system of record and continuity intelligence workspace |
+| HUMINEX | `/products/huminex` | `Configured in app` | AI workforce operating system for HR, payroll, finance, recruitment, and workforce operations |
+| OPZENIX | `/products/opzenix` | [opzenix.com](https://www.opzenix.com/) | MLOps, LLMOps, and DevSecOps platform |
+| ORIGINX ONE | `/products/originx-one` | [originxcloud.com](https://www.originxcloud.com/) | Unified API infrastructure for AI, messaging, identity, finance, and enterprise integrations |
 
-## What This Site Communicates
+## Services And Ecosystem
 
-- **Agentic positioning** with messaging around autonomous operations, enterprise AI, LLM systems, and intelligent infrastructure
-- **Animated storytelling** through splash screens, parallax sections, interactive showcases, hover cards, and motion-led hero content
-- **Multi-product navigation** for the OriginX Labs ecosystem
-- **SaaS-grade presentation** with brand-led product pages, platform trust messaging, and enterprise solution flows
-- **Microsite support** for domain-specific products like CropXon
+| Experience | Route | External | Details |
+| --- | --- | --- | --- |
+| CropXon | `/cropxon` | [cropxon.com](https://www.cropxon.com/) | Agriculture intelligence platform and ecosystem experience |
+| Newstack | `/newstack` | [newstack.live](https://www.newstack.live/) | Live news intelligence and source-linked updates |
+| StackCraft | `/stackcraft` | [stackcraft.io](https://www.stackcraft.io/) | Professional network and company platform for developers |
+| Zenith | `/zenith` | `Internal page` | Digital business operating system experience |
+| Services Hub | `/services` | `Internal page` | Central service layer for OriginX Labs offerings |
+| Finioraa | `/services/finioraa` | `Internal page` | Personal finance operating system |
+| CareersCraft | `/services/careerscraft` | `Internal page` | Career operating system and AI-guided career tooling |
+| Convertix | `/services/convertix` | `Internal page` | Premium PDF and image workflow studio |
+| Groovify | `/services/groovify` | `Internal page` | Music and lyrics app experience |
 
-## Product Ecosystem
+## Company And Platform Pages
 
-### Core Products
-
-| Product | Route | Focus |
-| --- | --- | --- |
-| PROXINEX | `/products/proxinex` | AI intelligence control plane |
-| COGNIX | `/products/cognix` | AI backend as a service |
-| ORIGINX ONE | `/products/originx-one` | Unified API and capability layer |
-
-### Ecosystem and Services
-
-| Experience | Route |
-| --- | --- |
-| CropXon | `/cropxon` |
-
-## Route Map
-
-### Main
+### Company
 
 - `/`
 - `/about`
@@ -101,13 +97,12 @@ This repository powers:
 
 ## Experience Highlights
 
-- Animated splash screen on initial load and route transitions
-- Motion-rich hero with rotating messaging and product-linked cards
-- Parallax product showcase and multi-section storytelling
-- Theme support with `next-themes`
-- SEO-focused metadata and structured schema markup
-- Chatbot integration for on-site interaction
-- SPA deployment support for Vercel and Netlify
+- Enterprise-grade landing page and product storytelling
+- Motion-led hero sections, parallax, and interactive product showcases
+- Dedicated product pages with snapshots, demos, and buyer-facing structure
+- Service and ecosystem pages with independent brand identity
+- SEO-focused metadata, structured schema, and deployment-ready routing
+- SPA support for Vercel and Netlify
 
 ## Tech Stack
 
@@ -141,7 +136,7 @@ npm install
 npm run dev
 ```
 
-### Build for Production
+### Build For Production
 
 ```bash
 npm run build
@@ -169,40 +164,25 @@ npm run lint
 
 ```text
 src/
-  assets/              Media, logos, product visuals, and video previews
-  components/          Shared UI, animated sections, navigation, footer, chatbot
-  config/              Brand, product, and ecosystem configuration
+  assets/              Logos, videos, previews, product snapshots, media
+  components/          Shared UI, animated sections, layout, navigation, footer
+  config/              Central brand, product, and ecosystem configuration
   hooks/               Scroll and animation hooks
-  pages/               Route-level pages for products, platform, solutions, company, services
-  test/                Vitest setup and tests
+  pages/               Company, product, platform, solution, and service routes
+  test/                Vitest setup and test files
 public/
   _redirects           Netlify SPA rewrites
   robots.txt           Crawl policy
-  sitemap.xml          Search engine route map
+  sitemap.xml          Search route map
 vercel.json            Vercel SPA rewrites
 ```
 
 ## Deployment
 
-### Vercel
-
-- `vercel.json` is already configured for SPA rewrites
-
-### Netlify
-
-- `public/_redirects` includes the SPA fallback rule
-
-### SEO
-
-- Update `public/sitemap.xml` and `public/robots.txt` whenever new public routes are added
-
-## Brand Notes
-
-- Use the centralized config files in `src/config/` before hardcoding product content
-- Reuse existing logos, screenshots, and motion assets from `src/assets/`
-- Maintain visual quality in both light and dark themes
-- Keep the README preview sections updated when hero videos or flagship screenshots change
+- `vercel.json` handles Vercel SPA rewrites
+- `public/_redirects` handles Netlify SPA rewrites
+- Update `public/sitemap.xml` and `public/robots.txt` when adding new public routes
 
 ## Company
 
-**OriginX Labs Pvt. Ltd.** builds next-generation agentic AI systems, enterprise SaaS products, LLM applications, and autonomous digital experiences with a strong focus on real-world utility, trust, and design quality.
+**OriginX Labs Pvt. Ltd.** builds agentic AI systems, enterprise SaaS products, intelligent infrastructure, and digital operating platforms with a focus on trust, design quality, and real-world usability.
