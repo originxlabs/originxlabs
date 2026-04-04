@@ -35,39 +35,11 @@ This repository powers:
 - Service ecosystem pages
 - The CropXon agriculture intelligence microsite
 
-## Preview
-
-### Hero / Motion Preview
+## Brand Preview
 
 <p align="center">
-  <video src="./src/assets/oxl-hero-video.mp4" width="100%" controls muted playsinline preload="metadata"></video>
+  <img src="./public/originx-wordmark.png" alt="OriginX Labs Logo" width="420" />
 </p>
-
-### Brand / Product Preview
-
-<p align="center">
-  <video src="./src/assets/video2-ox.mp4" width="100%" controls muted playsinline preload="metadata"></video>
-</p>
-
-### Product Experience Snapshots
-
-<p align="center">
-  <img src="./src/assets/originxone-home-full.png" alt="OriginX One Preview" width="100%" />
-</p>
-
-<p align="center">
-  <img src="./src/assets/proxinex-snapshot.png" alt="Proxinex Preview" width="49%" />
-  <img src="./src/assets/cognix-snapshot.png" alt="Cognix Preview" width="49%" />
-</p>
-
-<p align="center">
-  <img src="./src/assets/cropxon/ecosystem-hub.png" alt="CropXon Preview" width="100%" />
-</p>
-
-If your Git host does not render embedded videos in Markdown, open the source files directly:
-
-- `src/assets/oxl-hero-video.mp4`
-- `src/assets/video2-ox.mp4`
 
 ## What This Site Communicates
 
