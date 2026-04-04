@@ -5,13 +5,11 @@
 </p>
 
 <p align="center">
-  Agentic AI company building animated, enterprise-grade SaaS platforms for autonomous operations, intelligent infrastructure, and applied AI products.
+  Official website of OriginX Labs Pvt. Ltd., an agentic AI and enterprise SaaS company building intelligent digital products and autonomous systems.
 </p>
 
 <p align="center">
-  <a href="https://originxlabs.com">Website</a> •
-  <a href="https://originxlabs.com/cropxon">CropXon</a> •
-  <a href="https://www.cropxon.com/">CropXon External</a>
+  <a href="https://originxlabs.com">Official Website</a>
 </p>
 
 <p align="center">
