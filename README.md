@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://originxlabs.com">
+  <a href="https://www.originxlabs.com">
     <img src="https://img.shields.io/badge/Official%20Website-originxlabs.com-111827?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Official Website" />
   </a>
 </p>
