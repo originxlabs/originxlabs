@@ -123,7 +123,7 @@ const Navbar = () => {
   const servicesLinks = [
     { name: "ALL SERVICES", description: "OriginX Services Hub", icon: Network, href: "/services" },
     { name: "ZENITH", description: "Digital Business Operating System", icon: Sparkles, href: "/zenith" },
-    { name: "STACKCRAFT", description: "Learning, CMS & Engineering Playbooks", icon: BookOpen, href: "/stackcraft" },
+    { name: "STACKCRAFT", description: "Professional Network for Developers", icon: BookOpen, href: "/stackcraft" },
     { name: "NEWSTACK", description: "Live News Intelligence Layer", icon: Newspaper, href: "/newstack" },
     { name: "CROPXON", description: "Agriculture Intelligence Platform", icon: Factory, href: "/cropxon" },
     { name: "FINIORAA", description: "Personal Finance Operating System", icon: Gauge, href: "/services/finioraa" },
@@ -154,7 +154,7 @@ const Navbar = () => {
     { name: "Leadership", href: "/leadership", description: "Meet our founders", icon: Users },
     { name: "Governance", href: "/trust", description: "Corporate responsibility", icon: Scale },
     { name: "Press", href: "/press", description: "News and updates", icon: Newspaper },
-    { name: "StackCraft", href: "https://www.stackcraft.io", description: "Case studies & insights", icon: BookOpen, isExternal: true },
+    { name: "StackCraft", href: "https://www.stackcraft.io", description: "Developer network & company platform", icon: BookOpen, isExternal: true },
   ];
 
   const careersLinks = [

@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, BrainCircuit, ExternalLink, LayoutPanelTop, Rss, GraduationCap } from "lucide-react";
+import { ArrowRight, BadgeCheck, Briefcase, Building2, ExternalLink, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import stackcraftLogo from "@/assets/stackcraft-logo.svg";
@@ -16,14 +16,14 @@ const StackcraftSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            <p className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.24em] text-muted-foreground mb-4">Learning + CMS Division</p>
+            <p className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.24em] text-muted-foreground mb-4">Professional Network for Developers</p>
             <div className="flex items-center gap-3 sm:gap-4 mb-5">
               <img src={stackcraftLogo} alt="StackCraft logo" className="h-11 w-auto rounded-md" />
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">StackCraft</h2>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">StackCraft Connect</h2>
             </div>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-7">
-              Product-grade engineering learning platform with structured playbooks, publishing workflows, CMS-ready content rails,
-              and next-generation agentic AI blog workflows from OriginX Labs.
+              Developer-focused professional network with verified profiles, company presence, jobs, hackathons, and business
+              visibility for technical communities and hiring teams.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -52,11 +52,10 @@ const StackcraftSection = () => {
             }`}
           >
             {[
-              { icon: BookOpen, title: "Engineering Playbooks", desc: "Production-focused technical tracks.", stat: "Live" },
-              { icon: GraduationCap, title: "Learning Division", desc: "Role-based learning pathways.", stat: "Structured" },
-              { icon: LayoutPanelTop, title: "CMS System", desc: "Editorial and publishing workflows.", stat: "Platform" },
-              { icon: BrainCircuit, title: "Agentic AI Blog", desc: "Next-gen assisted authoring and insight rails.", stat: "Next" },
-              { icon: Rss, title: "Live Feed", desc: "Fresh playbooks via RSS and blog updates.", stat: "Daily" },
+              { icon: BadgeCheck, title: "Verified Profiles", desc: "Professional identity for developers and technical talent.", stat: "Live" },
+              { icon: Network, title: "Developer Network", desc: "Follow, connect, and grow technical visibility.", stat: "Social" },
+              { icon: Briefcase, title: "Jobs & Hiring", desc: "Recruiting and discovery built for engineering roles.", stat: "Hiring" },
+              { icon: Building2, title: "Company Pages", desc: "Brand, team, and employer presence in one layer.", stat: "Business" },
             ].map((item) => (
               <div
                 key={item.title}

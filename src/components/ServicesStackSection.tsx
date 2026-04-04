@@ -22,7 +22,7 @@ const services = [
   },
   {
     name: "StackCraft",
-    description: "Learning division, engineering playbooks, publishing workflows, and CMS-ready content rails.",
+    description: "Professional network for developers with company presence, hiring workflows, jobs, and hackathons.",
     href: "/stackcraft",
     status: "Live",
     logo: stackcraftLogo,
