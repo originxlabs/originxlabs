@@ -56,13 +56,12 @@ This repository powers:
 </p>
 
 <p align="center">
-  <img src="./src/assets/traceflow-snapshot.png" alt="Traceflow Preview" width="49%" />
+  <img src="./src/assets/proxinex-snapshot.png" alt="Proxinex Preview" width="49%" />
   <img src="./src/assets/cognix-snapshot.png" alt="Cognix Preview" width="49%" />
 </p>
 
 <p align="center">
-  <img src="./src/assets/qualyx-snapshot.png" alt="Qualyx Preview" width="49%" />
-  <img src="./src/assets/opzenix-snapshot.png" alt="Opzenix Preview" width="49%" />
+  <img src="./src/assets/cropxon/ecosystem-hub.png" alt="CropXon Preview" width="100%" />
 </p>
 
 If your Git host does not render embedded videos in Markdown, open the source files directly:
@@ -86,26 +85,13 @@ If your Git host does not render embedded videos in Markdown, open the source fi
 | --- | --- | --- |
 | PROXINEX | `/products/proxinex` | AI intelligence control plane |
 | COGNIX | `/products/cognix` | AI backend as a service |
-| QUALYX | `/products/qualyx` | AI QA as a service |
-| TRACEFLOW | `/products/traceflow` | Digital cognition |
-| CHRONYX | `/products/chronyx` | Workflow and timeline intelligence |
-| HUMINEX | `/products/huminex` | AI workforce operating system |
 | ORIGINX ONE | `/products/originx-one` | Unified API and capability layer |
-| OPZENIX | `/products/opzenix` | MLOps platform |
 
 ### Ecosystem and Services
 
 | Experience | Route |
 | --- | --- |
 | CropXon | `/cropxon` |
-| Newstack | `/newstack` |
-| Stackcraft | `/stackcraft` |
-| Zenith | `/zenith` |
-| Services Hub | `/services` |
-| Finioraa | `/services/finioraa` |
-| Careerscraft | `/services/careerscraft` |
-| Convertix | `/services/convertix` |
-| Groovify | `/services/groovify` |
 
 ## Route Map
 
